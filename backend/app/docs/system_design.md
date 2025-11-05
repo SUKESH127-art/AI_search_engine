@@ -13,7 +13,7 @@
 
 ```mermaid
 flowchart LR
-  FE[Next.js] -->|POST /api/ask| API(FastAPI)
+  FE[Next.js] -->|POST /api/ask| API[FastAPI]
   API --> LG[LangGraph Agent]
   LG --> S[search]
   S --> P[prioritize_sources]
@@ -21,7 +21,7 @@ flowchart LR
   Y --> I[enrich_images]
   I --> F[format_output]
   LG --> CK[(Checkpoints per session)]
-  LG --> LOG[[JSONL Progress Logs]]
+  LG --> LOG[JSONL Progress Logs]
   FE <-->|GET /api/progress/{session_id}| LOG
 ```
 
