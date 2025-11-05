@@ -1,0 +1,9 @@
+# Environment variables
+backend/.env
+
+# Backend docs
+backend/docs/
+
+# Virtual environment
+backend/venv/
+
