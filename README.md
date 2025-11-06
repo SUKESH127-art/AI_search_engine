@@ -4,9 +4,12 @@
 
 The UI is built as a cinematic journey from the landing screen to the final answer. Each stage is captured in a short demo so you can feel the flow in motion:
 
-- **Home screen launch** – A glassmorphic welcome panel floats over a cosmic gradient while the search bar invites the user to “jump to hyperspace.” The `Home_Screen_AI_Search.mov` clip shows how the hero CTA, ambient particle field, and subtle parallax cues set the tone for exploration. [Watch the home screen walkthrough](frontend/public/Home_Screen_AI_Search.mov).
-- **Hyper-search in motion** – Triggering a query kicks off the hyper-search animation (`Searching_Process.mov`). Concentric light trails, animated progress glyphs, and stage-by-stage copy reinforce that the agent is traversing knowledge galaxies in real time.
-- **Results constellation** – The results view (`Result_View.mov`) is organized as a control deck:
+- **Home screen launch** – A glassmorphic welcome panel floats over a cosmic gradient while the search bar invites the user to “jump to hyperspace.” The `Home_Screen_AI_Search.gif` loop shows how the hero CTA, ambient particle field, and subtle parallax cues set the tone for exploration.
+  ![Home screen walkthrough](frontend/public/Home_Screen_AI_Search.gif)
+- **Hyper-search in motion** – Triggering a query kicks off the hyper-search animation (`Searching_Process.gif`). Concentric light trails, animated progress glyphs, and stage-by-stage copy reinforce that the agent is traversing knowledge galaxies in real time.
+  ![Hyper-search animation](frontend/public/Searching_Process.gif)
+- **Results constellation** – The results view (`Result_View.gif`) is organized as a control deck:
+  ![Results view](frontend/public/Result_View.gif)
   - A succinct **summary module** anchors the page so you grok the answer instantly.
   - Responsive **image tiles** keep the visuals fresh even when upstream SERP data is sparse.
   - **Cited sources** are rendered as interactive cards with inline links, making it obvious where every fact originated.
