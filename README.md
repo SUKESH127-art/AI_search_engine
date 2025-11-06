@@ -22,7 +22,7 @@ The UI is built as a cinematic journey from the landing screen to the final answ
 
 ### Design Intent
 
-The interface leans heavily into the “Fleetline” narrative: searching the web should feel like navigating hyperspace in Star Wars. To sell that story:
+The interface leans heavily into the hyperdrive narrative: searching the web should feel like navigating hyperspace in Star Wars. To sell that story:
 
 - **Sequential journey** – Every screen transition mirrors a leg of a mission: takeoff (home), warp (hyper-search), arrival (results). The user never sees a jarring jump; instead, they glide through stages that visually rhyme.
 - **Color with restraint** – A limited palette of neons and deep-space gradients keeps the layout minimal while still delivering bold moments of color. Animated light sweeps add warmth without overwhelming the content.
