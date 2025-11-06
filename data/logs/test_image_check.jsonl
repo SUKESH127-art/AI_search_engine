@@ -1,0 +1,21 @@
+{"timestamp": "2025-11-05T21:54:49Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:54:54Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:54:54Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:55:00Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Artificial_intellige: 156 chars"}
+{"timestamp": "2025-11-05T21:55:00Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.ibm.com/think/topics/artificial-intell: 154 chars"}
+{"timestamp": "2025-11-05T21:55:00Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://cloud.google.com/learn/what-is-artificial-: 164 chars"}
+{"timestamp": "2025-11-05T21:55:00Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.nasa.gov/what-is-artificial-intelligen: 136 chars"}
+{"timestamp": "2025-11-05T21:55:00Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.britannica.com/technology/artificial-i: 156 chars"}
+{"timestamp": "2025-11-05T21:55:00Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:55:00Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:55:00Z", "step": "enrich_images", "status": "info", "message": "No overview image found in SERP response"}
+{"timestamp": "2025-11-05T21:55:00Z", "step": "enrich_images", "status": "info", "message": "Enriching 5 citations with images..."}
+{"timestamp": "2025-11-05T21:55:03Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 1: https://incubator.ucf.edu/what-is-artificial-intel..."}
+{"timestamp": "2025-11-05T21:55:07Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 2: https://www.fool.com/terms/a/artificial-intelligen..."}
+{"timestamp": "2025-11-05T21:55:11Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 3: https://www.fool.com/terms/a/artificial-intelligen..."}
+{"timestamp": "2025-11-05T21:55:17Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 4: https://www.investopedia.com/terms/a/artificial-in..."}
+{"timestamp": "2025-11-05T21:55:22Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 5: https://www.bmc.com/blogs/artificial-intelligence-..."}
+{"timestamp": "2025-11-05T21:55:22Z", "step": "enrich_images", "status": "info", "message": "Enriched 5/5 citations with images"}
+{"timestamp": "2025-11-05T21:55:22Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:55:22Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:55:22Z", "step": "format_output", "status": "end", "message": ""}

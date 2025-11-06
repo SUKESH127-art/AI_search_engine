@@ -1,0 +1,10 @@
+{"timestamp": "2025-11-05T14:57:13Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:57:16Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:57:16Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:57:26Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:57:26Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:57:32Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:57:32Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:57:33Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:57:33Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:57:33Z", "step": "format_output", "status": "end", "message": ""}

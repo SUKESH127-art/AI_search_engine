@@ -1,0 +1,21 @@
+{"timestamp": "2025-11-06T02:29:49Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:29:51Z", "step": "search", "status": "info", "message": "Found image from images section"}
+{"timestamp": "2025-11-06T02:29:51Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:29:51Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:29:56Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/memes/comments/1beq6io/wh: 123 chars"}
+{"timestamp": "2025-11-06T02:29:56Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.facebook.com/groups/it.humor.and.memes: 121 chars"}
+{"timestamp": "2025-11-06T02:29:56Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:29:56Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:29:56Z", "step": "enrich_images", "status": "info", "message": "Overview image already available: https://www.reddit.com/r/memes/comments/mpsx2v/the..."}
+{"timestamp": "2025-11-06T02:29:56Z", "step": "enrich_images", "status": "info", "message": "Enriching 2 citations with images..."}
+{"timestamp": "2025-11-06T02:29:56Z", "step": "enrich_images", "status": "info", "message": "Fetching images for 2 citations in parallel..."}
+{"timestamp": "2025-11-06T02:29:56Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Which came first, the chicken, or the egg? \u2014 How is this even a meme? Who invent"}
+{"timestamp": "2025-11-06T02:29:56Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Which came first, the egg or the chicken? Who invented the"}
+{"timestamp": "2025-11-06T02:30:01Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: facebook.com"}
+{"timestamp": "2025-11-06T02:30:02Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: reddit.com"}
+{"timestamp": "2025-11-06T02:30:03Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Which came first, the egg or the chicken?"}
+{"timestamp": "2025-11-06T02:30:05Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: Which came first, the chicken, or the egg? \u2014 How i"}
+{"timestamp": "2025-11-06T02:30:05Z", "step": "enrich_images", "status": "info", "message": "Enriched 0/2 citations with images"}
+{"timestamp": "2025-11-06T02:30:05Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:30:05Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:30:05Z", "step": "format_output", "status": "end", "message": ""}

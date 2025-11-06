@@ -1,0 +1,22 @@
+{"timestamp": "2025-11-05T14:32:37Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:32:39Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:32:39Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:32:46Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:32:46Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:32:51Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:32:51Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:32:52Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:32:52Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:32:52Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:32:54Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:32:56Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:32:56Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:33:02Z", "step": "prioritize_sources", "status": "error", "message": "Invalid JSON from LLM: Expecting value: line 1 column 1 (char 0) \u2014 using fallback."}
+{"timestamp": "2025-11-05T14:33:02Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:33:02Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:33:08Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:33:08Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:33:09Z", "step": "enrich_images", "status": "error", "message": "Failed to extract image from https://ludwig.guru/s/its+main+features: 403 Client Error: Forbidden for url: https://ludwig.guru/s/its+main+features"}
+{"timestamp": "2025-11-05T14:33:09Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:33:09Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:33:09Z", "step": "format_output", "status": "end", "message": ""}

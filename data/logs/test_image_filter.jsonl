@@ -1,0 +1,11 @@
+{"timestamp": "2025-11-05T14:24:34Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:24:36Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:24:36Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:24:45Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:24:45Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:24:50Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:24:50Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:24:50Z", "step": "enrich_images", "status": "error", "message": "Image URL is not direct/accessible: https://langchain-5e9cc07a.mintlify.app/mintlify-assets/_next/image?url=%2F_mintlify%2Fapi%2Fog%3Fdi..."}
+{"timestamp": "2025-11-05T14:24:50Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:24:50Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:24:50Z", "step": "format_output", "status": "end", "message": ""}

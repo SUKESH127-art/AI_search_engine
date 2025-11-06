@@ -1,0 +1,21 @@
+{"timestamp": "2025-11-06T02:51:17Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:51:19Z", "step": "search", "status": "info", "message": "Found image from images section"}
+{"timestamp": "2025-11-06T02:51:19Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:51:19Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:51:25Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 160 chars"}
+{"timestamp": "2025-11-06T02:51:25Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/popheads/comments/8mvxzb/: 156 chars"}
+{"timestamp": "2025-11-06T02:51:25Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:51:25Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:51:25Z", "step": "enrich_images", "status": "info", "message": "Overview image already available: https://www.youtube.com/watch?v=hET4OTr-gdI..."}
+{"timestamp": "2025-11-06T02:51:25Z", "step": "enrich_images", "status": "info", "message": "Enriching 2 citations with images..."}
+{"timestamp": "2025-11-06T02:51:25Z", "step": "enrich_images", "status": "info", "message": "Fetching images for 2 citations in parallel..."}
+{"timestamp": "2025-11-06T02:51:25Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Who's the queen"}
+{"timestamp": "2025-11-06T02:51:25Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Who is the queen of rap? Who's the queen"}
+{"timestamp": "2025-11-06T02:51:29Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: reddit.com"}
+{"timestamp": "2025-11-06T02:51:35Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: en.wikipedia.org"}
+{"timestamp": "2025-11-06T02:51:37Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Who is the queen of rap?"}
+{"timestamp": "2025-11-06T02:51:41Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: Nicki Minaj"}
+{"timestamp": "2025-11-06T02:51:41Z", "step": "enrich_images", "status": "info", "message": "Enriched 0/2 citations with images"}
+{"timestamp": "2025-11-06T02:51:41Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:51:41Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:51:41Z", "step": "format_output", "status": "end", "message": ""}

@@ -1,0 +1,23 @@
+{"timestamp": "2025-11-06T02:45:35Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:45:37Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:45:37Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:45:44Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/popheads/comments/74ywe6/: 159 chars"}
+{"timestamp": "2025-11-06T02:45:44Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.gigwise.com/unforgettable-pop-stars-fr: 148 chars"}
+{"timestamp": "2025-11-06T02:45:44Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:45:44Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:45:44Z", "step": "enrich_images", "status": "info", "message": "No overview image found, searching for one..."}
+{"timestamp": "2025-11-06T02:45:44Z", "step": "enrich_images", "status": "debug", "message": "Overview image search query: Who was the biggest popstar of the 2000s?"}
+{"timestamp": "2025-11-06T02:45:49Z", "step": "enrich_images", "status": "warning", "message": "Could not find overview image"}
+{"timestamp": "2025-11-06T02:45:49Z", "step": "enrich_images", "status": "info", "message": "Enriching 2 citations with images..."}
+{"timestamp": "2025-11-06T02:45:49Z", "step": "enrich_images", "status": "info", "message": "Fetching images for 2 citations in parallel..."}
+{"timestamp": "2025-11-06T02:45:49Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Who were the biggest stars back in the 2000s? Who was the"}
+{"timestamp": "2025-11-06T02:45:49Z", "step": "enrich_images", "status": "debug", "message": "Image search query: 31 Unforgettable Pop Stars from 2000's Who was the"}
+{"timestamp": "2025-11-06T02:45:54Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: reddit.com"}
+{"timestamp": "2025-11-06T02:45:56Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: Who were the biggest stars back in the 2000s?"}
+{"timestamp": "2025-11-06T02:45:56Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: gigwise.com"}
+{"timestamp": "2025-11-06T02:46:02Z", "step": "enrich_images", "status": "info", "message": "Found fallback base64 image via domain search"}
+{"timestamp": "2025-11-06T02:46:02Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 4: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYYA..."}
+{"timestamp": "2025-11-06T02:46:02Z", "step": "enrich_images", "status": "info", "message": "Enriched 1/2 citations with images"}
+{"timestamp": "2025-11-06T02:46:02Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:46:02Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:46:02Z", "step": "format_output", "status": "end", "message": ""}

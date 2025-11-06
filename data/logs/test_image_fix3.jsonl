@@ -1,0 +1,26 @@
+{"timestamp": "2025-11-05T22:07:40Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:07:42Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:07:42Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:07:51Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Jellyfish: 128 chars"}
+{"timestamp": "2025-11-05T22:07:51Z", "step": "synthesize", "status": "debug", "message": "Match found but extended_snippet is None for https://www.nhm.ac.uk/discover/what-is-a-jellyfish"}
+{"timestamp": "2025-11-05T22:07:51Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.montereybayaquarium.org/animals/animal: 149 chars"}
+{"timestamp": "2025-11-05T22:07:51Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://kids.nationalgeographic.com/animals/invert: 161 chars"}
+{"timestamp": "2025-11-05T22:07:51Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:07:51Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:07:51Z", "step": "enrich_images", "status": "info", "message": "No overview image found, searching for one..."}
+{"timestamp": "2025-11-05T22:07:51Z", "step": "enrich_images", "status": "debug", "message": "Overview image search query: jellyfish"}
+{"timestamp": "2025-11-05T22:07:54Z", "step": "enrich_images", "status": "debug", "message": "Found base64 overview image data"}
+{"timestamp": "2025-11-05T22:07:54Z", "step": "enrich_images", "status": "info", "message": "Found overview image: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:07:54Z", "step": "enrich_images", "status": "info", "message": "Enriching 4 citations with images..."}
+{"timestamp": "2025-11-05T22:07:54Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Jellyfish jellyfish"}
+{"timestamp": "2025-11-05T22:08:00Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: Jellyfish"}
+{"timestamp": "2025-11-05T22:08:00Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Jellyfish: The smart stinging creatures drifting through our... jellyfish"}
+{"timestamp": "2025-11-05T22:08:03Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 3: Jellyfish: The smart stinging creatures drifting t"}
+{"timestamp": "2025-11-05T22:08:03Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Jellies | Animals jellyfish"}
+{"timestamp": "2025-11-05T22:08:06Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 4: Jellies | Animals"}
+{"timestamp": "2025-11-05T22:08:06Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Jellyfish facts and photos jellyfish"}
+{"timestamp": "2025-11-05T22:08:15Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 5: Jellyfish facts and photos"}
+{"timestamp": "2025-11-05T22:08:15Z", "step": "enrich_images", "status": "info", "message": "Enriched 0/4 citations with images"}
+{"timestamp": "2025-11-05T22:08:15Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:08:15Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:08:15Z", "step": "format_output", "status": "end", "message": ""}

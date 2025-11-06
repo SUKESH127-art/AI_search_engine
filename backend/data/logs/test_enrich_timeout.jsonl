@@ -1,0 +1,6 @@
+{"timestamp": "2025-11-05T13:46:08Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T13:46:12Z", "step": "enrich_images", "status": "error", "message": "Failed to extract image from http://localhost:8888/timeout: HTTPConnectionPool(host='localhost', port=8888): Read timed out. (read timeout=4)"}
+{"timestamp": "2025-11-05T13:46:12Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T13:47:39Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T13:47:43Z", "step": "enrich_images", "status": "error", "message": "Failed to extract image from http://localhost:8888/timeout: HTTPConnectionPool(host='localhost', port=8888): Read timed out. (read timeout=4)"}
+{"timestamp": "2025-11-05T13:47:43Z", "step": "enrich_images", "status": "end", "message": ""}

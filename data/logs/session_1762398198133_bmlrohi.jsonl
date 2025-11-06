@@ -1,0 +1,22 @@
+{"timestamp": "2025-11-06T03:05:50Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T03:05:54Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T03:05:54Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T03:06:00Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.kiddnation.com/whos-the-smartest-8th-g: 137 chars"}
+{"timestamp": "2025-11-06T03:06:00Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.wcvb.com/article/massachusetts-8th-gra: 144 chars"}
+{"timestamp": "2025-11-06T03:06:00Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T03:06:00Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T03:06:00Z", "step": "enrich_images", "status": "info", "message": "No overview image found, searching for one..."}
+{"timestamp": "2025-11-06T03:06:00Z", "step": "enrich_images", "status": "debug", "message": "Overview image search query: who's the smartest 8th grader?"}
+{"timestamp": "2025-11-06T03:06:03Z", "step": "enrich_images", "status": "warning", "message": "Could not find overview image"}
+{"timestamp": "2025-11-06T03:06:03Z", "step": "enrich_images", "status": "info", "message": "Enriching 2 citations with images..."}
+{"timestamp": "2025-11-06T03:06:03Z", "step": "enrich_images", "status": "info", "message": "Fetching images for 2 citations in parallel..."}
+{"timestamp": "2025-11-06T03:06:03Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Who's The Smartest 8th Grader? who's the smartest"}
+{"timestamp": "2025-11-06T03:06:03Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Mass. 8th-graders among smartest in the world who's the smartest"}
+{"timestamp": "2025-11-06T03:06:08Z", "step": "enrich_images", "status": "debug", "message": "Found base64 image data"}
+{"timestamp": "2025-11-06T03:06:08Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 5: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-06T03:06:13Z", "step": "enrich_images", "status": "debug", "message": "Found base64 image data"}
+{"timestamp": "2025-11-06T03:06:13Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 1: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-06T03:06:13Z", "step": "enrich_images", "status": "info", "message": "Enriched 2/2 citations with images"}
+{"timestamp": "2025-11-06T03:06:13Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T03:06:13Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T03:06:13Z", "step": "format_output", "status": "end", "message": ""}

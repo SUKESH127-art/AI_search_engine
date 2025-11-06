@@ -1,0 +1,54 @@
+{"timestamp": "2025-11-05T14:27:56Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:27:58Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:27:58Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:28:07Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:28:07Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:28:12Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:28:12Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:28:12Z", "step": "enrich_images", "status": "error", "message": "Image URL is not direct/accessible: https://langchain-5e9cc07a.mintlify.app/mintlify-assets/_next/image?url=%2F_mintlify%2Fapi%2Fog%3Fdi..."}
+{"timestamp": "2025-11-05T14:28:12Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:28:12Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:28:12Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:39:13Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:39:16Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:39:16Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:39:24Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:39:24Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:40:35Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:40:35Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:40:39Z", "step": "enrich_images", "status": "error", "message": "Failed to extract image from https://themontclarion.org/entertainment/pink-friday-2-reinforces-why-nicki-minaj-is-the-queen-of-rap/: HTTPSConnectionPool(host='themontclarion.org', port=443): Read timed out. (read timeout=4)"}
+{"timestamp": "2025-11-05T14:40:39Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:40:39Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:40:39Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:48:31Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:48:32Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:48:32Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:48:39Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:48:39Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:48:43Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:48:43Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:48:44Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:48:44Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:48:44Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:46:17Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:46:21Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:46:21Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:46:38Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:46:38Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:46:39Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:46:39Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:46:39Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T18:06:03Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T18:06:05Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T18:06:05Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T18:06:14Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 160 chars"}
+{"timestamp": "2025-11-05T18:06:14Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/popheads/comments/8mvxzb/: 141 chars"}
+{"timestamp": "2025-11-05T18:06:15Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.facebook.com/groups/beatsrhymeslounge/: 156 chars"}
+{"timestamp": "2025-11-05T18:06:15Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://artsandculture.google.com/story/queens-of-: 164 chars"}
+{"timestamp": "2025-11-05T18:06:15Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.youtube.com/watch?v=r2fdazajFJ8: 143 chars"}
+{"timestamp": "2025-11-05T18:06:15Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T18:06:15Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T18:06:15Z", "step": "enrich_images", "status": "info", "message": "No overview image found in SERP response"}
+{"timestamp": "2025-11-05T18:06:15Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T18:06:15Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T18:06:15Z", "step": "format_output", "status": "end", "message": ""}

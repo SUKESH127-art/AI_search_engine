@@ -7,3 +7,7 @@ backend/docs/
 # Virtual environment
 backend/venv/
 
+# IDE - ignore user-specific files, but keep settings.json
+.vscode/*
+!.vscode/settings.json
+

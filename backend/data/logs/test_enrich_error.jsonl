@@ -1,0 +1,6 @@
+{"timestamp": "2025-11-05T13:46:16Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T13:46:18Z", "step": "enrich_images", "status": "error", "message": "Failed to extract image from http://localhost:8888/error: 500 Server Error: Internal Server Error for url: http://localhost:8888/error"}
+{"timestamp": "2025-11-05T13:46:18Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T13:47:47Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T13:47:49Z", "step": "enrich_images", "status": "error", "message": "Failed to extract image from http://localhost:8888/error: 500 Server Error: Internal Server Error for url: http://localhost:8888/error"}
+{"timestamp": "2025-11-05T13:47:49Z", "step": "enrich_images", "status": "end", "message": ""}

@@ -1,0 +1,12 @@
+{"timestamp": "2025-11-05T15:04:49Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:04:51Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:04:51Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:05:04Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:05:05Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:05:09Z", "step": "synthesize", "status": "error", "message": "LLM API error: name 'url' is not defined"}
+{"timestamp": "2025-11-05T15:05:09Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:05:09Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:05:09Z", "step": "enrich_images", "status": "error", "message": "No citations to enrich."}
+{"timestamp": "2025-11-05T15:05:09Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:05:09Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:05:09Z", "step": "format_output", "status": "end", "message": ""}

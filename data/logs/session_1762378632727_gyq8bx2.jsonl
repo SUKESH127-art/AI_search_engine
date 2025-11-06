@@ -1,0 +1,448 @@
+{"timestamp": "2025-11-05T21:42:56Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:42:58Z", "step": "search", "status": "info", "message": "Found image from images section"}
+{"timestamp": "2025-11-05T21:42:58Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:42:58Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:43:07Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 160 chars"}
+{"timestamp": "2025-11-05T21:43:07Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/popheads/comments/8mvxzb/: 141 chars"}
+{"timestamp": "2025-11-05T21:43:07Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:43:07Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:43:07Z", "step": "enrich_images", "status": "info", "message": "Overview image available: https://www.youtube.com/watch?v=hET4OTr-gdI..."}
+{"timestamp": "2025-11-05T21:43:07Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:43:07Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:43:07Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:43:07Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:43:12Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:43:12Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:43:23Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 160 chars"}
+{"timestamp": "2025-11-05T21:43:23Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/popheads/comments/8mvxzb/: 141 chars"}
+{"timestamp": "2025-11-05T21:43:23Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:43:23Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:43:23Z", "step": "enrich_images", "status": "info", "message": "No overview image found in SERP response"}
+{"timestamp": "2025-11-05T21:43:23Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:43:23Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:43:23Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:43:23Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:43:26Z", "step": "search", "status": "info", "message": "Using top result image as overview image"}
+{"timestamp": "2025-11-05T21:43:26Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:43:26Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:43:38Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 157 chars"}
+{"timestamp": "2025-11-05T21:43:38Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.npr.org/2018/10/03/651761719/nicki-min: 132 chars"}
+{"timestamp": "2025-11-05T21:43:38Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://traverseglobalshipping.com/newserx/83440-n: 146 chars"}
+{"timestamp": "2025-11-05T21:43:38Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://music.apple.com/ca/playlist/nicki-minaj-in: 156 chars"}
+{"timestamp": "2025-11-05T21:43:38Z", "step": "synthesize", "status": "debug", "message": "No URL match for citation: https://bombshellbybleu.com/p/nicki-minajs-cultura"}
+{"timestamp": "2025-11-05T21:43:38Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:43:38Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:43:38Z", "step": "enrich_images", "status": "info", "message": "Overview image available: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T21:43:38Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:43:38Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:43:38Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:48:28Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:48:33Z", "step": "search", "status": "info", "message": "Using top result image as overview image"}
+{"timestamp": "2025-11-05T21:48:33Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:48:33Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:49:00Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 157 chars"}
+{"timestamp": "2025-11-05T21:49:00Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.npr.org/2018/10/03/651761719/nicki-min: 132 chars"}
+{"timestamp": "2025-11-05T21:49:00Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://traverseglobalshipping.com/newserx/83440-n: 146 chars"}
+{"timestamp": "2025-11-05T21:49:00Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://music.apple.com/ca/playlist/nicki-minaj-in: 94 chars"}
+{"timestamp": "2025-11-05T21:49:00Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://bombshellbybleu.com/p/nicki-minajs-cultura: 138 chars"}
+{"timestamp": "2025-11-05T21:49:00Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:49:00Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:49:00Z", "step": "enrich_images", "status": "info", "message": "Overview image available: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T21:49:00Z", "step": "enrich_images", "status": "info", "message": "Enriching 5 citations with images..."}
+{"timestamp": "2025-11-05T21:49:02Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 1: https://www.npr.org/2018/10/03/651761719/nicki-min..."}
+{"timestamp": "2025-11-05T21:49:11Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 2: https://www.npr.org/2018/10/03/651761719/nicki-min..."}
+{"timestamp": "2025-11-05T21:49:15Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 3: https://www.revolt.tv/article/2023-02-21/274837/ni..."}
+{"timestamp": "2025-11-05T21:49:17Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 4: https://music.apple.com/ca/playlist/nicki-minaj-in..."}
+{"timestamp": "2025-11-05T21:49:21Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 5: https://bombshellbybleu.com/p/nicki-minajs-cultura..."}
+{"timestamp": "2025-11-05T21:49:21Z", "step": "enrich_images", "status": "info", "message": "Enriched 5/5 citations with images"}
+{"timestamp": "2025-11-05T21:49:21Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:49:21Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:49:21Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:49:21Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:49:24Z", "step": "search", "status": "info", "message": "Using top result image as overview image"}
+{"timestamp": "2025-11-05T21:49:24Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:49:24Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:49:37Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 157 chars"}
+{"timestamp": "2025-11-05T21:49:37Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.npr.org/2018/10/03/651761719/nicki-min: 132 chars"}
+{"timestamp": "2025-11-05T21:49:37Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://traverseglobalshipping.com/newserx/83440-n: 146 chars"}
+{"timestamp": "2025-11-05T21:49:37Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://music.apple.com/ca/playlist/nicki-minaj-in: 156 chars"}
+{"timestamp": "2025-11-05T21:49:37Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://villanovan.com/9001/opinion/nicki-minaj-in: 122 chars"}
+{"timestamp": "2025-11-05T21:49:37Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:49:37Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:49:37Z", "step": "enrich_images", "status": "info", "message": "Overview image available: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T21:49:37Z", "step": "enrich_images", "status": "info", "message": "Enriching 5 citations with images..."}
+{"timestamp": "2025-11-05T21:49:41Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 1: https://www.npr.org/2018/10/03/651761719/nicki-min..."}
+{"timestamp": "2025-11-05T21:49:47Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 2: https://www.npr.org/2018/10/03/651761719/nicki-min..."}
+{"timestamp": "2025-11-05T21:49:50Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 3: https://www.gettyimages.com/photos/nicki-minaj-cel..."}
+{"timestamp": "2025-11-05T21:49:59Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 4: https://music.apple.com/ca/playlist/nicki-minaj-in..."}
+{"timestamp": "2025-11-05T21:50:02Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 5: https://villanovan.com/9001/opinion/nicki-minaj-in..."}
+{"timestamp": "2025-11-05T21:50:02Z", "step": "enrich_images", "status": "info", "message": "Enriched 5/5 citations with images"}
+{"timestamp": "2025-11-05T21:50:02Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T21:50:02Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T21:50:02Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:27:39Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:27:41Z", "step": "search", "status": "info", "message": "Using top result image as overview image"}
+{"timestamp": "2025-11-05T22:27:41Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:27:41Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:27:51Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 157 chars"}
+{"timestamp": "2025-11-05T22:27:51Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.npr.org/2018/10/03/651761719/nicki-min: 132 chars"}
+{"timestamp": "2025-11-05T22:27:51Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://traverseglobalshipping.com/newserx/83440-n: 146 chars"}
+{"timestamp": "2025-11-05T22:27:51Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://bombshellbybleu.com/p/nicki-minajs-cultura: 142 chars"}
+{"timestamp": "2025-11-05T22:27:51Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://music.apple.com/ca/playlist/nicki-minaj-in: 156 chars"}
+{"timestamp": "2025-11-05T22:27:51Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:27:51Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:27:51Z", "step": "enrich_images", "status": "info", "message": "Overview image already available: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:27:51Z", "step": "enrich_images", "status": "info", "message": "Enriching 5 citations with images..."}
+{"timestamp": "2025-11-05T22:27:51Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:27:54Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: Nicki Minaj"}
+{"timestamp": "2025-11-05T22:27:54Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Is The 21st Century's Insatiable Hip-Hop Monarch Nicki Minaj's Influ"}
+{"timestamp": "2025-11-05T22:27:59Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Nicki Minaj Is The 21st Century's Insatiable Hip-H"}
+{"timestamp": "2025-11-05T22:27:59Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj: Celebrating Her Iconic Image And Artistic Influence Nicki Minaj's I"}
+{"timestamp": "2025-11-05T22:28:02Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 3: Nicki Minaj: Celebrating Her Iconic Image And Arti"}
+{"timestamp": "2025-11-05T22:28:02Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj's Cultural Impact: Beyond the Albums Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:28:04Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 4: Nicki Minaj's Cultural Impact: Beyond the Albums"}
+{"timestamp": "2025-11-05T22:28:04Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj: Influences - Playlist Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:28:10Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 5: Nicki Minaj: Influences - Playlist"}
+{"timestamp": "2025-11-05T22:28:10Z", "step": "enrich_images", "status": "info", "message": "Enriched 0/5 citations with images"}
+{"timestamp": "2025-11-05T22:28:10Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:28:10Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:28:10Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:28:10Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:28:13Z", "step": "search", "status": "info", "message": "Using top result image as overview image"}
+{"timestamp": "2025-11-05T22:28:13Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:28:13Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:28:25Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 157 chars"}
+{"timestamp": "2025-11-05T22:28:25Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://music.apple.com/ca/playlist/nicki-minaj-in: 156 chars"}
+{"timestamp": "2025-11-05T22:28:25Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.npr.org/2018/10/03/651761719/nicki-min: 132 chars"}
+{"timestamp": "2025-11-05T22:28:25Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://bombshellbybleu.com/p/nicki-minajs-cultura: 142 chars"}
+{"timestamp": "2025-11-05T22:28:25Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/popheads/comments/15w9de5: 143 chars"}
+{"timestamp": "2025-11-05T22:28:25Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:28:25Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:28:25Z", "step": "enrich_images", "status": "info", "message": "Overview image already available: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:28:25Z", "step": "enrich_images", "status": "info", "message": "Enriching 5 citations with images..."}
+{"timestamp": "2025-11-05T22:28:25Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:28:27Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: Nicki Minaj"}
+{"timestamp": "2025-11-05T22:28:27Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj: Influences - Playlist Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:28:31Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Nicki Minaj: Influences - Playlist"}
+{"timestamp": "2025-11-05T22:28:31Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Is The 21st Century's Insatiable Hip-Hop Monarch Nicki Minaj's Influ"}
+{"timestamp": "2025-11-05T22:28:40Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 3: Nicki Minaj Is The 21st Century's Insatiable Hip-H"}
+{"timestamp": "2025-11-05T22:28:40Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj's Cultural Impact: Beyond the Albums Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:28:49Z", "step": "enrich_images", "status": "debug", "message": "Found base64 image data"}
+{"timestamp": "2025-11-05T22:28:49Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 4: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:28:49Z", "step": "enrich_images", "status": "debug", "message": "Image search query: What kind of a legacy do you think Nicki Minaj has built/is Nicki Minaj's Influe"}
+{"timestamp": "2025-11-05T22:28:57Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 5: What kind of a legacy do you think Nicki Minaj has"}
+{"timestamp": "2025-11-05T22:28:57Z", "step": "enrich_images", "status": "info", "message": "Enriched 1/5 citations with images"}
+{"timestamp": "2025-11-05T22:28:57Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:28:57Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:28:57Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:28:57Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:28:58Z", "step": "search", "status": "info", "message": "Using top result image as overview image"}
+{"timestamp": "2025-11-05T22:28:58Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:28:58Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:29:10Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 157 chars"}
+{"timestamp": "2025-11-05T22:29:10Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.npr.org/2018/10/03/651761719/nicki-min: 132 chars"}
+{"timestamp": "2025-11-05T22:29:10Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://traverseglobalshipping.com/newserx/83440-n: 146 chars"}
+{"timestamp": "2025-11-05T22:29:10Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://music.apple.com/ca/playlist/nicki-minaj-in: 156 chars"}
+{"timestamp": "2025-11-05T22:29:10Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://villanovan.com/9001/opinion/nicki-minaj-in: 122 chars"}
+{"timestamp": "2025-11-05T22:29:10Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:29:10Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:29:10Z", "step": "enrich_images", "status": "info", "message": "Overview image already available: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:29:10Z", "step": "enrich_images", "status": "info", "message": "Enriching 5 citations with images..."}
+{"timestamp": "2025-11-05T22:29:10Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:29:16Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: Nicki Minaj"}
+{"timestamp": "2025-11-05T22:29:16Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Is The 21st Century's Insatiable Hip-Hop Monarch Nicki Minaj's Influ"}
+{"timestamp": "2025-11-05T22:29:20Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Nicki Minaj Is The 21st Century's Insatiable Hip-H"}
+{"timestamp": "2025-11-05T22:29:20Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj: Celebrating Her Iconic Image And Artistic Influence Nicki Minaj's I"}
+{"timestamp": "2025-11-05T22:29:23Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 3: Nicki Minaj: Celebrating Her Iconic Image And Arti"}
+{"timestamp": "2025-11-05T22:29:23Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj: Influences - Playlist Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:29:30Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 4: Nicki Minaj: Influences - Playlist"}
+{"timestamp": "2025-11-05T22:29:30Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj inspires young women through her career Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:29:34Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 5: Nicki Minaj inspires young women through her caree"}
+{"timestamp": "2025-11-05T22:29:34Z", "step": "enrich_images", "status": "info", "message": "Enriched 0/5 citations with images"}
+{"timestamp": "2025-11-05T22:29:34Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:29:34Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:29:34Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:39:36Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:39:38Z", "step": "search", "status": "info", "message": "Using top result image as overview image"}
+{"timestamp": "2025-11-05T22:39:38Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:39:38Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:39:52Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 157 chars"}
+{"timestamp": "2025-11-05T22:39:52Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.npr.org/2018/10/03/651761719/nicki-min: 132 chars"}
+{"timestamp": "2025-11-05T22:39:52Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://traverseglobalshipping.com/newserx/83440-n: 146 chars"}
+{"timestamp": "2025-11-05T22:39:52Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://music.apple.com/ca/playlist/nicki-minaj-in: 156 chars"}
+{"timestamp": "2025-11-05T22:39:52Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://bombshellbybleu.com/p/nicki-minajs-cultura: 142 chars"}
+{"timestamp": "2025-11-05T22:39:52Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:39:52Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:39:52Z", "step": "enrich_images", "status": "info", "message": "Overview image already available: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:39:52Z", "step": "enrich_images", "status": "info", "message": "Enriching 5 citations with images..."}
+{"timestamp": "2025-11-05T22:39:52Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:39:55Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: en.wikipedia.org"}
+{"timestamp": "2025-11-05T22:40:00Z", "step": "enrich_images", "status": "info", "message": "Found fallback base64 image via domain search"}
+{"timestamp": "2025-11-05T22:40:00Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 1: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:40:00Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Is The 21st Century's Insatiable Hip-Hop Monarch Nicki Minaj's Influ"}
+{"timestamp": "2025-11-05T22:40:06Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: npr.org"}
+{"timestamp": "2025-11-05T22:40:09Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Nicki Minaj Is The 21st Century's Insatiable Hip-H"}
+{"timestamp": "2025-11-05T22:40:09Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj: Celebrating Her Iconic Image And Artistic Influence Nicki Minaj's I"}
+{"timestamp": "2025-11-05T22:40:12Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: traverseglobalshipping.com"}
+{"timestamp": "2025-11-05T22:40:22Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 3: Nicki Minaj: Celebrating Her Iconic Image And Arti"}
+{"timestamp": "2025-11-05T22:40:22Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj: Influences - Playlist Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:40:25Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: music.apple.com"}
+{"timestamp": "2025-11-05T22:40:44Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 4: Nicki Minaj: Influences - Playlist"}
+{"timestamp": "2025-11-05T22:40:44Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj's Cultural Impact: Beyond the Albums Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:40:54Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: bombshellbybleu.com"}
+{"timestamp": "2025-11-05T22:40:59Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 5: Nicki Minaj's Cultural Impact: Beyond the Albums"}
+{"timestamp": "2025-11-05T22:40:59Z", "step": "enrich_images", "status": "info", "message": "Enriched 1/5 citations with images"}
+{"timestamp": "2025-11-05T22:40:59Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:40:59Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:40:59Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:40:59Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:41:00Z", "step": "search", "status": "info", "message": "Using top result image as overview image"}
+{"timestamp": "2025-11-05T22:41:00Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:41:00Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:41:12Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 157 chars"}
+{"timestamp": "2025-11-05T22:41:12Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.npr.org/2018/10/03/651761719/nicki-min: 132 chars"}
+{"timestamp": "2025-11-05T22:41:12Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://traverseglobalshipping.com/newserx/83440-n: 146 chars"}
+{"timestamp": "2025-11-05T22:41:12Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://music.apple.com/ca/playlist/nicki-minaj-in: 156 chars"}
+{"timestamp": "2025-11-05T22:41:12Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://bombshellbybleu.com/p/nicki-minajs-cultura: 142 chars"}
+{"timestamp": "2025-11-05T22:41:12Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:41:12Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:41:12Z", "step": "enrich_images", "status": "info", "message": "Overview image already available: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:41:12Z", "step": "enrich_images", "status": "info", "message": "Enriching 5 citations with images..."}
+{"timestamp": "2025-11-05T22:41:12Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:41:16Z", "step": "enrich_images", "status": "debug", "message": "Found base64 image data"}
+{"timestamp": "2025-11-05T22:41:16Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 1: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:41:16Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Is The 21st Century's Insatiable Hip-Hop Monarch Nicki Minaj's Influ"}
+{"timestamp": "2025-11-05T22:41:21Z", "step": "enrich_images", "status": "debug", "message": "Found base64 image data"}
+{"timestamp": "2025-11-05T22:41:21Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 2: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:41:21Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj: Celebrating Her Iconic Image And Artistic Influence Nicki Minaj's I"}
+{"timestamp": "2025-11-05T22:41:23Z", "step": "enrich_images", "status": "debug", "message": "Found base64 image data"}
+{"timestamp": "2025-11-05T22:41:23Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 3: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:41:23Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj: Influences - Playlist Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:41:26Z", "step": "enrich_images", "status": "debug", "message": "Found base64 image data"}
+{"timestamp": "2025-11-05T22:41:26Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 4: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:41:26Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj's Cultural Impact: Beyond the Albums Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:41:30Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: bombshellbybleu.com"}
+{"timestamp": "2025-11-05T22:41:32Z", "step": "enrich_images", "status": "info", "message": "Found fallback base64 image via domain search"}
+{"timestamp": "2025-11-05T22:41:32Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 5: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:41:32Z", "step": "enrich_images", "status": "info", "message": "Enriched 5/5 citations with images"}
+{"timestamp": "2025-11-05T22:41:32Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:41:32Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:41:32Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:41:32Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:41:35Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:41:35Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:41:47Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 157 chars"}
+{"timestamp": "2025-11-05T22:41:47Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.npr.org/2018/10/03/651761719/nicki-min: 132 chars"}
+{"timestamp": "2025-11-05T22:41:47Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://traverseglobalshipping.com/newserx/83440-n: 146 chars"}
+{"timestamp": "2025-11-05T22:41:47Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://music.apple.com/ca/playlist/nicki-minaj-in: 156 chars"}
+{"timestamp": "2025-11-05T22:41:47Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://bombshellbybleu.com/p/nicki-minajs-cultura: 142 chars"}
+{"timestamp": "2025-11-05T22:41:47Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:41:47Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:41:47Z", "step": "enrich_images", "status": "info", "message": "No overview image found, searching for one..."}
+{"timestamp": "2025-11-05T22:41:47Z", "step": "enrich_images", "status": "debug", "message": "Overview image search query: Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:41:50Z", "step": "enrich_images", "status": "debug", "message": "Found base64 overview image data"}
+{"timestamp": "2025-11-05T22:41:50Z", "step": "enrich_images", "status": "info", "message": "Found overview image: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:41:50Z", "step": "enrich_images", "status": "info", "message": "Enriching 5 citations with images..."}
+{"timestamp": "2025-11-05T22:41:50Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:41:59Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: en.wikipedia.org"}
+{"timestamp": "2025-11-05T22:42:02Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: Nicki Minaj"}
+{"timestamp": "2025-11-05T22:42:02Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Is The 21st Century's Insatiable Hip-Hop Monarch Nicki Minaj's Influ"}
+{"timestamp": "2025-11-05T22:42:09Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: npr.org"}
+{"timestamp": "2025-11-05T22:42:13Z", "step": "enrich_images", "status": "info", "message": "Found fallback base64 image via domain search"}
+{"timestamp": "2025-11-05T22:42:13Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 2: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYUA..."}
+{"timestamp": "2025-11-05T22:42:13Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj: Celebrating Her Iconic Image And Artistic Influence Nicki Minaj's I"}
+{"timestamp": "2025-11-05T22:42:15Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: traverseglobalshipping.com"}
+{"timestamp": "2025-11-05T22:42:18Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 3: Nicki Minaj: Celebrating Her Iconic Image And Arti"}
+{"timestamp": "2025-11-05T22:42:18Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj: Influences - Playlist Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:42:22Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: music.apple.com"}
+{"timestamp": "2025-11-05T22:42:25Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 4: Nicki Minaj: Influences - Playlist"}
+{"timestamp": "2025-11-05T22:42:25Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj's Cultural Impact: Beyond the Albums Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:42:29Z", "step": "enrich_images", "status": "debug", "message": "Found base64 image data"}
+{"timestamp": "2025-11-05T22:42:29Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 5: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:42:29Z", "step": "enrich_images", "status": "info", "message": "Enriched 2/5 citations with images"}
+{"timestamp": "2025-11-05T22:42:29Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:42:29Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:42:29Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:42:29Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:42:31Z", "step": "search", "status": "info", "message": "Using top result image as overview image"}
+{"timestamp": "2025-11-05T22:42:31Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:42:31Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:42:49Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 157 chars"}
+{"timestamp": "2025-11-05T22:42:49Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.npr.org/2018/10/03/651761719/nicki-min: 132 chars"}
+{"timestamp": "2025-11-05T22:42:49Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://traverseglobalshipping.com/newserx/83440-n: 146 chars"}
+{"timestamp": "2025-11-05T22:42:49Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://bombshellbybleu.com/p/nicki-minajs-cultura: 138 chars"}
+{"timestamp": "2025-11-05T22:42:49Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://music.apple.com/ca/playlist/nicki-minaj-in: 94 chars"}
+{"timestamp": "2025-11-05T22:42:49Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:42:49Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:42:49Z", "step": "enrich_images", "status": "info", "message": "Overview image already available: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:42:49Z", "step": "enrich_images", "status": "info", "message": "Enriching 5 citations with images..."}
+{"timestamp": "2025-11-05T22:42:49Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:42:52Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: en.wikipedia.org"}
+{"timestamp": "2025-11-05T22:42:55Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: Nicki Minaj"}
+{"timestamp": "2025-11-05T22:42:55Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Is The 21st Century's Insatiable Hip-Hop Monarch Nicki Minaj's Influ"}
+{"timestamp": "2025-11-05T22:42:58Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: npr.org"}
+{"timestamp": "2025-11-05T22:43:05Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Nicki Minaj Is The 21st Century's Insatiable Hip-H"}
+{"timestamp": "2025-11-05T22:43:05Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj: Celebrating Her Iconic Image And Artistic Influence Nicki Minaj's I"}
+{"timestamp": "2025-11-05T22:43:15Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: traverseglobalshipping.com"}
+{"timestamp": "2025-11-05T22:43:18Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 3: Nicki Minaj: Celebrating Her Iconic Image And Arti"}
+{"timestamp": "2025-11-05T22:43:18Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj's Cultural Impact: Beyond the Albums Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:43:20Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: bombshellbybleu.com"}
+{"timestamp": "2025-11-05T22:43:26Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 4: Nicki Minaj's Cultural Impact: Beyond the Albums"}
+{"timestamp": "2025-11-05T22:43:26Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj: Influences - Playlist Nicki Minaj's Influence"}
+{"timestamp": "2025-11-05T22:43:29Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: music.apple.com"}
+{"timestamp": "2025-11-05T22:43:37Z", "step": "enrich_images", "status": "info", "message": "Found fallback base64 image via domain search"}
+{"timestamp": "2025-11-05T22:43:37Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 5: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:43:37Z", "step": "enrich_images", "status": "info", "message": "Enriched 1/5 citations with images"}
+{"timestamp": "2025-11-05T22:43:37Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:43:37Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:43:37Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:43:37Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:43:39Z", "step": "search", "status": "info", "message": "Found image from images section"}
+{"timestamp": "2025-11-05T22:43:39Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:43:39Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:43:47Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 160 chars"}
+{"timestamp": "2025-11-05T22:43:47Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/popheads/comments/8mvxzb/: 141 chars"}
+{"timestamp": "2025-11-05T22:43:47Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:43:47Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:43:47Z", "step": "enrich_images", "status": "info", "message": "Overview image already available: https://www.youtube.com/watch?v=hET4OTr-gdI..."}
+{"timestamp": "2025-11-05T22:43:47Z", "step": "enrich_images", "status": "info", "message": "Enriching 2 citations with images..."}
+{"timestamp": "2025-11-05T22:43:47Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Who's the queen"}
+{"timestamp": "2025-11-05T22:43:51Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: en.wikipedia.org"}
+{"timestamp": "2025-11-05T22:43:54Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: Nicki Minaj"}
+{"timestamp": "2025-11-05T22:43:54Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Who is the queen of rap? Who's the queen"}
+{"timestamp": "2025-11-05T22:43:58Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: reddit.com"}
+{"timestamp": "2025-11-05T22:44:03Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Who is the queen of rap?"}
+{"timestamp": "2025-11-05T22:44:03Z", "step": "enrich_images", "status": "info", "message": "Enriched 0/2 citations with images"}
+{"timestamp": "2025-11-05T22:44:03Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:44:03Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:44:03Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:44:03Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:44:06Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:44:06Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:44:17Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 160 chars"}
+{"timestamp": "2025-11-05T22:44:17Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/popheads/comments/8mvxzb/: 156 chars"}
+{"timestamp": "2025-11-05T22:44:17Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:44:17Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:44:17Z", "step": "enrich_images", "status": "info", "message": "No overview image found, searching for one..."}
+{"timestamp": "2025-11-05T22:44:17Z", "step": "enrich_images", "status": "debug", "message": "Overview image search query: Who's the queen of rap?"}
+{"timestamp": "2025-11-05T22:44:21Z", "step": "enrich_images", "status": "warning", "message": "Could not find overview image"}
+{"timestamp": "2025-11-05T22:44:21Z", "step": "enrich_images", "status": "info", "message": "Enriching 2 citations with images..."}
+{"timestamp": "2025-11-05T22:44:21Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Who's the queen"}
+{"timestamp": "2025-11-05T22:44:30Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: en.wikipedia.org"}
+{"timestamp": "2025-11-05T22:44:36Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: Nicki Minaj"}
+{"timestamp": "2025-11-05T22:44:36Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Who is the queen of rap? Who's the queen"}
+{"timestamp": "2025-11-05T22:44:38Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: reddit.com"}
+{"timestamp": "2025-11-05T22:44:41Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Who is the queen of rap?"}
+{"timestamp": "2025-11-05T22:44:41Z", "step": "enrich_images", "status": "info", "message": "Enriched 0/2 citations with images"}
+{"timestamp": "2025-11-05T22:44:41Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:44:41Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:44:41Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:44:45Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:44:47Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:44:47Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:44:55Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/GilmoreGirls/comments/ws4: 134 chars"}
+{"timestamp": "2025-11-05T22:44:55Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://downatyale.com/slutty-by-association-black: 140 chars"}
+{"timestamp": "2025-11-05T22:44:55Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:44:55Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:44:55Z", "step": "enrich_images", "status": "info", "message": "No overview image found, searching for one..."}
+{"timestamp": "2025-11-05T22:44:55Z", "step": "enrich_images", "status": "debug", "message": "Overview image search query: who's the sluttiest yale alum?"}
+{"timestamp": "2025-11-05T22:44:57Z", "step": "enrich_images", "status": "warning", "message": "Could not find overview image"}
+{"timestamp": "2025-11-05T22:44:57Z", "step": "enrich_images", "status": "info", "message": "Enriching 2 citations with images..."}
+{"timestamp": "2025-11-05T22:44:57Z", "step": "enrich_images", "status": "debug", "message": "Image search query: I hate that Rory pretends to be a feminist but has called ... who's the slutties"}
+{"timestamp": "2025-11-05T22:45:00Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: reddit.com"}
+{"timestamp": "2025-11-05T22:45:03Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: I hate that Rory pretends to be a feminist but has"}
+{"timestamp": "2025-11-05T22:45:03Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Slutty by Association: Black Girls and the Burden of Sexuality who's the sluttie"}
+{"timestamp": "2025-11-05T22:45:06Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: downatyale.com"}
+{"timestamp": "2025-11-05T22:45:10Z", "step": "enrich_images", "status": "info", "message": "Found fallback base64 image via domain search"}
+{"timestamp": "2025-11-05T22:45:10Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 3: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEA..."}
+{"timestamp": "2025-11-05T22:45:10Z", "step": "enrich_images", "status": "info", "message": "Enriched 1/2 citations with images"}
+{"timestamp": "2025-11-05T22:45:10Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:45:10Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:45:10Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:45:10Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:45:13Z", "step": "search", "status": "info", "message": "Found image from images section"}
+{"timestamp": "2025-11-05T22:45:13Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:45:13Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:45:21Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Nicki_Minaj: 160 chars"}
+{"timestamp": "2025-11-05T22:45:21Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/popheads/comments/8mvxzb/: 156 chars"}
+{"timestamp": "2025-11-05T22:45:21Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:45:21Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:45:21Z", "step": "enrich_images", "status": "info", "message": "Overview image already available: https://www.youtube.com/watch?v=hET4OTr-gdI..."}
+{"timestamp": "2025-11-05T22:45:21Z", "step": "enrich_images", "status": "info", "message": "Enriching 2 citations with images..."}
+{"timestamp": "2025-11-05T22:45:21Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Nicki Minaj Who's the queen"}
+{"timestamp": "2025-11-05T22:45:25Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: en.wikipedia.org"}
+{"timestamp": "2025-11-05T22:45:29Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: Nicki Minaj"}
+{"timestamp": "2025-11-05T22:45:29Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Who is the queen of rap? Who's the queen"}
+{"timestamp": "2025-11-05T22:45:32Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: reddit.com"}
+{"timestamp": "2025-11-05T22:45:35Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Who is the queen of rap?"}
+{"timestamp": "2025-11-05T22:45:35Z", "step": "enrich_images", "status": "info", "message": "Enriched 0/2 citations with images"}
+{"timestamp": "2025-11-05T22:45:35Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:45:35Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:45:35Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:45:35Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:45:39Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:45:39Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:45:51Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/GilmoreGirls/comments/ws4: 134 chars"}
+{"timestamp": "2025-11-05T22:45:51Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.imdb.com/list/ls004432078/: 165 chars"}
+{"timestamp": "2025-11-05T22:45:51Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://downatyale.com/slutty-by-association-black: 140 chars"}
+{"timestamp": "2025-11-05T22:45:51Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.instagram.com/p/C4wBV7JOAZI/: 159 chars"}
+{"timestamp": "2025-11-05T22:45:51Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.11alive.com/article/news/education/slu: 147 chars"}
+{"timestamp": "2025-11-05T22:45:51Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:45:51Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:45:51Z", "step": "enrich_images", "status": "info", "message": "No overview image found, searching for one..."}
+{"timestamp": "2025-11-05T22:45:51Z", "step": "enrich_images", "status": "debug", "message": "Overview image search query: who's the sluttiest yale alum?"}
+{"timestamp": "2025-11-05T22:45:56Z", "step": "enrich_images", "status": "debug", "message": "Found base64 overview image data"}
+{"timestamp": "2025-11-05T22:45:56Z", "step": "enrich_images", "status": "info", "message": "Found overview image: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-05T22:45:56Z", "step": "enrich_images", "status": "info", "message": "Enriching 5 citations with images..."}
+{"timestamp": "2025-11-05T22:45:56Z", "step": "enrich_images", "status": "debug", "message": "Image search query: I hate that Rory pretends to be a feminist but has called ... who's the slutties"}
+{"timestamp": "2025-11-05T22:45:58Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: reddit.com"}
+{"timestamp": "2025-11-05T22:46:02Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: I hate that Rory pretends to be a feminist but has"}
+{"timestamp": "2025-11-05T22:46:02Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Sexiest men who's the sluttiest"}
+{"timestamp": "2025-11-05T22:46:05Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: imdb.com"}
+{"timestamp": "2025-11-05T22:46:08Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Sexiest men"}
+{"timestamp": "2025-11-05T22:46:08Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Slutty by Association: Black Girls and the Burden of Sexuality who's the sluttie"}
+{"timestamp": "2025-11-05T22:46:11Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: downatyale.com"}
+{"timestamp": "2025-11-05T22:46:14Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 3: Slutty by Association: Black Girls and the Burden "}
+{"timestamp": "2025-11-05T22:46:14Z", "step": "enrich_images", "status": "debug", "message": "Image search query: CAU Founders' Week kicked off with President French and ... who's the sluttiest"}
+{"timestamp": "2025-11-05T22:46:19Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: instagram.com"}
+{"timestamp": "2025-11-05T22:46:22Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 4: CAU Founders' Week kicked off with President Frenc"}
+{"timestamp": "2025-11-05T22:46:22Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Slutty Vegan founder paying off Clark Atlanta students ... who's the sluttiest"}
+{"timestamp": "2025-11-05T22:46:27Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: 11alive.com"}
+{"timestamp": "2025-11-05T22:46:30Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 5: Slutty Vegan founder paying off Clark Atlanta stud"}
+{"timestamp": "2025-11-05T22:46:30Z", "step": "enrich_images", "status": "info", "message": "Enriched 0/5 citations with images"}
+{"timestamp": "2025-11-05T22:46:30Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:46:30Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:46:30Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:46:30Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:46:32Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:46:32Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:16:16Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/GilmoreGirls/comments/ws4: 134 chars"}
+{"timestamp": "2025-11-06T02:16:16Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.imdb.com/list/ls004432078/: 165 chars"}
+{"timestamp": "2025-11-06T02:16:16Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://downatyale.com/slutty-by-association-black: 140 chars"}
+{"timestamp": "2025-11-06T02:16:16Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.11alive.com/article/news/education/slu: 148 chars"}
+{"timestamp": "2025-11-06T02:16:16Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/ApplyingToCollege/comment: 95 chars"}
+{"timestamp": "2025-11-06T02:16:16Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:16:16Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:16:16Z", "step": "enrich_images", "status": "info", "message": "No overview image found, searching for one..."}
+{"timestamp": "2025-11-06T02:16:16Z", "step": "enrich_images", "status": "debug", "message": "Overview image search query: who's the sluttiest yale alum?"}
+{"timestamp": "2025-11-06T02:16:25Z", "step": "enrich_images", "status": "warning", "message": "Could not find overview image"}
+{"timestamp": "2025-11-06T02:16:25Z", "step": "enrich_images", "status": "info", "message": "Enriching 5 citations with images..."}
+{"timestamp": "2025-11-06T02:16:25Z", "step": "enrich_images", "status": "debug", "message": "Image search query: I hate that Rory pretends to be a feminist but has called ... who's the slutties"}
+{"timestamp": "2025-11-06T02:16:31Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: reddit.com"}
+{"timestamp": "2025-11-06T02:16:34Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: I hate that Rory pretends to be a feminist but has"}
+{"timestamp": "2025-11-06T02:16:34Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Sexiest men who's the sluttiest"}
+{"timestamp": "2025-11-06T02:16:38Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: imdb.com"}
+{"timestamp": "2025-11-06T02:16:44Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Sexiest men"}
+{"timestamp": "2025-11-06T02:16:44Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Slutty by Association: Black Girls and the Burden of Sexuality who's the sluttie"}
+{"timestamp": "2025-11-06T02:16:52Z", "step": "enrich_images", "status": "debug", "message": "Found base64 image data"}
+{"timestamp": "2025-11-06T02:16:52Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 3: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-06T02:16:52Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Slutty Vegan founder paying off Clark Atlanta students who's the sluttiest"}
+{"timestamp": "2025-11-06T02:16:56Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: 11alive.com"}
+{"timestamp": "2025-11-06T02:16:59Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 4: Slutty Vegan founder paying off Clark Atlanta stud"}
+{"timestamp": "2025-11-06T02:16:59Z", "step": "enrich_images", "status": "debug", "message": "Image search query: colleges with the sexiest libraries who's the sluttiest"}
+{"timestamp": "2025-11-06T02:17:03Z", "step": "enrich_images", "status": "debug", "message": "Found base64 image data"}
+{"timestamp": "2025-11-06T02:17:03Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 5: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-06T02:17:03Z", "step": "enrich_images", "status": "info", "message": "Enriched 2/5 citations with images"}
+{"timestamp": "2025-11-06T02:17:03Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:17:03Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:17:03Z", "step": "format_output", "status": "end", "message": ""}

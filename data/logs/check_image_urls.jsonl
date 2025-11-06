@@ -1,0 +1,22 @@
+{"timestamp": "2025-11-05T22:02:36Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:02:56Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:02:56Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:03:06Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Jellyfish: 162 chars"}
+{"timestamp": "2025-11-05T22:03:06Z", "step": "synthesize", "status": "debug", "message": "Match found but extended_snippet is None for https://www.nhm.ac.uk/discover/what-is-a-jellyfish"}
+{"timestamp": "2025-11-05T22:03:06Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:03:06Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:03:06Z", "step": "enrich_images", "status": "info", "message": "No overview image found, searching for one..."}
+{"timestamp": "2025-11-05T22:03:06Z", "step": "enrich_images", "status": "debug", "message": "Overview image search query: jellyfish"}
+{"timestamp": "2025-11-05T22:03:09Z", "step": "enrich_images", "status": "debug", "message": "Found overview image URL: https://en.wikipedia.org/wiki/Jellyfish..."}
+{"timestamp": "2025-11-05T22:03:09Z", "step": "enrich_images", "status": "info", "message": "Found overview image: https://en.wikipedia.org/wiki/Jellyfish..."}
+{"timestamp": "2025-11-05T22:03:09Z", "step": "enrich_images", "status": "info", "message": "Enriching 2 citations with images..."}
+{"timestamp": "2025-11-05T22:03:09Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Jellyfish jellyfish"}
+{"timestamp": "2025-11-05T22:03:14Z", "step": "enrich_images", "status": "debug", "message": "Found image URL: https://en.wikipedia.org/wiki/Jellyfish..."}
+{"timestamp": "2025-11-05T22:03:14Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 1: https://en.wikipedia.org/wiki/Jellyfish..."}
+{"timestamp": "2025-11-05T22:03:14Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Jellyfish: The smart stinging creatures drifting through our oceans jellyfish"}
+{"timestamp": "2025-11-05T22:03:19Z", "step": "enrich_images", "status": "debug", "message": "Found image URL: https://www.nhm.ac.uk/discover/what-is-a-jellyfish.html..."}
+{"timestamp": "2025-11-05T22:03:19Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 3: https://www.nhm.ac.uk/discover/what-is-a-jellyfish..."}
+{"timestamp": "2025-11-05T22:03:19Z", "step": "enrich_images", "status": "info", "message": "Enriched 2/2 citations with images"}
+{"timestamp": "2025-11-05T22:03:19Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T22:03:19Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T22:03:19Z", "step": "format_output", "status": "end", "message": ""}

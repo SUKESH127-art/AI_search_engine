@@ -1,0 +1,21 @@
+{"timestamp": "2025-11-06T02:21:31Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:21:35Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:21:35Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:21:41Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/ApplyingToCollege/comment: 95 chars"}
+{"timestamp": "2025-11-06T02:21:41Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://downatyale.com/slutty-by-association-black: 140 chars"}
+{"timestamp": "2025-11-06T02:21:41Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:21:41Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:21:41Z", "step": "enrich_images", "status": "info", "message": "No overview image found, searching for one..."}
+{"timestamp": "2025-11-06T02:21:41Z", "step": "enrich_images", "status": "debug", "message": "Overview image search query: who's the sluttiest yale alum?"}
+{"timestamp": "2025-11-06T02:21:46Z", "step": "enrich_images", "status": "warning", "message": "Could not find overview image"}
+{"timestamp": "2025-11-06T02:21:46Z", "step": "enrich_images", "status": "info", "message": "Enriching 2 citations with images..."}
+{"timestamp": "2025-11-06T02:21:46Z", "step": "enrich_images", "status": "debug", "message": "Image search query: colleges with the sexiest libraries who's the sluttiest"}
+{"timestamp": "2025-11-06T02:21:48Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: reddit.com"}
+{"timestamp": "2025-11-06T02:21:50Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: colleges with the sexiest libraries"}
+{"timestamp": "2025-11-06T02:21:50Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Slutty by Association: Black Girls and the Burden of Sexuality who's the sluttie"}
+{"timestamp": "2025-11-06T02:21:55Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: downatyale.com"}
+{"timestamp": "2025-11-06T02:21:58Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Slutty by Association: Black Girls and the Burden "}
+{"timestamp": "2025-11-06T02:21:58Z", "step": "enrich_images", "status": "info", "message": "Enriched 0/2 citations with images"}
+{"timestamp": "2025-11-06T02:21:58Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:21:58Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:21:58Z", "step": "format_output", "status": "end", "message": ""}

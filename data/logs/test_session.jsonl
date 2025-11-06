@@ -1,0 +1,50 @@
+{"timestamp": "2025-11-05T14:15:21Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:15:21Z", "step": "search", "status": "error", "message": "BRIGHT_DATA_API_KEY or SERPAPI_API_KEY not found"}
+{"timestamp": "2025-11-05T14:15:21Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:15:21Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:15:21Z", "step": "prioritize_sources", "status": "error", "message": "No results to prioritize."}
+{"timestamp": "2025-11-05T14:15:21Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:15:21Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:15:21Z", "step": "synthesize", "status": "error", "message": "OPEN_AI_KEY missing."}
+{"timestamp": "2025-11-05T14:15:21Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:15:21Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:15:21Z", "step": "enrich_images", "status": "error", "message": "No citations to enrich."}
+{"timestamp": "2025-11-05T14:15:21Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:15:21Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:15:21Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:19:10Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:19:10Z", "step": "search", "status": "error", "message": "BRIGHT_DATA_API_KEY or SERPAPI_API_KEY not found"}
+{"timestamp": "2025-11-05T14:19:10Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:19:10Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:19:10Z", "step": "prioritize_sources", "status": "error", "message": "No results to prioritize."}
+{"timestamp": "2025-11-05T14:19:10Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:19:10Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:19:10Z", "step": "synthesize", "status": "error", "message": "OPEN_AI_KEY missing."}
+{"timestamp": "2025-11-05T14:19:10Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:19:10Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:19:10Z", "step": "enrich_images", "status": "error", "message": "No citations to enrich."}
+{"timestamp": "2025-11-05T14:19:10Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:19:10Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:19:10Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:22:13Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:22:15Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:22:15Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:22:27Z", "step": "prioritize_sources", "status": "error", "message": "Invalid JSON from LLM: Expecting value: line 1 column 1 (char 0) \u2014 using fallback."}
+{"timestamp": "2025-11-05T14:22:27Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:22:27Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:22:35Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:22:35Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:22:37Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:22:37Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:22:37Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:25:41Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:25:44Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:25:44Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:25:56Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:25:56Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:26:01Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:26:01Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:26:02Z", "step": "enrich_images", "status": "error", "message": "Image URL is not direct/accessible: https://langchain-5e9cc07a.mintlify.app/mintlify-assets/_next/image?url=%2F_mintlify%2Fapi%2Fog%3Fdi..."}
+{"timestamp": "2025-11-05T14:26:02Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:26:02Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:26:02Z", "step": "format_output", "status": "end", "message": ""}

@@ -1,0 +1,22 @@
+{"timestamp": "2025-11-06T02:20:58Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:21:01Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:21:01Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:21:08Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/GilmoreGirls/comments/ws4: 134 chars"}
+{"timestamp": "2025-11-06T02:21:08Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.kait8.com/2025/11/04/jonathan-bailey-n: 141 chars"}
+{"timestamp": "2025-11-06T02:21:08Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:21:08Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:21:08Z", "step": "enrich_images", "status": "info", "message": "No overview image found, searching for one..."}
+{"timestamp": "2025-11-06T02:21:08Z", "step": "enrich_images", "status": "debug", "message": "Overview image search query: who's the sluttiest yale alum?"}
+{"timestamp": "2025-11-06T02:21:14Z", "step": "enrich_images", "status": "debug", "message": "Found base64 overview image data"}
+{"timestamp": "2025-11-06T02:21:14Z", "step": "enrich_images", "status": "info", "message": "Found overview image: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-06T02:21:14Z", "step": "enrich_images", "status": "info", "message": "Enriching 2 citations with images..."}
+{"timestamp": "2025-11-06T02:21:14Z", "step": "enrich_images", "status": "debug", "message": "Image search query: I hate that Rory pretends to be a feminist but has called ... who's the slutties"}
+{"timestamp": "2025-11-06T02:21:18Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: reddit.com"}
+{"timestamp": "2025-11-06T02:21:20Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: I hate that Rory pretends to be a feminist but has"}
+{"timestamp": "2025-11-06T02:21:20Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Jonathan Bailey named People magazine's 2025 Sexiest ... who's the sluttiest"}
+{"timestamp": "2025-11-06T02:21:31Z", "step": "enrich_images", "status": "debug", "message": "Found base64 image data"}
+{"timestamp": "2025-11-06T02:21:31Z", "step": "enrich_images", "status": "info", "message": "Found image for citation 2: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-06T02:21:31Z", "step": "enrich_images", "status": "info", "message": "Enriched 1/2 citations with images"}
+{"timestamp": "2025-11-06T02:21:31Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:21:31Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:21:31Z", "step": "format_output", "status": "end", "message": ""}

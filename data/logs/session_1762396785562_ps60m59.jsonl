@@ -1,0 +1,22 @@
+{"timestamp": "2025-11-06T02:41:04Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:41:05Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:41:05Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:41:12Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/popheads/comments/74ywe6/: 159 chars"}
+{"timestamp": "2025-11-06T02:41:12Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Billboard%27s_Greate: 167 chars"}
+{"timestamp": "2025-11-06T02:41:12Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:41:12Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:41:12Z", "step": "enrich_images", "status": "info", "message": "No overview image found, searching for one..."}
+{"timestamp": "2025-11-06T02:41:12Z", "step": "enrich_images", "status": "debug", "message": "Overview image search query: Who is the biggest popstar of the 2000s?"}
+{"timestamp": "2025-11-06T02:41:20Z", "step": "enrich_images", "status": "warning", "message": "Could not find overview image"}
+{"timestamp": "2025-11-06T02:41:20Z", "step": "enrich_images", "status": "info", "message": "Enriching 2 citations with images..."}
+{"timestamp": "2025-11-06T02:41:20Z", "step": "enrich_images", "status": "info", "message": "Fetching images for 2 citations in parallel..."}
+{"timestamp": "2025-11-06T02:41:20Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Who were the biggest stars back in the 2000s? Who is the"}
+{"timestamp": "2025-11-06T02:41:20Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Billboard's Greatest Pop Stars Who is the"}
+{"timestamp": "2025-11-06T02:41:24Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: en.wikipedia.org"}
+{"timestamp": "2025-11-06T02:41:27Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Billboard's Greatest Pop Stars"}
+{"timestamp": "2025-11-06T02:41:35Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: reddit.com"}
+{"timestamp": "2025-11-06T02:41:39Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: Who were the biggest stars back in the 2000s?"}
+{"timestamp": "2025-11-06T02:41:39Z", "step": "enrich_images", "status": "info", "message": "Enriched 0/2 citations with images"}
+{"timestamp": "2025-11-06T02:41:39Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T02:41:39Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T02:41:39Z", "step": "format_output", "status": "end", "message": ""}

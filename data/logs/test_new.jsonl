@@ -1,0 +1,28 @@
+{"timestamp": "2025-11-05T14:18:04Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:18:04Z", "step": "search", "status": "error", "message": "BRIGHT_DATA_API_KEY or SERPAPI_API_KEY not found"}
+{"timestamp": "2025-11-05T14:18:04Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:18:04Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:18:04Z", "step": "prioritize_sources", "status": "error", "message": "No results to prioritize."}
+{"timestamp": "2025-11-05T14:18:04Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:18:04Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:18:04Z", "step": "synthesize", "status": "error", "message": "OPEN_AI_KEY missing."}
+{"timestamp": "2025-11-05T14:18:04Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:18:04Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:18:04Z", "step": "enrich_images", "status": "error", "message": "No citations to enrich."}
+{"timestamp": "2025-11-05T14:18:04Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:18:04Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:18:04Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:18:28Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:18:28Z", "step": "search", "status": "error", "message": "BRIGHT_DATA_API_KEY or SERPAPI_API_KEY not found"}
+{"timestamp": "2025-11-05T14:18:28Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:18:28Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:18:28Z", "step": "prioritize_sources", "status": "error", "message": "No results to prioritize."}
+{"timestamp": "2025-11-05T14:18:28Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:18:28Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:18:28Z", "step": "synthesize", "status": "error", "message": "OPEN_AI_KEY missing."}
+{"timestamp": "2025-11-05T14:18:28Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:18:28Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:18:28Z", "step": "enrich_images", "status": "error", "message": "No citations to enrich."}
+{"timestamp": "2025-11-05T14:18:28Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:18:28Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:18:28Z", "step": "format_output", "status": "end", "message": ""}

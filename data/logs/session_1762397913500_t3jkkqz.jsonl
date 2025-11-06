@@ -1,0 +1,35 @@
+{"timestamp": "2025-11-06T03:01:00Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T03:01:01Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T03:01:01Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T03:01:20Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.billboard.com/lists/best-pop-stars-21s: 112 chars"}
+{"timestamp": "2025-11-06T03:01:20Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Billboard%27s_Greate: 162 chars"}
+{"timestamp": "2025-11-06T03:01:20Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/popheads/comments/74ywe6/: 159 chars"}
+{"timestamp": "2025-11-06T03:01:20Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.billboard.com/p/best-pop-stars-21st-ce: 76 chars"}
+{"timestamp": "2025-11-06T03:01:20Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.reddit.com/r/popheads/comments/1gv3ygp: 141 chars"}
+{"timestamp": "2025-11-06T03:01:20Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T03:01:20Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T03:01:20Z", "step": "enrich_images", "status": "info", "message": "No overview image found, searching for one..."}
+{"timestamp": "2025-11-06T03:01:20Z", "step": "enrich_images", "status": "debug", "message": "Overview image search query: who's the greatest popstar of the 2000s?"}
+{"timestamp": "2025-11-06T03:01:36Z", "step": "enrich_images", "status": "debug", "message": "Found base64 overview image data"}
+{"timestamp": "2025-11-06T03:01:36Z", "step": "enrich_images", "status": "info", "message": "Found overview image: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."}
+{"timestamp": "2025-11-06T03:01:36Z", "step": "enrich_images", "status": "info", "message": "Enriching 5 citations with images..."}
+{"timestamp": "2025-11-06T03:01:36Z", "step": "enrich_images", "status": "info", "message": "Fetching images for 5 citations in parallel..."}
+{"timestamp": "2025-11-06T03:01:36Z", "step": "enrich_images", "status": "debug", "message": "Image search query: The 25 Greatest Pop Stars of the 21st Century: Honorable Mentions who's the grea"}
+{"timestamp": "2025-11-06T03:01:36Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Billboard's Greatest Pop Stars who's the greatest"}
+{"timestamp": "2025-11-06T03:01:36Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Who were the biggest stars back in the 2000s? who's the greatest"}
+{"timestamp": "2025-11-06T03:01:36Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Best Pop Singers, Rappers & Groups of 21st Century who's the greatest"}
+{"timestamp": "2025-11-06T03:01:36Z", "step": "enrich_images", "status": "debug", "message": "Image search query: BILLBOARD'S GREATEST POP STARS OF THE 21ST who's the greatest"}
+{"timestamp": "2025-11-06T03:01:39Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: reddit.com"}
+{"timestamp": "2025-11-06T03:01:39Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: billboard.com"}
+{"timestamp": "2025-11-06T03:01:40Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: billboard.com"}
+{"timestamp": "2025-11-06T03:01:41Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: reddit.com"}
+{"timestamp": "2025-11-06T03:01:43Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 4: Best Pop Singers, Rappers & Groups of 21st Century"}
+{"timestamp": "2025-11-06T03:01:44Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: en.wikipedia.org"}
+{"timestamp": "2025-11-06T03:01:45Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: The 25 Greatest Pop Stars of the 21st Century: Hon"}
+{"timestamp": "2025-11-06T03:01:45Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 5: BILLBOARD'S GREATEST POP STARS OF THE 21ST"}
+{"timestamp": "2025-11-06T03:01:46Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 3: Who were the biggest stars back in the 2000s?"}
+{"timestamp": "2025-11-06T03:01:52Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Billboard's Greatest Pop Stars"}
+{"timestamp": "2025-11-06T03:01:52Z", "step": "enrich_images", "status": "info", "message": "Enriched 0/5 citations with images"}
+{"timestamp": "2025-11-06T03:01:52Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T03:01:52Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T03:01:52Z", "step": "format_output", "status": "end", "message": ""}

@@ -1,0 +1,4197 @@
+Migration Steps
+Our goal with this migration is to get a working Next.js application as quickly as possible, so that you can then adopt Next.js features incrementally. To begin with, we'll keep it as a purely client-side application (SPA) without migrating your existing router. This helps minimize the chances of encountering issues during the migration process and reduces merge conflicts.
+
+Step 1: Install the Next.js Dependency
+The first thing you need to do is to install next as a dependency:
+
+Terminal
+npm install next@latest
+Step 2: Create the Next.js Configuration File
+Create a next.config.mjs at the root of your project. This file will hold your Next.js configuration options.
+
+next.config.mjs
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export', // Outputs a Single-Page Application (SPA).
+  distDir: './dist', // Changes the build output directory to `./dist/`.
+}
+ 
+export default nextConfig
+Good to know: You can use either .js or .mjs for your Next.js configuration file.
+
+Step 3: Update TypeScript Configuration
+If you're using TypeScript, you need to update your tsconfig.json file with the following changes to make it compatible with Next.js. If you're not using TypeScript, you can skip this step.
+
+Remove the project reference to tsconfig.node.json
+Add ./dist/types/**/*.ts and ./next-env.d.ts to the include array
+Add ./node_modules to the exclude array
+Add { "name": "next" } to the plugins array in compilerOptions: "plugins": [{ "name": "next" }]
+Set esModuleInterop to true: "esModuleInterop": true
+Set jsx to react-jsx: "jsx": "react-jsx"
+Set allowJs to true: "allowJs": true
+Set forceConsistentCasingInFileNames to true: "forceConsistentCasingInFileNames": true
+Set incremental to true: "incremental": true
+Here's an example of a working tsconfig.json with those changes:
+
+tsconfig.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "plugins": [{ "name": "next" }]
+  },
+  "include": ["./src", "./dist/types/**/*.ts", "./next-env.d.ts"],
+  "exclude": ["./node_modules"]
+}
+You can find more information about configuring TypeScript on the Next.js docs.
+
+Step 4: Create the Root Layout
+A Next.js App Router application must include a root layout file, which is a React Server Component that will wrap all pages in your application. This file is defined at the top level of the app directory.
+
+The closest equivalent to the root layout file in a Vite application is the index.html file, which contains your <html>, <head>, and <body> tags.
+
+In this step, you'll convert your index.html file into a root layout file:
+
+Create a new app directory in your src folder.
+Create a new layout.tsx file inside that app directory:
+app/layout.tsx
+TypeScript
+
+TypeScript
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return '...'
+}
+Good to know: .js, .jsx, or .tsx extensions can be used for Layout files.
+
+Copy the content of your index.html file into the previously created <RootLayout> component while replacing the body.div#root and body.script tags with <div id="root">{children}</div>:
+app/layout.tsx
+TypeScript
+
+TypeScript
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My App</title>
+        <meta name="description" content="My App is a..." />
+      </head>
+      <body>
+        <div id="root">{children}</div>
+      </body>
+    </html>
+  )
+}
+Next.js already includes by default the meta charset and meta viewport tags, so you can safely remove those from your <head>:
+app/layout.tsx
+TypeScript
+
+TypeScript
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+        <title>My App</title>
+        <meta name="description" content="My App is a..." />
+      </head>
+      <body>
+        <div id="root">{children}</div>
+      </body>
+    </html>
+  )
+}
+Any metadata files such as favicon.ico, icon.png, robots.txt are automatically added to the application <head> tag as long as you have them placed into the top level of the app directory. After moving all supported files into the app directory you can safely delete their <link> tags:
+app/layout.tsx
+TypeScript
+
+TypeScript
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <head>
+        <title>My App</title>
+        <meta name="description" content="My App is a..." />
+      </head>
+      <body>
+        <div id="root">{children}</div>
+      </body>
+    </html>
+  )
+}
+Finally, Next.js can manage your last <head> tags with the Metadata API. Move your final metadata info into an exported metadata object:
+app/layout.tsx
+TypeScript
+
+TypeScript
+import type { Metadata } from 'next'
+ 
+export const metadata: Metadata = {
+  title: 'My App',
+  description: 'My App is a...',
+}
+ 
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <div id="root">{children}</div>
+      </body>
+    </html>
+  )
+}
+With the above changes, you shifted from declaring everything in your index.html to using Next.js' convention-based approach built into the framework (Metadata API). This approach enables you to more easily improve your SEO and web shareability of your pages.
+
+Step 5: Create the Entrypoint Page
+On Next.js you declare an entrypoint for your application by creating a page.tsx file. The closest equivalent of this file on Vite is your main.tsx file. In this step, you’ll set up the entrypoint of your application.
+
+Create a [[...slug]] directory in your app directory.
+Since in this guide we're aiming first to set up our Next.js as an SPA (Single Page Application), you need your page entrypoint to catch all possible routes of your application. For that, create a new [[...slug]] directory in your app directory.
+
+This directory is what is called an optional catch-all route segment. Next.js uses a file-system based router where folders are used to define routes. This special directory will make sure that all routes of your application will be directed to its containing page.tsx file.
+
+Create a new page.tsx file inside the app/[[...slug]] directory with the following content:
+app/[[...slug]]/page.tsx
+TypeScript
+
+TypeScript
+import '../../index.css'
+ 
+export function generateStaticParams() {
+  return [{ slug: [''] }]
+}
+ 
+export default function Page() {
+  return '...' // We'll update this
+}
+Good to know: .js, .jsx, or .tsx extensions can be used for Page files.
+
+This file is a Server Component. When you run next build, the file is prerendered into a static asset. It does not require any dynamic code.
+
+This file imports our global CSS and tells generateStaticParams we are only going to generate one route, the index route at /.
+
+Now, let's move the rest of our Vite application which will run client-only.
+
+app/[[...slug]]/client.tsx
+TypeScript
+
+TypeScript
+'use client'
+ 
+import React from 'react'
+import dynamic from 'next/dynamic'
+ 
+const App = dynamic(() => import('../../App'), { ssr: false })
+ 
+export function ClientOnly() {
+  return <App />
+}
+This file is a Client Component, defined by the 'use client' directive. Client Components are still prerendered to HTML on the server before being sent to the client.
+
+Since we want a client-only application to start, we can configure Next.js to disable prerendering from the App component down.
+
+const App = dynamic(() => import('../../App'), { ssr: false })
+Now, update your entrypoint page to use the new component:
+
+app/[[...slug]]/page.tsx
+TypeScript
+
+TypeScript
+import '../../index.css'
+import { ClientOnly } from './client'
+ 
+export function generateStaticParams() {
+  return [{ slug: [''] }]
+}
+ 
+export default function Page() {
+  return <ClientOnly />
+}
+Step 6: Update Static Image Imports
+Next.js handles static image imports slightly different from Vite. With Vite, importing an image file will return its public URL as a string:
+
+App.tsx
+import image from './img.png' // `image` will be '/assets/img.2d8efhg.png' in production
+ 
+export default function App() {
+  return <img src={image} />
+}
+With Next.js, static image imports return an object. The object can then be used directly with the Next.js <Image> component, or you can use the object's src property with your existing <img> tag.
+
+The <Image> component has the added benefits of automatic image optimization. The <Image> component automatically sets the width and height attributes of the resulting <img> based on the image's dimensions. This prevents layout shifts when the image loads. However, this can cause issues if your app contains images with only one of their dimensions being styled without the other styled to auto. When not styled to auto, the dimension will default to the <img> dimension attribute's value, which can cause the image to appear distorted.
+
+Keeping the <img> tag will reduce the amount of changes in your application and prevent the above issues. You can then optionally later migrate to the <Image> component to take advantage of optimizing images by configuring a loader, or moving to the default Next.js server which has automatic image optimization.
+
+Convert absolute import paths for images imported from /public into relative imports:
+// Before
+import logo from '/logo.png'
+ 
+// After
+import logo from '../public/logo.png'
+Pass the image src property instead of the whole image object to your <img> tag:
+// Before
+<img src={logo} />
+ 
+// After
+<img src={logo.src} />
+Alternatively, you can reference the public URL for the image asset based on the filename. For example, public/logo.png will serve the image at /logo.png for your application, which would be the src value.
+
+Warning: If you're using TypeScript, you might encounter type errors when accessing the src property. You can safely ignore those for now. They will be fixed by the end of this guide.
+
+Step 7: Migrate the Environment Variables
+Next.js has support for .env environment variables similar to Vite. The main difference is the prefix used to expose environment variables on the client-side.
+
+Change all environment variables with the VITE_ prefix to NEXT_PUBLIC_.
+Vite exposes a few built-in environment variables on the special import.meta.env object which aren’t supported by Next.js. You need to update their usage as follows:
+
+import.meta.env.MODE ⇒ process.env.NODE_ENV
+import.meta.env.PROD ⇒ process.env.NODE_ENV === 'production'
+import.meta.env.DEV ⇒ process.env.NODE_ENV !== 'production'
+import.meta.env.SSR ⇒ typeof window !== 'undefined'
+Next.js also doesn't provide a built-in BASE_URL environment variable. However, you can still configure one, if you need it:
+
+Add the following to your .env file:
+.env
+# ...
+NEXT_PUBLIC_BASE_PATH="/some-base-path"
+Set basePath to process.env.NEXT_PUBLIC_BASE_PATH in your next.config.mjs file:
+next.config.mjs
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export', // Outputs a Single-Page Application (SPA).
+  distDir: './dist', // Changes the build output directory to `./dist/`.
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH, // Sets the base path to `/some-base-path`.
+}
+ 
+export default nextConfig
+Update import.meta.env.BASE_URL usages to process.env.NEXT_PUBLIC_BASE_PATH
+Step 8: Update Scripts in package.json
+You should now be able to run your application to test if you successfully migrated to Next.js. But before that, you need to update your scripts in your package.json with Next.js related commands, and add .next and next-env.d.ts to your .gitignore:
+
+package.json
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  }
+}
+.gitignore
+# ...
+.next
+next-env.d.ts
+dist
+Now run npm run dev, and open http://localhost:3000. You should see your application now running on Next.js.
+
+Example: Check out this pull request for a working example of a Vite application migrated to Next.js.
+
+Step 9: Clean Up
+You can now clean up your codebase from Vite related artifacts:
+
+Delete main.tsx
+Delete index.html
+Delete vite-env.d.ts
+Delete tsconfig.node.json
+Delete vite.config.ts
+Uninstall Vite dependencies
+Next Steps
+If everything went according to plan, you now have a functioning Next.js application running as a single-page application. However, you aren't yet taking advantage of most of Next.js' benefits, but you can now start making incremental changes to reap all the benefits. Here's what you might want to do next:
+
+Migrate from React Router to the Next.js App Router to get:
+Automatic code splitting
+Streaming Server-Rendering
+React Server Components
+Optimize images with the <Image> component
+Optimize fonts with next/font
+Optimize third-party scripts with the <Script> component
+Update your ESLint configuration to support Next.js rules
+
+Migration Steps
+Our goal with this migration is to get a working Next.js application as quickly as possible, so that you can then adopt Next.js features incrementally. To begin with, we'll keep it as a purely client-side application (SPA) without migrating your existing router. This helps minimize the chances of encountering issues during the migration process and reduces merge conflicts.
+
+Step 1: Install the Next.js Dependency
+The first thing you need to do is to install next as a dependency:
+
+Terminal
+npm install next@latest
+Step 2: Create the Next.js Configuration File
+Create a next.config.mjs at the root of your project. This file will hold your Next.js configuration options.
+
+next.config.mjs
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export', // Outputs a Single-Page Application (SPA).
+  distDir: './dist', // Changes the build output directory to `./dist/`.
+}
+ 
+export default nextConfig
+Good to know: You can use either .js or .mjs for your Next.js configuration file.
+
+Step 3: Update TypeScript Configuration
+If you're using TypeScript, you need to update your tsconfig.json file with the following changes to make it compatible with Next.js. If you're not using TypeScript, you can skip this step.
+
+Remove the project reference to tsconfig.node.json
+Add ./dist/types/**/*.ts and ./next-env.d.ts to the include array
+Add ./node_modules to the exclude array
+Add { "name": "next" } to the plugins array in compilerOptions: "plugins": [{ "name": "next" }]
+Set esModuleInterop to true: "esModuleInterop": true
+Set jsx to react-jsx: "jsx": "react-jsx"
+Set allowJs to true: "allowJs": true
+Set forceConsistentCasingInFileNames to true: "forceConsistentCasingInFileNames": true
+Set incremental to true: "incremental": true
+Here's an example of a working tsconfig.json with those changes:
+
+tsconfig.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "plugins": [{ "name": "next" }]
+  },
+  "include": ["./src", "./dist/types/**/*.ts", "./next-env.d.ts"],
+  "exclude": ["./node_modules"]
+}
+You can find more information about configuring TypeScript on the Next.js docs.
+
+Step 4: Create the Root Layout
+A Next.js App Router application must include a root layout file, which is a React Server Component that will wrap all pages in your application. This file is defined at the top level of the app directory.
+
+The closest equivalent to the root layout file in a Vite application is the index.html file, which contains your <html>, <head>, and <body> tags.
+
+In this step, you'll convert your index.html file into a root layout file:
+
+Create a new app directory in your src folder.
+Create a new layout.tsx file inside that app directory:
+app/layout.tsx
+TypeScript
+
+TypeScript
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return '...'
+}
+Good to know: .js, .jsx, or .tsx extensions can be used for Layout files.
+
+Copy the content of your index.html file into the previously created <RootLayout> component while replacing the body.div#root and body.script tags with <div id="root">{children}</div>:
+app/layout.tsx
+TypeScript
+
+TypeScript
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My App</title>
+        <meta name="description" content="My App is a..." />
+      </head>
+      <body>
+        <div id="root">{children}</div>
+      </body>
+    </html>
+  )
+}
+Next.js already includes by default the meta charset and meta viewport tags, so you can safely remove those from your <head>:
+app/layout.tsx
+TypeScript
+
+TypeScript
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+        <title>My App</title>
+        <meta name="description" content="My App is a..." />
+      </head>
+      <body>
+        <div id="root">{children}</div>
+      </body>
+    </html>
+  )
+}
+Any metadata files such as favicon.ico, icon.png, robots.txt are automatically added to the application <head> tag as long as you have them placed into the top level of the app directory. After moving all supported files into the app directory you can safely delete their <link> tags:
+app/layout.tsx
+TypeScript
+
+TypeScript
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <head>
+        <title>My App</title>
+        <meta name="description" content="My App is a..." />
+      </head>
+      <body>
+        <div id="root">{children}</div>
+      </body>
+    </html>
+  )
+}
+Finally, Next.js can manage your last <head> tags with the Metadata API. Move your final metadata info into an exported metadata object:
+app/layout.tsx
+TypeScript
+
+TypeScript
+import type { Metadata } from 'next'
+ 
+export const metadata: Metadata = {
+  title: 'My App',
+  description: 'My App is a...',
+}
+ 
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <div id="root">{children}</div>
+      </body>
+    </html>
+  )
+}
+With the above changes, you shifted from declaring everything in your index.html to using Next.js' convention-based approach built into the framework (Metadata API). This approach enables you to more easily improve your SEO and web shareability of your pages.
+
+Step 5: Create the Entrypoint Page
+On Next.js you declare an entrypoint for your application by creating a page.tsx file. The closest equivalent of this file on Vite is your main.tsx file. In this step, you’ll set up the entrypoint of your application.
+
+Create a [[...slug]] directory in your app directory.
+Since in this guide we're aiming first to set up our Next.js as an SPA (Single Page Application), you need your page entrypoint to catch all possible routes of your application. For that, create a new [[...slug]] directory in your app directory.
+
+This directory is what is called an optional catch-all route segment. Next.js uses a file-system based router where folders are used to define routes. This special directory will make sure that all routes of your application will be directed to its containing page.tsx file.
+
+Create a new page.tsx file inside the app/[[...slug]] directory with the following content:
+app/[[...slug]]/page.tsx
+TypeScript
+
+TypeScript
+import '../../index.css'
+ 
+export function generateStaticParams() {
+  return [{ slug: [''] }]
+}
+ 
+export default function Page() {
+  return '...' // We'll update this
+}
+Good to know: .js, .jsx, or .tsx extensions can be used for Page files.
+
+This file is a Server Component. When you run next build, the file is prerendered into a static asset. It does not require any dynamic code.
+
+This file imports our global CSS and tells generateStaticParams we are only going to generate one route, the index route at /.
+
+Now, let's move the rest of our Vite application which will run client-only.
+
+app/[[...slug]]/client.tsx
+TypeScript
+
+TypeScript
+'use client'
+ 
+import React from 'react'
+import dynamic from 'next/dynamic'
+ 
+const App = dynamic(() => import('../../App'), { ssr: false })
+ 
+export function ClientOnly() {
+  return <App />
+}
+This file is a Client Component, defined by the 'use client' directive. Client Components are still prerendered to HTML on the server before being sent to the client.
+
+Since we want a client-only application to start, we can configure Next.js to disable prerendering from the App component down.
+
+const App = dynamic(() => import('../../App'), { ssr: false })
+Now, update your entrypoint page to use the new component:
+
+app/[[...slug]]/page.tsx
+TypeScript
+
+TypeScript
+import '../../index.css'
+import { ClientOnly } from './client'
+ 
+export function generateStaticParams() {
+  return [{ slug: [''] }]
+}
+ 
+export default function Page() {
+  return <ClientOnly />
+}
+Step 6: Update Static Image Imports
+Next.js handles static image imports slightly different from Vite. With Vite, importing an image file will return its public URL as a string:
+
+App.tsx
+import image from './img.png' // `image` will be '/assets/img.2d8efhg.png' in production
+ 
+export default function App() {
+  return <img src={image} />
+}
+With Next.js, static image imports return an object. The object can then be used directly with the Next.js <Image> component, or you can use the object's src property with your existing <img> tag.
+
+The <Image> component has the added benefits of automatic image optimization. The <Image> component automatically sets the width and height attributes of the resulting <img> based on the image's dimensions. This prevents layout shifts when the image loads. However, this can cause issues if your app contains images with only one of their dimensions being styled without the other styled to auto. When not styled to auto, the dimension will default to the <img> dimension attribute's value, which can cause the image to appear distorted.
+
+Keeping the <img> tag will reduce the amount of changes in your application and prevent the above issues. You can then optionally later migrate to the <Image> component to take advantage of optimizing images by configuring a loader, or moving to the default Next.js server which has automatic image optimization.
+
+Convert absolute import paths for images imported from /public into relative imports:
+// Before
+import logo from '/logo.png'
+ 
+// After
+import logo from '../public/logo.png'
+Pass the image src property instead of the whole image object to your <img> tag:
+// Before
+<img src={logo} />
+ 
+// After
+<img src={logo.src} />
+Alternatively, you can reference the public URL for the image asset based on the filename. For example, public/logo.png will serve the image at /logo.png for your application, which would be the src value.
+
+Warning: If you're using TypeScript, you might encounter type errors when accessing the src property. You can safely ignore those for now. They will be fixed by the end of this guide.
+
+Step 7: Migrate the Environment Variables
+Next.js has support for .env environment variables similar to Vite. The main difference is the prefix used to expose environment variables on the client-side.
+
+Change all environment variables with the VITE_ prefix to NEXT_PUBLIC_.
+Vite exposes a few built-in environment variables on the special import.meta.env object which aren’t supported by Next.js. You need to update their usage as follows:
+
+import.meta.env.MODE ⇒ process.env.NODE_ENV
+import.meta.env.PROD ⇒ process.env.NODE_ENV === 'production'
+import.meta.env.DEV ⇒ process.env.NODE_ENV !== 'production'
+import.meta.env.SSR ⇒ typeof window !== 'undefined'
+Next.js also doesn't provide a built-in BASE_URL environment variable. However, you can still configure one, if you need it:
+
+Add the following to your .env file:
+.env
+# ...
+NEXT_PUBLIC_BASE_PATH="/some-base-path"
+Set basePath to process.env.NEXT_PUBLIC_BASE_PATH in your next.config.mjs file:
+next.config.mjs
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export', // Outputs a Single-Page Application (SPA).
+  distDir: './dist', // Changes the build output directory to `./dist/`.
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH, // Sets the base path to `/some-base-path`.
+}
+ 
+export default nextConfig
+Update import.meta.env.BASE_URL usages to process.env.NEXT_PUBLIC_BASE_PATH
+Step 8: Update Scripts in package.json
+You should now be able to run your application to test if you successfully migrated to Next.js. But before that, you need to update your scripts in your package.json with Next.js related commands, and add .next and next-env.d.ts to your .gitignore:
+
+package.json
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  }
+}
+.gitignore
+# ...
+.next
+next-env.d.ts
+dist
+Now run npm run dev, and open http://localhost:3000. You should see your application now running on Next.js.
+
+Example: Check out this pull request for a working example of a Vite application migrated to Next.js.
+
+Step 9: Clean Up
+You can now clean up your codebase from Vite related artifacts:
+
+Delete main.tsx
+Delete index.html
+Delete vite-env.d.ts
+Delete tsconfig.node.json
+Delete vite.config.ts
+Uninstall Vite dependencies
+Next Steps
+If everything went according to plan, you now have a functioning Next.js application running as a single-page application. However, you aren't yet taking advantage of most of Next.js' benefits, but you can now start making incremental changes to reap all the benefits. Here's what you might want to do next:
+
+Migrate from React Router to the Next.js App Router to get:
+Automatic code splitting
+Streaming Server-Rendering
+React Server Components
+Optimize images with the <Image> component
+Optimize fonts with next/font
+Optimize third-party scripts with the <Script> component
+Update your ESLint configuration to support Next.js rules
+
+# Image Component
+@doc-version: 16.0.1
+
+
+The Next.js Image component extends the HTML `<img>` element for automatic image optimization.
+
+```jsx filename="app/page.js"
+import Image from 'next/image'
+
+export default function Page() {
+  return (
+    <Image
+      src="/profile.png"
+      width={500}
+      height={500}
+      alt="Picture of the author"
+    />
+  )
+}
+```
+
+## Reference
+
+### Props
+
+The following props are available:
+
+#### `src`
+
+The source of the image. Can be one of the following:
+
+An internal path string.
+
+```jsx
+<Image src="/profile.png" />
+```
+
+An absolute external URL (must be configured with [remotePatterns](#remotepatterns)).
+
+```jsx
+<Image src="https://example.com/profile.png" />
+```
+
+A static import.
+
+```jsx
+import profile from './profile.png'
+
+export default function Page() {
+  return <Image src={profile} />
+}
+```
+
+> **Good to know**: For security reasons, the Image Optimization API using the default [loader](#loader) will *not* forward headers when fetching the `src` image.
+> If the `src` image requires authentication, consider using the [unoptimized](#unoptimized) property to disable Image Optimization.
+
+#### `alt`
+
+The `alt` property is used to describe the image for screen readers and search engines. It is also the fallback text if images have been disabled or an error occurs while loading the image.
+
+It should contain text that could replace the image [without changing the meaning of the page](https://html.spec.whatwg.org/multipage/images.html#general-guidelines). It is not meant to supplement the image and should not repeat information that is already provided in the captions above or below the image.
+
+If the image is [purely decorative](https://html.spec.whatwg.org/multipage/images.html#a-purely-decorative-image-that-doesn't-add-any-information) or [not intended for the user](https://html.spec.whatwg.org/multipage/images.html#an-image-not-intended-for-the-user), the `alt` property should be an empty string (`alt=""`).
+
+> Learn more about [image accessibility guidelines](https://html.spec.whatwg.org/multipage/images.html#alt).
+
+#### `width` and `height`
+
+The `width` and `height` properties represent the [intrinsic](https://developer.mozilla.org/en-US/docs/Glossary/Intrinsic_Size) image size in pixels. This property is used to infer the correct **aspect ratio** used by browsers to reserve space for the image and avoid layout shift during loading. It does not determine the *rendered size* of the image, which is controlled by CSS.
+
+```jsx
+<Image src="/profile.png" width={500} height={500} />
+```
+
+You **must** set both `width` and `height` properties unless:
+
+* The image is statically imported.
+* The image has the [`fill` property](#fill)
+
+If the height and width are unknown, we recommend using the [`fill` property](#fill).
+
+#### `fill`
+
+A boolean that causes the image to expand to the size of the parent element.
+
+```js
+<Image src="/profile.png" fill={true} />
+```
+
+**Positioning**:
+
+* The parent element **must** assign `position: "relative"`, `"fixed"`, `"absolute"`.
+* By default, the `<img>` element uses `position: "absolute"`.
+
+**Object Fit**:
+
+If no styles are applied to the image, the image will stretch to fit the container. You can use `objectFit` to control cropping and scaling.
+
+* `"contain"`: The image will be scaled down to fit the container and preserve aspect ratio.
+* `"cover"`: The image will fill the container and be cropped.
+
+> Learn more about [`position`](https://developer.mozilla.org/en-US/docs/Web/CSS/position) and [`object-fit`](https://developer.mozilla.org/docs/Web/CSS/object-fit).
+
+#### `loader`
+
+A custom function used to generate the image URL. The function receives the following parameters, and returns a URL string for the image:
+
+* [`src`](#src)
+* [`width`](#width-and-height)
+* [`quality`](#quality)
+
+```js
+'use client'
+
+import Image from 'next/image'
+
+const imageLoader = ({ src, width, quality }) => {
+  return `https://example.com/${src}?w=${width}&q=${quality || 75}`
+}
+
+export default function Page() {
+  return (
+    <Image
+      loader={imageLoader}
+      src="me.png"
+      alt="Picture of the author"
+      width={500}
+      height={500}
+    />
+  )
+}
+```
+
+> **Good to know**: Using props like `onLoad`, which accept a function, requires using [Client Components](https://react.dev/reference/rsc/use-client) to serialize the provided function.
+
+Alternatively, you can use the [loaderFile](#loaderfile) configuration in `next.config.js` to configure every instance of `next/image` in your application, without passing a prop.
+
+#### `sizes`
+
+Define the sizes of the image at different breakpoints. Used by the browser to choose the most appropriate size from the generated `srcset`.
+
+```jsx
+import Image from 'next/image'
+
+export default function Page() {
+  return (
+    <div className="grid-element">
+      <Image
+        fill
+        src="/example.png"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
+    </div>
+  )
+}
+```
+
+`sizes` should be used when:
+
+* The image is using the [`fill`](#fill) prop
+* CSS is used to make the image responsive
+
+If `sizes` is missing, the browser assumes the image will be as wide as the viewport (`100vw`). This can cause unnecessarily large images to be downloaded.
+
+In addition, `sizes` affects how `srcset` is generated:
+
+* Without `sizes`: Next.js generates a limited `srcset` (e.g. 1x, 2x), suitable for fixed-size images.
+* With `sizes`: Next.js generates a full `srcset` (e.g. 640w, 750w, etc.), optimized for responsive layouts.
+
+> Learn more about `srcset` and `sizes` on [web.dev](https://web.dev/learn/design/responsive-images/#sizes) and [mdn](https://developer.mozilla.org/docs/Web/HTML/Element/img#sizes).
+
+#### `quality`
+
+An integer between `1` and `100` that sets the quality of the optimized image. Higher values increase file size and visual fidelity. Lower values reduce file size but may affect sharpness.
+
+```jsx
+// Default quality is 75
+<Image quality={75} />
+```
+
+If you’ve configured [qualities](#qualities) in `next.config.js`, the value must match one of the allowed entries.
+
+> **Good to know**: If the original image is already low quality, setting a high quality value will increase the file size without improving appearance.
+
+#### `style`
+
+Allows passing CSS styles to the underlying image element.
+
+```jsx
+const imageStyle = {
+  borderRadius: '50%',
+  border: '1px solid #fff',
+  width: '100px',
+  height: 'auto',
+}
+
+export default function ProfileImage() {
+  return <Image src="..." style={imageStyle} />
+}
+```
+
+> **Good to know**: If you’re using the `style` prop to set a custom width, be sure to also set `height: 'auto'` to preserve the image’s aspect ratio.
+
+#### `preload`
+
+A boolean that indicates if the image should be preloaded.
+
+```jsx
+// Default preload is false
+<Image preload={false} />
+```
+
+* `true`: [Preloads](https://web.dev/preload-responsive-images/) the image by inserting a `<link>` in the `<head>`.
+* `false`: Does not preload the image.
+
+**When to use it:**
+
+* The image is the [Largest Contentful Paint (LCP)](https://nextjs.org/learn/seo/web-performance/lcp) element.
+* The image is above the fold, typically the hero image.
+* You want to begin loading the image in the `<head>`, before its discovered later in the `<body>`.
+
+**When not to use it:**
+
+* When you have multiple images that could be considered the [Largest Contentful Paint (LCP)](https://nextjs.org/learn/seo/web-performance/lcp) element depending on the viewport.
+* When the `loading` property is used.
+* When the `fetchPriority` property is used.
+
+In most cases, you should use `loading="eager"` or `fetchPriority="high"` instead of `preload`.
+
+#### `priority`
+
+Starting with Next.js 16, the `priority` property has been deprecated in favor of the [`preload`](#preload) property in order to make the behavior clear.
+
+#### `loading`
+
+Controls when the image should start loading.
+
+```jsx
+// Defaults to lazy
+<Image loading="lazy" />
+```
+
+* `lazy`: Defer loading the image until it reaches a calculated distance from the viewport.
+* `eager`: Load the image immediately, regardless of its position in the page.
+
+Use `eager` only when you want to ensure the image is loaded immediately.
+
+> Learn more about the [`loading` attribute](https://developer.mozilla.org/docs/Web/HTML/Element/img#loading).
+
+#### `placeholder`
+
+Specifies a placeholder to use while the image is loading, improving the perceived loading performance.
+
+```jsx
+// defaults to empty
+<Image placeholder="empty" />
+```
+
+* `empty`: No placeholder while the image is loading.
+* `blur`: Use a blurred version of the image as a placeholder. Must be used with the [`blurDataURL`](#blurdataurl) property.
+* `data:image/...`: Uses the [Data URL](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) as the placeholder.
+
+**Examples:**
+
+* [`blur` placeholder](https://image-component.nextjs.gallery/placeholder)
+* [Shimmer effect with data URL `placeholder` prop](https://image-component.nextjs.gallery/shimmer)
+* [Color effect with `blurDataURL` prop](https://image-component.nextjs.gallery/color)
+
+> Learn more about the [`placeholder` attribute](https://developer.mozilla.org/docs/Web/HTML/Element/img#placeholder).
+
+#### `blurDataURL`
+
+A [Data URL](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) to
+be used as a placeholder image before the image successfully loads. Can be automatically set or used with the [`placeholder="blur"`](#placeholder) property.
+
+```jsx
+<Image placeholder="blur" blurDataURL="..." />
+```
+
+The image is automatically enlarged and blurred, so a very small image (10px or less) is recommended.
+
+**Automatic**
+
+If `src` is a static import of a `jpg`, `png`, `webp`, or `avif` file, `blurDataURL` is added automatically—unless the image is animated.
+
+**Manually set**
+
+If the image is dynamic or remote, you must provide `blurDataURL` yourself. To generate one, you can use:
+
+* [A online tool like png-pixel.com](https://png-pixel.com)
+* [A library like Plaiceholder](https://github.com/joe-bell/plaiceholder)
+
+A large blurDataURL may hurt performance. Keep it small and simple.
+
+**Examples:**
+
+* [Default `blurDataURL` prop](https://image-component.nextjs.gallery/placeholder)
+* [Color effect with `blurDataURL` prop](https://image-component.nextjs.gallery/color)
+
+#### `onLoad`
+
+A callback function that is invoked once the image is completely loaded and the [placeholder](#placeholder) has been removed.
+
+```jsx
+<Image onLoad={(e) => console.log(e.target.naturalWidth)} />
+```
+
+The callback function will be called with one argument, the event which has a `target` that references the underlying `<img>` element.
+
+> **Good to know**: Using props like `onLoad`, which accept a function, requires using [Client Components](https://react.dev/reference/rsc/use-client) to serialize the provided function.
+
+#### `onError`
+
+A callback function that is invoked if the image fails to load.
+
+```jsx
+<Image onError={(e) => console.error(e.target.id)} />
+```
+
+> **Good to know**: Using props like `onError`, which accept a function, requires using [Client Components](https://react.dev/reference/rsc/use-client) to serialize the provided function.
+
+#### `unoptimized`
+
+A boolean that indicates if the image should be optimized. This is useful for images that do not benefit from optimization such as small images (less than 1KB), vector images (SVG), or animated images (GIF).
+
+```js
+import Image from 'next/image'
+
+const UnoptimizedImage = (props) => {
+  // Default is false
+  return <Image {...props} unoptimized />
+}
+```
+
+* `true`: The source image will be served as-is from the `src` instead of changing quality, size, or format.
+* `false`: The source image will be optimized.
+
+Since Next.js 12.3.0, this prop can be assigned to all images by updating `next.config.js` with the following configuration:
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    unoptimized: true,
+  },
+}
+```
+
+#### `overrideSrc`
+
+When providing the `src` prop to the `<Image>` component, both the `srcset` and `src` attributes are generated automatically for the resulting `<img>`.
+
+```jsx filename="input.js"
+<Image src="/profile.jpg" />
+```
+
+```html filename="output.html"
+<img
+  srcset="
+    /_next/image?url=%2Fprofile.jpg&w=640&q=75 1x,
+    /_next/image?url=%2Fprofile.jpg&w=828&q=75 2x
+  "
+  src="/_next/image?url=%2Fprofile.jpg&w=828&q=75"
+/>
+```
+
+In some cases, it is not desirable to have the `src` attribute generated and you may wish to override it using the `overrideSrc` prop.
+
+For example, when upgrading an existing website from `<img>` to `<Image>`, you may wish to maintain the same `src` attribute for SEO purposes such as image ranking or avoiding recrawl.
+
+```jsx filename="input.js"
+<Image src="/profile.jpg" overrideSrc="/override.jpg" />
+```
+
+```html filename="output.html"
+<img
+  srcset="
+    /_next/image?url=%2Fprofile.jpg&w=640&q=75 1x,
+    /_next/image?url=%2Fprofile.jpg&w=828&q=75 2x
+  "
+  src="/override.jpg"
+/>
+```
+
+#### `decoding`
+
+A hint to the browser indicating if it should wait for the image to be decoded before presenting other content updates or not.
+
+```jsx
+// Default is async
+<Image decoding="async" />
+```
+
+* `async`: Asynchronously decode the image and allow other content to be rendered before it completes.
+* `sync`: Synchronously decode the image for atomic presentation with other content.
+* `auto`: No preference. The browser chooses the best approach.
+
+> Learn more about the [`decoding` attribute](https://developer.mozilla.org/docs/Web/HTML/Element/img#decoding).
+
+### Other Props
+
+Other properties on the `<Image />` component will be passed to the underlying `img` element with the exception of the following:
+
+* `srcSet`: Use [Device Sizes](#devicesizes) instead.
+
+### Deprecated props
+
+#### `onLoadingComplete`
+
+> **Warning**: Deprecated in Next.js 14, use [`onLoad`](#onload) instead.
+
+A callback function that is invoked once the image is completely loaded and the [placeholder](#placeholder) has been removed.
+
+The callback function will be called with one argument, a reference to the underlying `<img>` element.
+
+```jsx
+'use client'
+
+<Image onLoadingComplete={(img) => console.log(img.naturalWidth)} />
+```
+
+> **Good to know**: Using props like `onLoadingComplete`, which accept a function, requires using [Client Components](https://react.dev/reference/rsc/use-client) to serialize the provided function.
+
+### Configuration options
+
+You can configure the Image Component in `next.config.js`. The following options are available:
+
+#### `localPatterns`
+
+Use `localPatterns` in your `next.config.js` file to allow images from specific local paths to be optimized and block all others.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    localPatterns: [
+      {
+        pathname: '/assets/images/**',
+        search: '',
+      },
+    ],
+  },
+}
+```
+
+The example above will ensure the `src` property of `next/image` must start with `/assets/images/` and must not have a query string. Attempting to optimize any other path will respond with `400` Bad Request error.
+
+> **Good to know**: Omitting the `search` property allows all search parameters which could allow malicious actors to optimize URLs you did not intend. Try using a specific value like `search: '?v=2'` to ensure an exact match.
+
+#### `remotePatterns`
+
+Use `remotePatterns` in your `next.config.js` file to allow images from specific external paths and block all others. This ensures that only external images from your account can be served.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    remotePatterns: [new URL('https://example.com/account123/**')],
+  },
+}
+```
+
+You can also configure `remotePatterns` using the object:
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'example.com',
+        port: '',
+        pathname: '/account123/**',
+        search: '',
+      },
+    ],
+  },
+}
+```
+
+The example above will ensure the `src` property of `next/image` must start with `https://example.com/account123/` and must not have a query string. Any other protocol, hostname, port, or unmatched path will respond with `400` Bad Request.
+
+**Wildcard Patterns:**
+
+Wildcard patterns can be used for both `pathname` and `hostname` and have the following syntax:
+
+* `*` match a single path segment or subdomain
+* `**` match any number of path segments at the end or subdomains at the beginning. This syntax does not work in the middle of the pattern.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.example.com',
+        port: '',
+        search: '',
+      },
+    ],
+  },
+}
+```
+
+This allows subdomains like `image.example.com`. Query strings and custom ports are still blocked.
+
+> **Good to know**: When omitting `protocol`, `port`, `pathname`, or `search` then the wildcard `**` is implied. This is not recommended because it may allow malicious actors to optimize urls you did not intend.
+
+**Query Strings**:
+
+You can also restrict query strings using the `search` property:
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'assets.example.com',
+        search: '?v=1727111025337',
+      },
+    ],
+  },
+}
+```
+
+The example above will ensure the `src` property of `next/image` must start with `https://assets.example.com` and must have the exact query string `?v=1727111025337`. Any other protocol or query string will respond with `400` Bad Request.
+
+#### `loaderFile`
+
+`loaderFiles` allows you to use a custom image optimization service instead of Next.js.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    loader: 'custom',
+    loaderFile: './my/image/loader.js',
+  },
+}
+```
+
+The path must be relative to the project root. The file must export a default function that returns a URL string:
+
+```js filename="my/image/loader.js"
+'use client'
+
+export default function myImageLoader({ src, width, quality }) {
+  return `https://example.com/${src}?w=${width}&q=${quality || 75}`
+}
+```
+
+**Example:**
+
+* [Custom Image Loader Configuration](/docs/app/api-reference/config/next-config-js/images.md#example-loader-configuration)
+
+> Alternatively, you can use the [`loader` prop](#loader) to configure each instance of `next/image`.
+
+#### `path`
+
+If you want to change or prefix the default path for the Image Optimization API, you can do so with the `path` property. The default value for `path` is `/_next/image`.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    path: '/my-prefix/_next/image',
+  },
+}
+```
+
+#### `deviceSizes`
+
+`deviceSizes` allows you to specify a list of device width breakpoints. These widths are used when the `next/image` component uses [`sizes`](#sizes) prop to ensure the correct image is served for the user's device.
+
+If no configuration is provided, the default below is used:
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+  },
+}
+```
+
+#### `imageSizes`
+
+`imageSizes` allows you to specify a list of image widths. These widths are concatenated with the array of [device sizes](#devicesizes) to form the full array of sizes used to generate image [srcset](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/srcset).
+
+If no configuration is provided, the default below is used:
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    imageSizes: [32, 48, 64, 96, 128, 256, 384],
+  },
+}
+```
+
+`imageSizes` is only used for images which provide a [`sizes`](#sizes) prop, which indicates that the image is less than the full width of the screen. Therefore, the sizes in `imageSizes` should all be smaller than the smallest size in `deviceSizes`.
+
+#### `qualities`
+
+`qualities` allows you to specify a list of image quality values.
+
+If not configuration is provided, the default below is used:
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    qualities: [75],
+  },
+}
+```
+
+> **Good to know**: This field is required starting with Next.js 16 because unrestricted access could allow malicious actors to optimize more qualities than you intended.
+
+You can add more image qualities to the allowlist, such as the following:
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    qualities: [25, 50, 75, 100],
+  },
+}
+```
+
+In the example above, only four qualities are allowed: 25, 50, 75, and 100.
+
+If the [`quality`](#quality) prop does not match a value in this array, the closest allowed value will be used.
+
+If the REST API is visited directly with a quality that does not match a value in this array, the server will return a 400 Bad Request response.
+
+#### `formats`
+
+`formats` allows you to specify a list of image formats to be used.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    // Default
+    formats: ['image/webp'],
+  },
+}
+```
+
+Next.js automatically detects the browser's supported image formats via the request's `Accept` header in order to determine the best output format.
+
+If the `Accept` header matches more than one of the configured formats, the first match in the array is used. Therefore, the array order matters. If there is no match (or the source image is animated), it will use the original image's format.
+
+You can enable AVIF support, which will fallback to the original format of the src image if the browser [does not support AVIF](https://caniuse.com/avif):
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    formats: ['image/avif'],
+  },
+}
+```
+
+> **Good to know**:
+>
+> * We still recommend using WebP for most use cases.
+> * AVIF generally takes 50% longer to encode but it compresses 20% smaller compared to WebP. This means that the first time an image is requested, it will typically be slower, but subsequent requests that are cached will be faster.
+> * If you self-host with a Proxy/CDN in front of Next.js, you must configure the Proxy to forward the `Accept` header.
+
+#### `minimumCacheTTL`
+
+`minimumCacheTTL` allows you to configure the Time to Live (TTL) in seconds for cached optimized images. In many cases, it's better to use a [Static Image Import](/docs/app/getting-started/images.md#local-images) which will automatically hash the file contents and cache the image forever with a `Cache-Control` header of `immutable`.
+
+If no configuration is provided, the default below is used.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    minimumCacheTTL: 14400, // 4 hours
+  },
+}
+```
+
+You can increase the TTL to reduce the number of revalidations and potentially lower cost:
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    minimumCacheTTL: 2678400, // 31 days
+  },
+}
+```
+
+The expiration (or rather Max Age) of the optimized image is defined by either the `minimumCacheTTL` or the upstream image `Cache-Control` header, whichever is larger.
+
+If you need to change the caching behavior per image, you can configure [`headers`](/docs/app/api-reference/config/next-config-js/headers.md) to set the `Cache-Control` header on the upstream image (e.g. `/some-asset.jpg`, not `/_next/image` itself).
+
+There is no mechanism to invalidate the cache at this time, so its best to keep `minimumCacheTTL` low. Otherwise you may need to manually change the [`src`](#src) prop or delete the cached file `<distDir>/cache/images`.
+
+#### `disableStaticImages`
+
+`disableStaticImages` allows you to disable static image imports.
+
+The default behavior allows you to import static files such as `import icon from './icon.png'` and then pass that to the `src` property. In some cases, you may wish to disable this feature if it conflicts with other plugins that expect the import to behave differently.
+
+You can disable static image imports inside your `next.config.js`:
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    disableStaticImages: true,
+  },
+}
+```
+
+#### `maximumRedirects`
+
+The default image optimization loader will follow HTTP redirects when fetching remote images up to 3 times.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    maximumRedirects: 3,
+  },
+}
+```
+
+You can configure the number of redirects to follow when fetching remote images. Setting the value to `0` will disable following redirects.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    maximumRedirects: 0,
+  },
+}
+```
+
+#### `dangerouslyAllowLocalIP`
+
+In rare cases when self-hosting Next.js on a private network, you may want to allow optimizing images from local IP addresses on the same network. This is not recommended for most users because it could allow malicious users to access content on your internal network.
+
+By default, the value is false.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    dangerouslyAllowLocalIP: false,
+  },
+}
+```
+
+If you need to optimize remote images hosted elsewhere in your local network, you can set the value to true.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    dangerouslyAllowLocalIP: true,
+  },
+}
+```
+
+#### `dangerouslyAllowSVG`
+
+`dangerouslyAllowSVG` allows you to serve SVG images.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    dangerouslyAllowSVG: true,
+  },
+}
+```
+
+By default, Next.js does not optimize SVG images for a few reasons:
+
+* SVG is a vector format meaning it can be resized losslessly.
+* SVG has many of the same features as HTML/CSS, which can lead to vulnerabilities without proper [Content Security Policy (CSP) headers](/docs/app/api-reference/config/next-config-js/headers.md#content-security-policy).
+
+We recommend using the [`unoptimized`](#unoptimized) prop when the [`src`](#src) prop is known to be SVG. This happens automatically when `src` ends with `".svg"`.
+
+```jsx
+<Image src="/my-image.svg" unoptimized />
+```
+
+In addition, it is strongly recommended to also set `contentDispositionType` to force the browser to download the image, as well as `contentSecurityPolicy` to prevent scripts embedded in the image from executing.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
+}
+```
+
+#### `contentDispositionType`
+
+`contentDispositionType` allows you to configure the [`Content-Disposition`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition#as_a_response_header_for_the_main_body) header.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    contentDispositionType: 'inline',
+  },
+}
+```
+
+#### `contentSecurityPolicy`
+
+`contentSecurityPolicy` allows you to configure the [`Content-Security-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) header for images. This is particularly important when using [`dangerouslyAllowSVG`](#dangerouslyallowsvg) to prevent scripts embedded in the image from executing.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
+}
+```
+
+By default, the [loader](#loader) sets the [`Content-Disposition`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition#as_a_response_header_for_the_main_body) header to `attachment` for added protection since the API can serve arbitrary remote images.
+
+The default value is `attachment` which forces the browser to download the image when visiting directly. This is particularly important when [`dangerouslyAllowSVG`](#dangerouslyallowsvg) is true.
+
+You can optionally configure `inline` to allow the browser to render the image when visiting directly, without downloading it.
+
+### Deprecated configuration options
+
+#### `domains`
+
+> **Warning**: Deprecated since Next.js 14 in favor of strict [`remotePatterns`](#remotepatterns) in order to protect your application from malicious users.
+
+Similar to [`remotePatterns`](#remotepatterns), the `domains` configuration can be used to provide a list of allowed hostnames for external images. However, the `domains` configuration does not support wildcard pattern matching and it cannot restrict protocol, port, or pathname.
+
+Since most remote image servers are shared between multiple tenants, it's safer to use `remotePatterns` to ensure only the intended images are optimized.
+
+Below is an example of the `domains` property in the `next.config.js` file:
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    domains: ['assets.acme.com'],
+  },
+}
+```
+
+## Functions
+
+### `getImageProps`
+
+The `getImageProps` function can be used to get the props that would be passed to the underlying `<img>` element, and instead pass them to another component, style, canvas, etc.
+
+```jsx
+import { getImageProps } from 'next/image'
+
+const { props } = getImageProps({
+  src: 'https://example.com/image.jpg',
+  alt: 'A scenic mountain view',
+  width: 1200,
+  height: 800,
+})
+
+function ImageWithCaption() {
+  return (
+    <figure>
+      <img {...props} />
+      <figcaption>A scenic mountain view</figcaption>
+    </figure>
+  )
+}
+```
+
+This also avoid calling React `useState()` so it can lead to better performance, but it cannot be used with the [`placeholder`](#placeholder) prop because the placeholder will never be removed.
+
+## Known browser bugs
+
+This `next/image` component uses browser native [lazy loading](https://caniuse.com/loading-lazy-attr), which may fallback to eager loading for older browsers before Safari 15.4. When using the blur-up placeholder, older browsers before Safari 12 will fallback to empty placeholder. When using styles with `width`/`height` of `auto`, it is possible to cause [Layout Shift](https://web.dev/cls/) on older browsers before Safari 15 that don't [preserve the aspect ratio](https://caniuse.com/mdn-html_elements_img_aspect_ratio_computed_from_attributes). For more details, see [this MDN video](https://www.youtube.com/watch?v=4-d_SoCHeWE).
+
+* [Safari 15 - 16.3](https://bugs.webkit.org/show_bug.cgi?id=243601) display a gray border while loading. Safari 16.4 [fixed this issue](https://webkit.org/blog/13966/webkit-features-in-safari-16-4/#:~:text=Now%20in%20Safari%2016.4%2C%20a%20gray%20line%20no%20longer%20appears%20to%20mark%20the%20space%20where%20a%20lazy%2Dloaded%20image%20will%20appear%20once%20it%E2%80%99s%20been%20loaded.). Possible solutions:
+  * Use CSS `@supports (font: -apple-system-body) and (-webkit-appearance: none) { img[loading="lazy"] { clip-path: inset(0.6px) } }`
+  * Use [`loading="eager"`](#loading) if the image is above the fold
+* [Firefox 67+](https://bugzilla.mozilla.org/show_bug.cgi?id=1556156) displays a white background while loading. Possible solutions:
+  * Enable [AVIF `formats`](#formats)
+  * Use [`placeholder`](#placeholder)
+
+## Examples
+
+### Styling images
+
+Styling the Image component is similar to styling a normal `<img>` element, but there are a few guidelines to keep in mind:
+
+Use `className` or `style`, not `styled-jsx`. In most cases, we recommend using the `className` prop. This can be an imported [CSS Module](/docs/app/getting-started/css.md), a [global stylesheet](/docs/app/getting-started/css.md#global-css), etc.
+
+```jsx
+import styles from './styles.module.css'
+
+export default function MyImage() {
+  return <Image className={styles.image} src="/my-image.png" alt="My Image" />
+}
+```
+
+You can also use the `style` prop to assign inline styles.
+
+```jsx
+export default function MyImage() {
+  return (
+    <Image style={{ borderRadius: '8px' }} src="/my-image.png" alt="My Image" />
+  )
+}
+```
+
+When using `fill`, the parent element must have `position: relative` or `display: block`. This is necessary for the proper rendering of the image element in that layout mode.
+
+```jsx
+<div style={{ position: 'relative' }}>
+  <Image fill src="/my-image.png" alt="My Image" />
+</div>
+```
+
+You cannot use [styled-jsx](/docs/app/guides/css-in-js.md) because it's scoped to the current component (unless you mark the style as `global`).
+
+### Responsive images with a static export
+
+When you import a static image, Next.js automatically sets its width and height based on the file. You can make the image responsive by setting the style:
+
+![Responsive image filling the width and height of its parent container](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/responsive-image.png)
+
+```jsx
+import Image from 'next/image'
+import mountains from '../public/mountains.jpg'
+
+export default function Responsive() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Image
+        alt="Mountains"
+        // Importing an image will
+        // automatically set the width and height
+        src={mountains}
+        sizes="100vw"
+        // Make the image display full width
+        // and preserve its aspect ratio
+        style={{
+          width: '100%',
+          height: 'auto',
+        }}
+      />
+    </div>
+  )
+}
+```
+
+### Responsive images with a remote URL
+
+If the source image is a dynamic or a remote URL, you must provide the width and height props so Next.js can calculate the aspect ratio:
+
+```jsx filename="components/page.js"
+import Image from 'next/image'
+
+export default function Page({ photoUrl }) {
+  return (
+    <Image
+      src={photoUrl}
+      alt="Picture of the author"
+      sizes="100vw"
+      style={{
+        width: '100%',
+        height: 'auto',
+      }}
+      width={500}
+      height={300}
+    />
+  )
+}
+```
+
+Try it out:
+
+* [Demo the image responsive to viewport](https://image-component.nextjs.gallery/responsive)
+
+### Responsive image with `fill`
+
+If you don't know the aspect ratio of the image, you can add the [`fill` prop](#fill) with the `objectFit` prop set to `cover`. This will make the image fill the full width of its parent container.
+
+![Grid of images filling parent container width](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/fill-container.png)
+
+```jsx
+import Image from 'next/image'
+import mountains from '../public/mountains.jpg'
+
+export default function Fill() {
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '8px',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(400px, auto))',
+      }}
+    >
+      <div style={{ position: 'relative', width: '400px' }}>
+        <Image
+          alt="Mountains"
+          src={mountains}
+          fill
+          sizes="(min-width: 808px) 50vw, 100vw"
+          style={{
+            objectFit: 'cover', // cover, contain, none
+          }}
+        />
+      </div>
+      {/* And more images in the grid... */}
+    </div>
+  )
+}
+```
+
+### Background Image
+
+Use the `fill` prop to make the image cover the entire screen area:
+
+![Background image taking full width and height of page](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/background-image.png)
+
+```jsx
+import Image from 'next/image'
+import mountains from '../public/mountains.jpg'
+
+export default function Background() {
+  return (
+    <Image
+      alt="Mountains"
+      src={mountains}
+      placeholder="blur"
+      quality={100}
+      fill
+      sizes="100vw"
+      style={{
+        objectFit: 'cover',
+      }}
+    />
+  )
+}
+```
+
+For examples of the Image component used with the various styles, see the [Image Component Demo](https://image-component.nextjs.gallery).
+
+### Remote images
+
+To use a remote image, the `src` property should be a URL string.
+
+```jsx filename="app/page.js"
+import Image from 'next/image'
+
+export default function Page() {
+  return (
+    <Image
+      src="https://s3.amazonaws.com/my-bucket/profile.png"
+      alt="Picture of the author"
+      width={500}
+      height={500}
+    />
+  )
+}
+```
+
+Since Next.js does not have access to remote files during the build process, you'll need to provide the [`width`](/docs/app/api-reference/components/image.md#width-and-height), [`height`](/docs/app/api-reference/components/image.md#width-and-height) and optional [`blurDataURL`](/docs/app/api-reference/components/image.md#blurdataurl) props manually.
+
+The `width` and `height` attributes are used to infer the correct aspect ratio of image and avoid layout shift from the image loading in. The `width` and `height` do *not* determine the rendered size of the image file.
+
+To safely allow optimizing images, define a list of supported URL patterns in `next.config.js`. Be as specific as possible to prevent malicious usage. For example, the following configuration will only allow images from a specific AWS S3 bucket:
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 's3.amazonaws.com',
+        port: '',
+        pathname: '/my-bucket/**',
+        search: '',
+      },
+    ],
+  },
+}
+```
+
+### Theme detection
+
+If you want to display a different image for light and dark mode, you can create a new component that wraps two `<Image>` components and reveals the correct one based on a CSS media query.
+
+```css filename="components/theme-image.module.css"
+.imgDark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .imgLight {
+    display: none;
+  }
+  .imgDark {
+    display: unset;
+  }
+}
+```
+
+```tsx filename="components/theme-image.tsx" switcher
+import styles from './theme-image.module.css'
+import Image, { ImageProps } from 'next/image'
+
+type Props = Omit<ImageProps, 'src' | 'preload' | 'loading'> & {
+  srcLight: string
+  srcDark: string
+}
+
+const ThemeImage = (props: Props) => {
+  const { srcLight, srcDark, ...rest } = props
+
+  return (
+    <>
+      <Image {...rest} src={srcLight} className={styles.imgLight} />
+      <Image {...rest} src={srcDark} className={styles.imgDark} />
+    </>
+  )
+}
+```
+
+```jsx filename="components/theme-image.js" switcher
+import styles from './theme-image.module.css'
+import Image from 'next/image'
+
+const ThemeImage = (props) => {
+  const { srcLight, srcDark, ...rest } = props
+
+  return (
+    <>
+      <Image {...rest} src={srcLight} className={styles.imgLight} />
+      <Image {...rest} src={srcDark} className={styles.imgDark} />
+    </>
+  )
+}
+```
+
+> **Good to know**: The default behavior of `loading="lazy"` ensures that only the correct image is loaded. You cannot use `preload` or `loading="eager"` because that would cause both images to load. Instead, you can use [`fetchPriority="high"`](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/fetchPriority).
+
+Try it out:
+
+* [Demo light/dark mode theme detection](https://image-component.nextjs.gallery/theme)
+
+### Art direction
+
+If you want to display a different image for mobile and desktop, sometimes called [Art Direction](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#art_direction), you can provide different `src`, `width`, `height`, and `quality` props to `getImageProps()`.
+
+```jsx filename="app/page.js"
+import { getImageProps } from 'next/image'
+
+export default function Home() {
+  const common = { alt: 'Art Direction Example', sizes: '100vw' }
+  const {
+    props: { srcSet: desktop },
+  } = getImageProps({
+    ...common,
+    width: 1440,
+    height: 875,
+    quality: 80,
+    src: '/desktop.jpg',
+  })
+  const {
+    props: { srcSet: mobile, ...rest },
+  } = getImageProps({
+    ...common,
+    width: 750,
+    height: 1334,
+    quality: 70,
+    src: '/mobile.jpg',
+  })
+
+  return (
+    <picture>
+      <source media="(min-width: 1000px)" srcSet={desktop} />
+      <source media="(min-width: 500px)" srcSet={mobile} />
+      <img {...rest} style={{ width: '100%', height: 'auto' }} />
+    </picture>
+  )
+}
+```
+
+### Background CSS
+
+You can even convert the `srcSet` string to the [`image-set()`](https://developer.mozilla.org/en-US/docs/Web/CSS/image/image-set) CSS function to optimize a background image.
+
+```jsx filename="app/page.js"
+import { getImageProps } from 'next/image'
+
+function getBackgroundImage(srcSet = '') {
+  const imageSet = srcSet
+    .split(', ')
+    .map((str) => {
+      const [url, dpi] = str.split(' ')
+      return `url("${url}") ${dpi}`
+    })
+    .join(', ')
+  return `image-set(${imageSet})`
+}
+
+export default function Home() {
+  const {
+    props: { srcSet },
+  } = getImageProps({ alt: '', width: 128, height: 128, src: '/img.png' })
+  const backgroundImage = getBackgroundImage(srcSet)
+  const style = { height: '100vh', width: '100vw', backgroundImage }
+
+  return (
+    <main style={style}>
+      <h1>Hello World</h1>
+    </main>
+  )
+}
+```
+
+## Version History
+
+| Version    | Changes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `v16.0.0`  | `qualities` default configuration changed to `[75]`, `preload` prop added, `priority` prop deprecated, `dangerouslyAllowLocalIP` config added, `maximumRedirects` config added.                                                                                                                                                                                                                                                                                                            |
+| `v15.3.0`  | `remotePatterns` added support for array of `URL` objects.                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `v15.0.0`  | `contentDispositionType` configuration default changed to `attachment`.                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `v14.2.23` | `qualities` configuration added.                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `v14.2.15` | `decoding` prop added and `localPatterns` configuration added.                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `v14.2.14` | `remotePatterns.search` prop added.                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `v14.2.0`  | `overrideSrc` prop added.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `v14.1.0`  | `getImageProps()` is stable.                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `v14.0.0`  | `onLoadingComplete` prop and `domains` config deprecated.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `v13.4.14` | `placeholder` prop support for `data:/image...`                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `v13.2.0`  | `contentDispositionType` configuration added.                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `v13.0.6`  | `ref` prop added.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `v13.0.0`  | The `next/image` import was renamed to `next/legacy/image`. The `next/future/image` import was renamed to `next/image`. A [codemod is available](/docs/app/guides/upgrading/codemods.md#next-image-to-legacy-image) to safely and automatically rename your imports. `<span>` wrapper removed. `layout`, `objectFit`, `objectPosition`, `lazyBoundary`, `lazyRoot` props removed. `alt` is required. `onLoadingComplete` receives reference to `img` element. Built-in loader config removed. |
+| `v12.3.0`  | `remotePatterns` and `unoptimized` configuration is stable.                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `v12.2.0`  | Experimental `remotePatterns` and experimental `unoptimized` configuration added. `layout="raw"` removed.                                                                                                                                                                                                                                                                                                                                                                                  |
+| `v12.1.1`  | `style` prop added. Experimental support for `layout="raw"` added.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `v12.1.0`  | `dangerouslyAllowSVG` and `contentSecurityPolicy` configuration added.                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `v12.0.9`  | `lazyRoot` prop added.                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `v12.0.0`  | `formats` configuration added.AVIF support added.Wrapper `<div>` changed to `<span>`.                                                                                                                                                                                                                                                                                                                                                                                            |
+| `v11.1.0`  | `onLoadingComplete` and `lazyBoundary` props added.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `v11.0.0`  | `src` prop support for static import.`placeholder` prop added.`blurDataURL` prop added.                                                                                                                                                                                                                                                                                                                                                                                          |
+| `v10.0.5`  | `loader` prop added.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `v10.0.1`  | `layout` prop added.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `v10.0.0`  | `next/image` introduced.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+
+
+# Font Module
+@doc-version: 16.0.1
+
+
+[`next/font`](/docs/app/api-reference/components/font.md) automatically optimizes your fonts (including custom fonts) and removes external network requests for improved privacy and performance.
+
+It includes **built-in automatic self-hosting** for any font file. This means you can optimally load web fonts with no [layout shift](https://web.dev/articles/cls).
+
+You can also conveniently use all [Google Fonts](https://fonts.google.com/). CSS and font files are downloaded at build time and self-hosted with the rest of your static assets. **No requests are sent to Google by the browser.**
+
+```tsx filename="app/layout.tsx" switcher
+import { Inter } from 'next/font/google'
+
+// If loading a variable font, you don't need to specify the font weight
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className={inter.className}>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import { Inter } from 'next/font/google'
+
+// If loading a variable font, you don't need to specify the font weight
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={inter.className}>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+> **🎥 Watch:** Learn more about using `next/font` → [YouTube (6 minutes)](https://www.youtube.com/watch?v=L8_98i_bMMA).
+
+## Reference
+
+| Key                                         | `font/google`       | `font/local`        | Type                       | Required          |
+| ------------------------------------------- | ------------------- | ------------------- | -------------------------- | ----------------- |
+| [`src`](#src)                               |  |  | String or Array of Objects | Yes               |
+| [`weight`](#weight)                         |  |  | String or Array            | Required/Optional |
+| [`style`](#style)                           |  |  | String or Array            | -                 |
+| [`subsets`](#subsets)                       |  |  | Array of Strings           | -                 |
+| [`axes`](#axes)                             |  |  | Array of Strings           | -                 |
+| [`display`](#display)                       |  |  | String                     | -                 |
+| [`preload`](#preload)                       |  |  | Boolean                    | -                 |
+| [`fallback`](#fallback)                     |  |  | Array of Strings           | -                 |
+| [`adjustFontFallback`](#adjustfontfallback) |  |  | Boolean or String          | -                 |
+| [`variable`](#variable)                     |  |  | String                     | -                 |
+| [`declarations`](#declarations)             |  |  | Array of Objects           | -                 |
+
+### `src`
+
+The path of the font file as a string or an array of objects (with type `Array<{path: string, weight?: string, style?: string}>`) relative to the directory where the font loader function is called.
+
+Used in `next/font/local`
+
+* Required
+
+Examples:
+
+* `src:'./fonts/my-font.woff2'` where `my-font.woff2` is placed in a directory named `fonts` inside the `app` directory
+* `src:[{path: './inter/Inter-Thin.ttf', weight: '100',},{path: './inter/Inter-Regular.ttf',weight: '400',},{path: './inter/Inter-Bold-Italic.ttf', weight: '700',style: 'italic',},]`
+* if the font loader function is called in `app/page.tsx` using `src:'../styles/fonts/my-font.ttf'`, then `my-font.ttf` is placed in `styles/fonts` at the root of the project
+
+### `weight`
+
+The font [`weight`](https://fonts.google.com/knowledge/glossary/weight) with the following possibilities:
+
+* A string with possible values of the weights available for the specific font or a range of values if it's a [variable](https://fonts.google.com/variablefonts) font
+* An array of weight values if the font is not a [variable google font](https://fonts.google.com/variablefonts). It applies to `next/font/google` only.
+
+Used in `next/font/google` and `next/font/local`
+
+* Required if the font being used is **not** [variable](https://fonts.google.com/variablefonts)
+
+Examples:
+
+* `weight: '400'`: A string for a single weight value - for the font [`Inter`](https://fonts.google.com/specimen/Inter?query=inter), the possible values are `'100'`, `'200'`, `'300'`, `'400'`, `'500'`, `'600'`, `'700'`, `'800'`, `'900'` or `'variable'` where `'variable'` is the default)
+* `weight: '100 900'`: A string for the range between `100` and `900` for a variable font
+* `weight: ['100','400','900']`: An array of 3 possible values for a non variable font
+
+### `style`
+
+The font [`style`](https://developer.mozilla.org/docs/Web/CSS/font-style) with the following possibilities:
+
+* A string [value](https://developer.mozilla.org/docs/Web/CSS/font-style#values) with default value of `'normal'`
+* An array of style values if the font is not a [variable google font](https://fonts.google.com/variablefonts). It applies to `next/font/google` only.
+
+Used in `next/font/google` and `next/font/local`
+
+* Optional
+
+Examples:
+
+* `style: 'italic'`: A string - it can be `normal` or `italic` for `next/font/google`
+* `style: 'oblique'`: A string - it can take any value for `next/font/local` but is expected to come from [standard font styles](https://developer.mozilla.org/docs/Web/CSS/font-style)
+* `style: ['italic','normal']`: An array of 2 values for `next/font/google` - the values are from `normal` and `italic`
+
+### `subsets`
+
+The font [`subsets`](https://fonts.google.com/knowledge/glossary/subsetting) defined by an array of string values with the names of each subset you would like to be [preloaded](/docs/app/api-reference/components/font.md#specifying-a-subset). Fonts specified via `subsets` will have a link preload tag injected into the head when the [`preload`](#preload) option is true, which is the default.
+
+Used in `next/font/google`
+
+* Optional
+
+Examples:
+
+* `subsets: ['latin']`: An array with the subset `latin`
+
+You can find a list of all subsets on the Google Fonts page for your font.
+
+### `axes`
+
+Some variable fonts have extra `axes` that can be included. By default, only the font weight is included to keep the file size down. The possible values of `axes` depend on the specific font.
+
+Used in `next/font/google`
+
+* Optional
+
+Examples:
+
+* `axes: ['slnt']`: An array with value `slnt` for the `Inter` variable font which has `slnt` as additional `axes` as shown [here](https://fonts.google.com/variablefonts?vfquery=inter#font-families). You can find the possible `axes` values for your font by using the filter on the [Google variable fonts page](https://fonts.google.com/variablefonts#font-families) and looking for axes other than `wght`
+
+### `display`
+
+The font [`display`](https://developer.mozilla.org/docs/Web/CSS/@font-face/font-display) with possible string [values](https://developer.mozilla.org/docs/Web/CSS/@font-face/font-display#values) of `'auto'`, `'block'`, `'swap'`, `'fallback'` or `'optional'` with default value of `'swap'`.
+
+Used in `next/font/google` and `next/font/local`
+
+* Optional
+
+Examples:
+
+* `display: 'optional'`: A string assigned to the `optional` value
+
+### `preload`
+
+A boolean value that specifies whether the font should be [preloaded](/docs/app/api-reference/components/font.md#preloading) or not. The default is `true`.
+
+Used in `next/font/google` and `next/font/local`
+
+* Optional
+
+Examples:
+
+* `preload: false`
+
+### `fallback`
+
+The fallback font to use if the font cannot be loaded. An array of strings of fallback fonts with no default.
+
+* Optional
+
+Used in `next/font/google` and `next/font/local`
+
+Examples:
+
+* `fallback: ['system-ui', 'arial']`: An array setting the fallback fonts to `system-ui` or `arial`
+
+### `adjustFontFallback`
+
+* For `next/font/google`: A boolean value that sets whether an automatic fallback font should be used to reduce [Cumulative Layout Shift](https://web.dev/cls/). The default is `true`.
+* For `next/font/local`: A string or boolean `false` value that sets whether an automatic fallback font should be used to reduce [Cumulative Layout Shift](https://web.dev/cls/). The possible values are `'Arial'`, `'Times New Roman'` or `false`. The default is `'Arial'`.
+
+Used in `next/font/google` and `next/font/local`
+
+* Optional
+
+Examples:
+
+* `adjustFontFallback: false`: for `next/font/google`
+* `adjustFontFallback: 'Times New Roman'`: for `next/font/local`
+
+### `variable`
+
+A string value to define the CSS variable name to be used if the style is applied with the [CSS variable method](#css-variables).
+
+Used in `next/font/google` and `next/font/local`
+
+* Optional
+
+Examples:
+
+* `variable: '--my-font'`: The CSS variable `--my-font` is declared
+
+### `declarations`
+
+An array of font face [descriptor](https://developer.mozilla.org/docs/Web/CSS/@font-face#descriptors) key-value pairs that define the generated `@font-face` further.
+
+Used in `next/font/local`
+
+* Optional
+
+Examples:
+
+* `declarations: [{ prop: 'ascent-override', value: '90%' }]`
+
+## Examples
+
+## Google Fonts
+
+To use a Google font, import it from `next/font/google` as a function. We recommend using [variable fonts](https://fonts.google.com/variablefonts) for the best performance and flexibility.
+
+```tsx filename="app/layout.tsx" switcher
+import { Inter } from 'next/font/google'
+
+// If loading a variable font, you don't need to specify the font weight
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className={inter.className}>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import { Inter } from 'next/font/google'
+
+// If loading a variable font, you don't need to specify the font weight
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={inter.className}>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+If you can't use a variable font, you will **need to specify a weight**:
+
+```tsx filename="app/layout.tsx" switcher
+import { Roboto } from 'next/font/google'
+
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className={roboto.className}>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import { Roboto } from 'next/font/google'
+
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={roboto.className}>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+You can specify multiple weights and/or styles by using an array:
+
+```jsx filename="app/layout.js"
+const roboto = Roboto({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+})
+```
+
+> **Good to know**: Use an underscore (\_) for font names with multiple words. E.g. `Roboto Mono` should be imported as `Roboto_Mono`.
+
+### Specifying a subset
+
+Google Fonts are automatically [subset](https://fonts.google.com/knowledge/glossary/subsetting). This reduces the size of the font file and improves performance. You'll need to define which of these subsets you want to preload. Failing to specify any subsets while [`preload`](/docs/app/api-reference/components/font.md#preload) is `true` will result in a warning.
+
+This can be done by adding it to the function call:
+
+```tsx filename="app/layout.tsx" switcher
+const inter = Inter({ subsets: ['latin'] })
+```
+
+```jsx filename="app/layout.js" switcher
+const inter = Inter({ subsets: ['latin'] })
+```
+
+View the [Font API Reference](/docs/app/api-reference/components/font.md) for more information.
+
+## Using Multiple Fonts
+
+You can import and use multiple fonts in your application. There are two approaches you can take.
+
+The first approach is to create a utility function that exports a font, imports it, and applies its `className` where needed. This ensures the font is preloaded only when it's rendered:
+
+```ts filename="app/fonts.ts" switcher
+import { Inter, Roboto_Mono } from 'next/font/google'
+
+export const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+export const roboto_mono = Roboto_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+})
+```
+
+```js filename="app/fonts.js" switcher
+import { Inter, Roboto_Mono } from 'next/font/google'
+
+export const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+export const roboto_mono = Roboto_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+})
+```
+
+```tsx filename="app/layout.tsx" switcher
+import { inter } from './fonts'
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={inter.className}>
+      <body>
+        <div>{children}</div>
+      </body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import { inter } from './fonts'
+
+export default function Layout({ children }) {
+  return (
+    <html lang="en" className={inter.className}>
+      <body>
+        <div>{children}</div>
+      </body>
+    </html>
+  )
+}
+```
+
+```tsx filename="app/page.tsx" switcher
+import { roboto_mono } from './fonts'
+
+export default function Page() {
+  return (
+    <>
+      <h1 className={roboto_mono.className}>My page</h1>
+    </>
+  )
+}
+```
+
+```jsx filename="app/page.js" switcher
+import { roboto_mono } from './fonts'
+
+export default function Page() {
+  return (
+    <>
+      <h1 className={roboto_mono.className}>My page</h1>
+    </>
+  )
+}
+```
+
+In the example above, `Inter` will be applied globally, and `Roboto Mono` can be imported and applied as needed.
+
+Alternatively, you can create a [CSS variable](/docs/app/api-reference/components/font.md#variable) and use it with your preferred CSS solution:
+
+```tsx filename="app/layout.tsx" switcher
+import { Inter, Roboto_Mono } from 'next/font/google'
+import styles from './global.css'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const roboto_mono = Roboto_Mono({
+  subsets: ['latin'],
+  variable: '--font-roboto-mono',
+  display: 'swap',
+})
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className={`${inter.variable} ${roboto_mono.variable}`}>
+      <body>
+        <h1>My App</h1>
+        <div>{children}</div>
+      </body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import { Inter, Roboto_Mono } from 'next/font/google'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const roboto_mono = Roboto_Mono({
+  subsets: ['latin'],
+  variable: '--font-roboto-mono',
+  display: 'swap',
+})
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={`${inter.variable} ${roboto_mono.variable}`}>
+      <body>
+        <h1>My App</h1>
+        <div>{children}</div>
+      </body>
+    </html>
+  )
+}
+```
+
+```css filename="app/global.css"
+html {
+  font-family: var(--font-inter);
+}
+
+h1 {
+  font-family: var(--font-roboto-mono);
+}
+```
+
+In the example above, `Inter` will be applied globally, and any `<h1>` tags will be styled with `Roboto Mono`.
+
+> **Recommendation**: Use multiple fonts conservatively since each new font is an additional resource the client has to download.
+
+### Local Fonts
+
+Import `next/font/local` and specify the `src` of your local font file. We recommend using [variable fonts](https://fonts.google.com/variablefonts) for the best performance and flexibility.
+
+```tsx filename="app/layout.tsx" switcher
+import localFont from 'next/font/local'
+
+// Font files can be colocated inside of `app`
+const myFont = localFont({
+  src: './my-font.woff2',
+  display: 'swap',
+})
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className={myFont.className}>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import localFont from 'next/font/local'
+
+// Font files can be colocated inside of `app`
+const myFont = localFont({
+  src: './my-font.woff2',
+  display: 'swap',
+})
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={myFont.className}>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+If you want to use multiple files for a single font family, `src` can be an array:
+
+```js
+const roboto = localFont({
+  src: [
+    {
+      path: './Roboto-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './Roboto-Italic.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: './Roboto-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: './Roboto-BoldItalic.woff2',
+      weight: '700',
+      style: 'italic',
+    },
+  ],
+})
+```
+
+View the [Font API Reference](/docs/app/api-reference/components/font.md) for more information.
+
+### With Tailwind CSS
+
+`next/font` integrates seamlessly with [Tailwind CSS](https://tailwindcss.com/) using [CSS variables](/docs/app/api-reference/components/font.md#css-variables).
+
+In the example below, we use the `Inter` and `Roboto_Mono` fonts from `next/font/google` (you can use any Google Font or Local Font). Use the `variable` option to define a CSS variable name, such as `inter` and `roboto_mono` for these fonts, respectively. Then, apply `inter.variable` and `roboto_mono.variable` to include the CSS variables in your HTML document.
+
+> **Good to know**: You can add these variables to the `<html>` or `<body>` tag, depending on your preference, styling needs or project requirements.
+
+```tsx filename="app/layout.tsx" switcher
+import { Inter, Roboto_Mono } from 'next/font/google'
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+})
+
+const roboto_mono = Roboto_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto-mono',
+})
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html
+      lang="en"
+      className={`${inter.variable} ${roboto_mono.variable} antialiased`}
+    >
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import { Inter, Roboto_Mono } from 'next/font/google'
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+})
+
+const roboto_mono = Roboto_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto-mono',
+})
+
+export default function RootLayout({ children }) {
+  return (
+    <html
+      lang="en"
+      className={`${inter.variable} ${roboto_mono.variable} antialiased`}
+    >
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+Finally, add the CSS variable to your [Tailwind CSS config](/docs/app/getting-started/css.md#tailwind-css):
+
+```css filename="global.css"
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-roboto-mono);
+}
+```
+
+### Tailwind CSS v3
+
+```js filename="tailwind.config.js"
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+    './app/**/*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+        mono: ['var(--font-roboto-mono)'],
+      },
+    },
+  },
+  plugins: [],
+}
+```
+
+You can now use the `font-sans` and `font-mono` utility classes to apply the font to your elements.
+
+```html
+<p class="font-sans ...">The quick brown fox ...</p>
+<p class="font-mono ...">The quick brown fox ...</p>
+```
+
+### Applying Styles
+
+You can apply the font styles in three ways:
+
+* [`className`](#classname)
+* [`style`](#style-1)
+* [CSS Variables](#css-variables)
+
+#### `className`
+
+Returns a read-only CSS `className` for the loaded font to be passed to an HTML element.
+
+```tsx
+<p className={inter.className}>Hello, Next.js!</p>
+```
+
+#### `style`
+
+Returns a read-only CSS `style` object for the loaded font to be passed to an HTML element, including `style.fontFamily` to access the font family name and fallback fonts.
+
+```tsx
+<p style={inter.style}>Hello World</p>
+```
+
+#### CSS Variables
+
+If you would like to set your styles in an external style sheet and specify additional options there, use the CSS variable method.
+
+In addition to importing the font, also import the CSS file where the CSS variable is defined and set the variable option of the font loader object as follows:
+
+```tsx filename="app/page.tsx" switcher
+import { Inter } from 'next/font/google'
+import styles from '../styles/component.module.css'
+
+const inter = Inter({
+  variable: '--font-inter',
+})
+```
+
+```jsx filename="app/page.js" switcher
+import { Inter } from 'next/font/google'
+import styles from '../styles/component.module.css'
+
+const inter = Inter({
+  variable: '--font-inter',
+})
+```
+
+To use the font, set the `className` of the parent container of the text you would like to style to the font loader's `variable` value and the `className` of the text to the `styles` property from the external CSS file.
+
+```tsx filename="app/page.tsx" switcher
+<main className={inter.variable}>
+  <p className={styles.text}>Hello World</p>
+</main>
+```
+
+```jsx filename="app/page.js" switcher
+<main className={inter.variable}>
+  <p className={styles.text}>Hello World</p>
+</main>
+```
+
+Define the `text` selector class in the `component.module.css` CSS file as follows:
+
+```css filename="styles/component.module.css"
+.text {
+  font-family: var(--font-inter);
+  font-weight: 200;
+  font-style: italic;
+}
+```
+
+In the example above, the text `Hello World` is styled using the `Inter` font and the generated font fallback with `font-weight: 200` and `font-style: italic`.
+
+### Using a font definitions file
+
+Every time you call the `localFont` or Google font function, that font will be hosted as one instance in your application. Therefore, if you need to use the same font in multiple places, you should load it in one place and import the related font object where you need it. This is done using a font definitions file.
+
+For example, create a `fonts.ts` file in a `styles` folder at the root of your app directory.
+
+Then, specify your font definitions as follows:
+
+```ts filename="styles/fonts.ts" switcher
+import { Inter, Lora, Source_Sans_3 } from 'next/font/google'
+import localFont from 'next/font/local'
+
+// define your variable fonts
+const inter = Inter()
+const lora = Lora()
+// define 2 weights of a non-variable font
+const sourceCodePro400 = Source_Sans_3({ weight: '400' })
+const sourceCodePro700 = Source_Sans_3({ weight: '700' })
+// define a custom local font where GreatVibes-Regular.ttf is stored in the styles folder
+const greatVibes = localFont({ src: './GreatVibes-Regular.ttf' })
+
+export { inter, lora, sourceCodePro400, sourceCodePro700, greatVibes }
+```
+
+```js filename="styles/fonts.js" switcher
+import { Inter, Lora, Source_Sans_3 } from 'next/font/google'
+import localFont from 'next/font/local'
+
+// define your variable fonts
+const inter = Inter()
+const lora = Lora()
+// define 2 weights of a non-variable font
+const sourceCodePro400 = Source_Sans_3({ weight: '400' })
+const sourceCodePro700 = Source_Sans_3({ weight: '700' })
+// define a custom local font where GreatVibes-Regular.ttf is stored in the styles folder
+const greatVibes = localFont({ src: './GreatVibes-Regular.ttf' })
+
+export { inter, lora, sourceCodePro400, sourceCodePro700, greatVibes }
+```
+
+You can now use these definitions in your code as follows:
+
+```tsx filename="app/page.tsx" switcher
+import { inter, lora, sourceCodePro700, greatVibes } from '../styles/fonts'
+
+export default function Page() {
+  return (
+    <div>
+      <p className={inter.className}>Hello world using Inter font</p>
+      <p style={lora.style}>Hello world using Lora font</p>
+      <p className={sourceCodePro700.className}>
+        Hello world using Source_Sans_3 font with weight 700
+      </p>
+      <p className={greatVibes.className}>My title in Great Vibes font</p>
+    </div>
+  )
+}
+```
+
+```jsx filename="app/page.js" switcher
+import { inter, lora, sourceCodePro700, greatVibes } from '../styles/fonts'
+
+export default function Page() {
+  return (
+    <div>
+      <p className={inter.className}>Hello world using Inter font</p>
+      <p style={lora.style}>Hello world using Lora font</p>
+      <p className={sourceCodePro700.className}>
+        Hello world using Source_Sans_3 font with weight 700
+      </p>
+      <p className={greatVibes.className}>My title in Great Vibes font</p>
+    </div>
+  )
+}
+```
+
+To make it easier to access the font definitions in your code, you can define a path alias in your `tsconfig.json` or `jsconfig.json` files as follows:
+
+```json filename="tsconfig.json"
+{
+  "compilerOptions": {
+    "paths": {
+      "@/fonts": ["./styles/fonts"]
+    }
+  }
+}
+```
+
+You can now import any font definition as follows:
+
+```tsx filename="app/about/page.tsx" switcher
+import { greatVibes, sourceCodePro400 } from '@/fonts'
+```
+
+```jsx filename="app/about/page.js" switcher
+import { greatVibes, sourceCodePro400 } from '@/fonts'
+```
+
+### Preloading
+
+When a font function is called on a page of your site, it is not globally available and preloaded on all routes. Rather, the font is only preloaded on the related routes based on the type of file where it is used:
+
+* If it's a [unique page](/docs/app/api-reference/file-conventions/page.md), it is preloaded on the unique route for that page.
+* If it's a [layout](/docs/app/api-reference/file-conventions/layout.md), it is preloaded on all the routes wrapped by the layout.
+* If it's the [root layout](/docs/app/api-reference/file-conventions/layout.md#root-layout), it is preloaded on all routes.
+
+## Version Changes
+
+| Version   | Changes                                                               |
+| --------- | --------------------------------------------------------------------- |
+| `v13.2.0` | `@next/font` renamed to `next/font`. Installation no longer required. |
+| `v13.0.0` | `@next/font` was added.                                               |
+
+# How to load and optimize scripts
+@doc-version: 16.0.1
+
+
+### Layout Scripts
+
+To load a third-party script for multiple routes, import `next/script` and include the script directly in your layout component:
+
+```tsx filename="app/dashboard/layout.tsx" switcher
+import Script from 'next/script'
+
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <>
+      <section>{children}</section>
+      <Script src="https://example.com/script.js" />
+    </>
+  )
+}
+```
+
+```jsx filename="app/dashboard/layout.js" switcher
+import Script from 'next/script'
+
+export default function DashboardLayout({ children }) {
+  return (
+    <>
+      <section>{children}</section>
+      <Script src="https://example.com/script.js" />
+    </>
+  )
+}
+```
+
+The third-party script is fetched when the folder route (e.g. `dashboard/page.js`) or any nested route (e.g. `dashboard/settings/page.js`) is accessed by the user. Next.js will ensure the script will **only load once**, even if a user navigates between multiple routes in the same layout.
+
+### Application Scripts
+
+To load a third-party script for all routes, import `next/script` and include the script directly in your root layout:
+
+```tsx filename="app/layout.tsx" switcher
+import Script from 'next/script'
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+      <Script src="https://example.com/script.js" />
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import Script from 'next/script'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+      <Script src="https://example.com/script.js" />
+    </html>
+  )
+}
+```
+
+This script will load and execute when *any* route in your application is accessed. Next.js will ensure the script will **only load once**, even if a user navigates between multiple pages.
+
+> **Recommendation**: We recommend only including third-party scripts in specific pages or layouts in order to minimize any unnecessary impact to performance.
+
+### Strategy
+
+Although the default behavior of `next/script` allows you to load third-party scripts in any page or layout, you can fine-tune its loading behavior by using the `strategy` property:
+
+* `beforeInteractive`: Load the script before any Next.js code and before any page hydration occurs.
+* `afterInteractive`: (**default**) Load the script early but after some hydration on the page occurs.
+* `lazyOnload`: Load the script later during browser idle time.
+* `worker`: (experimental) Load the script in a web worker.
+
+Refer to the [`next/script`](/docs/app/api-reference/components/script.md#strategy) API reference documentation to learn more about each strategy and their use cases.
+
+### Offloading Scripts To A Web Worker (experimental)
+
+> **Warning:** The `worker` strategy is not yet stable and does not yet work with the App Router. Use with caution.
+
+Scripts that use the `worker` strategy are offloaded and executed in a web worker with [Partytown](https://partytown.builder.io/). This can improve the performance of your site by dedicating the main thread to the rest of your application code.
+
+This strategy is still experimental and can only be used if the `nextScriptWorkers` flag is enabled in `next.config.js`:
+
+```js filename="next.config.js"
+module.exports = {
+  experimental: {
+    nextScriptWorkers: true,
+  },
+}
+```
+
+Then, run `next` (normally `npm run dev` or `yarn dev`) and Next.js will guide you through the installation of the required packages to finish the setup:
+
+```bash filename="Terminal"
+npm run dev
+```
+
+You'll see instructions like these: Please install Partytown by running `npm install @builder.io/partytown`
+
+Once setup is complete, defining `strategy="worker"` will automatically instantiate Partytown in your application and offload the script to a web worker.
+
+```tsx filename="pages/home.tsx" switcher
+import Script from 'next/script'
+
+export default function Home() {
+  return (
+    <>
+      <Script src="https://example.com/script.js" strategy="worker" />
+    </>
+  )
+}
+```
+
+```jsx filename="pages/home.js" switcher
+import Script from 'next/script'
+
+export default function Home() {
+  return (
+    <>
+      <Script src="https://example.com/script.js" strategy="worker" />
+    </>
+  )
+}
+```
+
+There are a number of trade-offs that need to be considered when loading a third-party script in a web worker. Please see Partytown's [tradeoffs](https://partytown.builder.io/trade-offs) documentation for more information.
+
+### Inline Scripts
+
+Inline scripts, or scripts not loaded from an external file, are also supported by the Script component. They can be written by placing the JavaScript within curly braces:
+
+```jsx
+<Script id="show-banner">
+  {`document.getElementById('banner').classList.remove('hidden')`}
+</Script>
+```
+
+Or by using the `dangerouslySetInnerHTML` property:
+
+```jsx
+<Script
+  id="show-banner"
+  dangerouslySetInnerHTML={{
+    __html: `document.getElementById('banner').classList.remove('hidden')`,
+  }}
+/>
+```
+
+> **Warning**: An `id` property must be assigned for inline scripts in order for Next.js to track and optimize the script.
+
+### Executing Additional Code
+
+Event handlers can be used with the Script component to execute additional code after a certain event occurs:
+
+* `onLoad`: Execute code after the script has finished loading.
+* `onReady`: Execute code after the script has finished loading and every time the component is mounted.
+* `onError`: Execute code if the script fails to load.
+
+These handlers will only work when `next/script` is imported and used inside of a [Client Component](/docs/app/getting-started/server-and-client-components.md) where `"use client"` is defined as the first line of code:
+
+```tsx filename="app/page.tsx" switcher
+'use client'
+
+import Script from 'next/script'
+
+export default function Page() {
+  return (
+    <>
+      <Script
+        src="https://example.com/script.js"
+        onLoad={() => {
+          console.log('Script has loaded')
+        }}
+      />
+    </>
+  )
+}
+```
+
+```jsx filename="app/page.js" switcher
+'use client'
+
+import Script from 'next/script'
+
+export default function Page() {
+  return (
+    <>
+      <Script
+        src="https://example.com/script.js"
+        onLoad={() => {
+          console.log('Script has loaded')
+        }}
+      />
+    </>
+  )
+}
+```
+
+Refer to the [`next/script`](/docs/app/api-reference/components/script.md#onload) API reference to learn more about each event handler and view examples.
+
+### Additional Attributes
+
+There are many DOM attributes that can be assigned to a `<script>` element that are not used by the Script component, like [`nonce`](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/nonce) or [custom data attributes](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/data-*). Including any additional attributes will automatically forward it to the final, optimized `<script>` element that is included in the HTML.
+
+```tsx filename="app/page.tsx" switcher
+import Script from 'next/script'
+
+export default function Page() {
+  return (
+    <>
+      <Script
+        src="https://example.com/script.js"
+        id="example-script"
+        nonce="XUENAJFW"
+        data-test="script"
+      />
+    </>
+  )
+}
+```
+
+```jsx filename="app/page.js" switcher
+import Script from 'next/script'
+
+export default function Page() {
+  return (
+    <>
+      <Script
+        src="https://example.com/script.js"
+        id="example-script"
+        nonce="XUENAJFW"
+        data-test="script"
+      />
+    </>
+  )
+}
+```
+## API Reference
+
+Learn more about the next/script API.
+
+- [Script Component](/docs/app/api-reference/components/script.md)
+  - Optimize third-party scripts in your Next.js application using the built-in `next/script` Component.
+
+
+# ESLint Plugin
+@doc-version: 16.0.1
+
+
+Next.js provides an ESLint plugin, [`@next/eslint-plugin-next`](https://www.npmjs.com/package/@next/eslint-plugin-next), already bundled within the base configuration that makes it possible to catch common issues and problems in a Next.js application.
+
+## Setup ESLint
+
+Get linting working quickly with the ESLint CLI (flat config):
+
+1. Install ESLint and the Next.js config:
+
+   ```bash package="pnpm"
+   pnpm add -D eslint eslint-config-next
+   ```
+
+   ```bash package="npm"
+   npm i -D eslint eslint-config-next
+   ```
+
+   ```bash package="yarn"
+   yarn add --dev eslint eslint-config-next
+   ```
+
+   ```bash package="bun"
+   bun add -d eslint eslint-config-next
+   ```
+
+2. Create `eslint.config.mjs` with the Next.js config:
+
+   ```js filename="eslint.config.mjs"
+   import { defineConfig, globalIgnores } from 'eslint/config'
+   import nextVitals from 'eslint-config-next/core-web-vitals'
+
+   const eslintConfig = defineConfig([
+     ...nextVitals,
+     // Override default ignores of eslint-config-next.
+     globalIgnores([
+       // Default ignores of eslint-config-next:
+       '.next/**',
+       'out/**',
+       'build/**',
+       'next-env.d.ts',
+     ]),
+   ])
+
+   export default eslintConfig
+   ```
+
+3. Run ESLint:
+
+   ```bash package="pnpm"
+   pnpm exec eslint .
+   ```
+
+   ```bash package="npm"
+   npx eslint .
+   ```
+
+   ```bash package="yarn"
+   yarn eslint .
+   ```
+
+   ```bash package="bun"
+   bunx eslint .
+   ```
+
+## Reference
+
+Recommended rule-sets from the following ESLint plugins are all used within `eslint-config-next`:
+
+* [`eslint-plugin-react`](https://www.npmjs.com/package/eslint-plugin-react)
+* [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks)
+* [`@next/eslint-plugin-next`](https://www.npmjs.com/package/@next/eslint-plugin-next)
+
+### Rules
+
+The full set of rules is as follows:
+
+| Enabled in recommended config | Rule                                                                                                                     | Description                                                                                                      |
+| :---------------------------: | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+|            | [@next/next/google-font-display](/docs/messages/google-font-display.md)                                                     | Enforce font-display behavior with Google Fonts.                                                                 |
+|            | [@next/next/google-font-preconnect](/docs/messages/google-font-preconnect.md)                                               | Ensure `preconnect` is used with Google Fonts.                                                                   |
+|            | [@next/next/inline-script-id](/docs/messages/inline-script-id.md)                                                           | Enforce `id` attribute on `next/script` components with inline content.                                          |
+|            | [@next/next/next-script-for-ga](/docs/messages/next-script-for-ga.md)                                                       | Prefer `next/script` component when using the inline script for Google Analytics.                                |
+|            | [@next/next/no-assign-module-variable](/docs/messages/no-assign-module-variable.md)                                         | Prevent assignment to the `module` variable.                                                                     |
+|            | [@next/next/no-async-client-component](/docs/messages/no-async-client-component.md)                                         | Prevent Client Components from being async functions.                                                            |
+|            | [@next/next/no-before-interactive-script-outside-document](/docs/messages/no-before-interactive-script-outside-document.md) | Prevent usage of `next/script`'s `beforeInteractive` strategy outside of `pages/_document.js`.                   |
+|            | [@next/next/no-css-tags](/docs/messages/no-css-tags.md)                                                                     | Prevent manual stylesheet tags.                                                                                  |
+|            | [@next/next/no-document-import-in-page](/docs/messages/no-document-import-in-page.md)                                       | Prevent importing `next/document` outside of `pages/_document.js`.                                               |
+|            | [@next/next/no-duplicate-head](/docs/messages/no-duplicate-head.md)                                                         | Prevent duplicate usage of `<Head>` in `pages/_document.js`.                                                     |
+|            | [@next/next/no-head-element](/docs/messages/no-head-element.md)                                                             | Prevent usage of `<head>` element.                                                                               |
+|            | [@next/next/no-head-import-in-document](/docs/messages/no-head-import-in-document.md)                                       | Prevent usage of `next/head` in `pages/_document.js`.                                                            |
+|            | [@next/next/no-html-link-for-pages](/docs/messages/no-html-link-for-pages.md)                                               | Prevent usage of `<a>` elements to navigate to internal Next.js pages.                                           |
+|            | [@next/next/no-img-element](/docs/messages/no-img-element.md)                                                               | Prevent usage of `<img>` element due to slower LCP and higher bandwidth.                                         |
+|            | [@next/next/no-page-custom-font](/docs/messages/no-page-custom-font.md)                                                     | Prevent page-only custom fonts.                                                                                  |
+|            | [@next/next/no-script-component-in-head](/docs/messages/no-script-component-in-head.md)                                     | Prevent usage of `next/script` in `next/head` component.                                                         |
+|            | [@next/next/no-styled-jsx-in-document](/docs/messages/no-styled-jsx-in-document.md)                                         | Prevent usage of `styled-jsx` in `pages/_document.js`.                                                           |
+|            | [@next/next/no-sync-scripts](/docs/messages/no-sync-scripts.md)                                                             | Prevent synchronous scripts.                                                                                     |
+|            | [@next/next/no-title-in-document-head](/docs/messages/no-title-in-document-head.md)                                         | Prevent usage of `<title>` with `Head` component from `next/document`.                                           |
+|            | @next/next/no-typos                                                                                                      | Prevent common typos in [Next.js's data fetching functions](/docs/pages/building-your-application/data-fetching.md) |
+|            | [@next/next/no-unwanted-polyfillio](/docs/messages/no-unwanted-polyfillio.md)                                               | Prevent duplicate polyfills from Polyfill.io.                                                                    |
+
+We recommend using an appropriate [integration](https://eslint.org/docs/user-guide/integrations#editors) to view warnings and errors directly in your code editor during development.
+
+<details>
+<summary>`next lint` removal</summary>
+
+Starting with Next.js 16, `next lint` is removed.
+
+As part of the removal, the `eslint` option in your Next config file is no longer needed and can be safely removed.
+
+</details>
+
+## Examples
+
+### Specifying a root directory within a monorepo
+
+If you're using `@next/eslint-plugin-next` in a project where Next.js isn't installed in your root directory (such as a monorepo), you can tell `@next/eslint-plugin-next` where to find your Next.js application using the `settings` property in your `eslint.config.mjs`:
+
+```js filename="eslint.config.mjs"
+import { defineConfig } from 'eslint/config'
+import eslintNextPlugin from '@next/eslint-plugin-next'
+
+const eslintConfig = defineConfig([
+  {
+    plugins: {
+      next: eslintNextPlugin,
+    },
+    settings: {
+      next: {
+        rootDir: 'packages/my-app/',
+      },
+    },
+    files: [
+      // ...files
+    ],
+    ignores: [
+      // ...ignores
+    ],
+  },
+])
+
+export default eslintConfig
+```
+
+`rootDir` can be a path (relative or absolute), a glob (i.e. `"packages/*/"`), or an array of paths and/or globs.
+
+### Disabling rules
+
+If you would like to modify or disable any rules provided by the supported plugins (`react`, `react-hooks`, `next`), you can directly change them using the `rules` property in your `eslint.config.mjs`:
+
+```js filename="eslint.config.mjs"
+import { defineConfig, globalIgnores } from 'eslint/config'
+import nextVitals from 'eslint-config-next/core-web-vitals'
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  {
+    rules: {
+      'react/no-unescaped-entities': 'off',
+      '@next/next/no-page-custom-font': 'off',
+    },
+  },
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
+  ]),
+])
+
+export default eslintConfig
+```
+
+### With Core Web Vitals
+
+Enable the `next/core-web-vitals` rule set by extending it in your ESLint config.
+
+```js filename="eslint.config.mjs"
+import { defineConfig, globalIgnores } from 'eslint/config'
+import nextVitals from 'eslint-config-next/core-web-vitals'
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
+  ]),
+])
+
+export default eslintConfig
+```
+
+`next/core-web-vitals` updates `@next/eslint-plugin-next` to error on a number of rules that are warnings by default if they affect [Core Web Vitals](https://web.dev/vitals/).
+
+> The `next/core-web-vitals` entry point is automatically included for new applications built with [Create Next App](/docs/app/api-reference/cli/create-next-app.md).
+
+### With TypeScript
+
+In addition to the Next.js ESLint rules, `create-next-app --typescript` will also add TypeScript-specific lint rules with `next/typescript` to your config:
+
+```js filename="eslint.config.mjs"
+import { defineConfig, globalIgnores } from 'eslint/config'
+import nextVitals from 'eslint-config-next/core-web-vitals'
+import nextTs from 'eslint-config-next/typescript'
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
+  ]),
+])
+
+export default eslintConfig
+```
+
+Those rules are based on [`plugin:@typescript-eslint/recommended`](https://typescript-eslint.io/linting/configs#recommended).
+See [typescript-eslint > Configs](https://typescript-eslint.io/linting/configs) for more details.
+
+### With Prettier
+
+ESLint also contains code formatting rules, which can conflict with your existing [Prettier](https://prettier.io/) setup. We recommend including [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) in your ESLint config to make ESLint and Prettier work together.
+
+First, install the dependency:
+
+```bash package="pnpm"
+pnpm add -D eslint-config-prettier
+```
+
+```bash package="npm"
+npm i -D eslint-config-prettier
+```
+
+```bash package="yarn"
+yarn add --dev eslint-config-prettier
+```
+
+```bash package="bun"
+bun add -d eslint-config-prettier
+```
+
+Then, add `prettier` to your existing ESLint config:
+
+```js filename="eslint.config.mjs"
+import { defineConfig, globalIgnores } from 'eslint/config'
+import nextVitals from 'eslint-config-next/core-web-vitals'
+import prettier from 'eslint-config-prettier/flat'
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  prettier,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
+  ]),
+])
+
+export default eslintConfig
+```
+
+### Running lint on staged files
+
+If you would like to use ESLint with [lint-staged](https://github.com/okonet/lint-staged) to run the linter on staged git files, add the following to the `.lintstagedrc.js` file in the root of your project:
+
+```js filename=".lintstagedrc.js"
+const path = require('path')
+
+const buildEslintCommand = (filenames) =>
+  `eslint --fix ${filenames
+    .map((f) => `"${path.relative(process.cwd(), f)}"`)
+    .join(' ')}`
+
+module.exports = {
+  '*.{js,jsx,ts,tsx}': [buildEslintCommand],
+}
+```
+
+### Migrating existing config
+
+If you already have ESLint configured in your application, we recommend extending from this plugin directly instead of including `eslint-config-next` unless a few conditions are met.
+
+#### Recommended plugin ruleset
+
+If the following conditions are true:
+
+* You have one or more of the following plugins already installed (either separately or through a different config such as `airbnb` or `react-app`):
+  * `react`
+  * `react-hooks`
+  * `jsx-a11y`
+  * `import`
+* You've defined specific `parserOptions` that are different from how Babel is configured within Next.js (this is not recommended unless you have [customized your Babel configuration](/docs/pages/guides/babel.md))
+* You have `eslint-plugin-import` installed with Node.js and/or TypeScript [resolvers](https://github.com/benmosher/eslint-plugin-import#resolvers) defined to handle imports
+
+Then we recommend either removing these settings if you prefer how these properties have been configured within [`eslint-config-next`](https://github.com/vercel/next.js/blob/canary/packages/eslint-config-next/index.js) or extending directly from the Next.js ESLint plugin instead:
+
+```js
+module.exports = {
+  extends: [
+    //...
+    'plugin:@next/next/recommended',
+  ],
+}
+```
+
+The plugin can be installed normally in your project:
+
+```bash package="pnpm"
+pnpm add -D @next/eslint-plugin-next
+```
+
+```bash package="npm"
+npm i -D @next/eslint-plugin-next
+```
+
+```bash package="yarn"
+yarn add --dev @next/eslint-plugin-next
+```
+
+```bash package="bun"
+bun add -d @next/eslint-plugin-next
+```
+
+This eliminates the risk of collisions or errors that can occur due to importing the same plugin or parser across multiple configurations.
+
+#### Additional configurations
+
+If you already use a separate ESLint configuration and want to include `eslint-config-next`, ensure that it is extended last after other configurations. For example:
+
+```js filename="eslint.config.mjs"
+import { defineConfig, globalIgnores } from 'eslint/config'
+import nextPlugin from '@next/eslint-plugin-next'
+
+const eslintConfig = defineConfig([
+  nextPlugin.configs['core-web-vitals'],
+  // List of ignore patterns.
+  globalIgnores([]),
+])
+
+export default eslintConfig
+```
+
+The `next` configuration already handles setting default values for the `parser`, `plugins` and `settings` properties. There is no need to manually re-declare any of these properties unless you need a different configuration for your use case.
+
+If you include any other shareable configurations, **you will need to make sure that these properties are not overwritten or modified**. Otherwise, we recommend removing any configurations that share behavior with the `next` configuration or extending directly from the Next.js ESLint plugin as mentioned above.
+
+| Version   | Changes                                                                                                                                                                                                             |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `v16.0.0` | `next lint` and the `eslint` next.config.js option were removed in favor of the ESLint CLI. A [codemod](/docs/app/guides/upgrading/codemods.md#migrate-from-next-lint-to-eslint-cli) is available to help you migrate. |
+
+# CLI
+@doc-version: 16.0.1
+
+
+Next.js comes with **two** Command Line Interface (CLI) tools:
+
+* **`create-next-app`**: Quickly create a new Next.js application using the default template or an [example](https://github.com/vercel/next.js/tree/canary/examples) from a public GitHub repository.
+* **`next`**: Run the Next.js development server, build your application, and more.
+
+- [create-next-app](/docs/app/api-reference/cli/create-next-app.md)
+  - Create Next.js apps using one command with the create-next-app CLI.
+- [next CLI](/docs/app/api-reference/cli/next.md)
+  - Learn how to run and build your application with the Next.js CLI.
+# loading.js
+@doc-version: 16.0.1
+
+
+The special file `loading.js` helps you create meaningful Loading UI with [React Suspense](https://react.dev/reference/react/Suspense). With this convention, you can show an [instant loading state](#instant-loading-states) from the server while the content of a route segment streams in. The new content is automatically swapped in once complete.
+
+![Loading UI](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/loading-ui.png)
+
+```tsx filename="app/feed/loading.tsx" switcher
+export default function Loading() {
+  // Or a custom loading skeleton component
+  return <p>Loading...</p>
+}
+```
+
+```jsx filename="app/feed/loading.js" switcher
+export default function Loading() {
+  // Or a custom loading skeleton component
+  return <p>Loading...</p>
+}
+```
+
+Inside the `loading.js` file, you can add any light-weight loading UI. You may find it helpful to use the [React Developer Tools](https://react.dev/learn/react-developer-tools) to manually toggle Suspense boundaries.
+
+By default, this file is a [Server Component](/docs/app/getting-started/server-and-client-components.md) - but can also be used as a Client Component through the `"use client"` directive.
+
+## Reference
+
+### Parameters
+
+Loading UI components do not accept any parameters.
+
+## Behavior
+
+### Navigation
+
+* The Fallback UI is [prefetched](/docs/app/getting-started/linking-and-navigating.md#prefetching), making navigation immediate unless prefetching hasn't completed.
+* Navigation is interruptible, meaning changing routes does not need to wait for the content of the route to fully load before navigating to another route.
+* Shared layouts remain interactive while new route segments load.
+
+### Instant Loading States
+
+An instant loading state is fallback UI that is shown immediately upon navigation. You can pre-render loading indicators such as skeletons and spinners, or a small but meaningful part of future screens such as a cover photo, title, etc. This helps users understand the app is responding and provides a better user experience.
+
+Create a loading state by adding a `loading.js` file inside a folder.
+
+![loading.js special file](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/loading-special-file.png)
+
+```tsx filename="app/dashboard/loading.tsx" switcher
+export default function Loading() {
+  // You can add any UI inside Loading, including a Skeleton.
+  return <LoadingSkeleton />
+}
+```
+
+```jsx filename="app/dashboard/loading.js" switcher
+export default function Loading() {
+  // You can add any UI inside Loading, including a Skeleton.
+  return <LoadingSkeleton />
+}
+```
+
+In the same folder, `loading.js` will be nested inside `layout.js`. It will automatically wrap the `page.js` file and any children below in a `<Suspense>` boundary.
+
+![loading.js overview](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/loading-overview.png)
+
+### SEO
+
+* For bots that only scrape static HTML, and cannot execute JavaScript like a full browser, such as Twitterbot, Next.js resolves [`generateMetadata`](/docs/app/api-reference/functions/generate-metadata.md) before streaming UI, and metadata is placed in the `<head>` of the initial HTML.
+* Otherwise, [streaming metadata](/docs/app/api-reference/functions/generate-metadata.md#streaming-metadata) may be used. Next.js automatically detects user agents to choose between blocking and streaming behavior.
+* Since streaming is server-rendered, it does not impact SEO. You can use the [Rich Results Test](https://search.google.com/test/rich-results) tool from Google to see how your page appears to Google's web crawlers and view the serialized HTML ([source](https://web.dev/rendering-on-the-web/#seo-considerations)).
+
+### Status Codes
+
+When streaming, a `200` status code will be returned to signal that the request was successful.
+
+The server can still communicate errors or issues to the client within the streamed content itself, for example, when using [`redirect`](/docs/app/api-reference/functions/redirect.md) or [`notFound`](/docs/app/api-reference/functions/not-found.md). Because the response headers have already been sent to the client, the status code of the response cannot be updated.
+
+For example, when a 404 page is streamed to the client, Next.js includes a `<meta name="robots" content="noindex">` tag in the streamed HTML. This prevents search engines from indexing that URL even if the HTTP status is 200. See Google’s guidance on the [`robots` meta tag](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag).
+
+Some crawlers may label these responses as “soft 404s”. In the streaming case, this does not lead to indexation because the page is explicitly marked `noindex` in the HTML.
+
+If you need a 404 status, for compliance or analytics, ensure the resource exists before the response body is streamed, so that the server can set the HTTP status code.
+
+You can run this check in [`proxy`](/docs/app/api-reference/file-conventions/proxy.md) to rewrite missing slugs to a not-found route, or [produce a 404 response](/docs/app/api-reference/file-conventions/proxy.md#producing-a-response). Keep proxy checks fast, and avoid fetching full content there.
+
+<details>
+<summary>When is the response body streamed?</summary>
+
+The response body starts streaming when a Suspense fallback renders (for example, a `loading.tsx`) or when a Server Component suspends under a `Suspense` boundary. Place `notFound()` before those boundaries and before any `await` that may suspend.
+
+To start streaming, the response headers must be set. This is why it is not possible to change the status code after streaming started.
+
+</details>
+
+### Browser limits
+
+[Some browsers](https://bugs.webkit.org/show_bug.cgi?id=252413) buffer a streaming response. You may not see the streamed response until the response exceeds 1024 bytes. This typically only affects “hello world” applications, but not real applications.
+
+## Platform Support
+
+| Deployment Option                                                   | Supported         |
+| ------------------------------------------------------------------- | ----------------- |
+| [Node.js server](/docs/app/getting-started/deploying.md#nodejs-server) | Yes               |
+| [Docker container](/docs/app/getting-started/deploying.md#docker)      | Yes               |
+| [Static export](/docs/app/getting-started/deploying.md#static-export)  | No                |
+| [Adapters](/docs/app/getting-started/deploying.md#adapters)            | Platform-specific |
+
+Learn how to [configure streaming](/docs/app/guides/self-hosting.md#streaming-and-suspense) when self-hosting Next.js.
+
+## Examples
+
+### Streaming with Suspense
+
+In addition to `loading.js`, you can also manually create Suspense Boundaries for your own UI components. The App Router supports streaming with [Suspense](https://react.dev/reference/react/Suspense).
+
+`<Suspense>` works by wrapping a component that performs an asynchronous action (e.g. fetch data), showing fallback UI (e.g. skeleton, spinner) while it's happening, and then swapping in your component once the action completes.
+
+```tsx filename="app/dashboard/page.tsx" switcher
+import { Suspense } from 'react'
+import { PostFeed, Weather } from './Components'
+
+export default function Posts() {
+  return (
+    <section>
+      <Suspense fallback={<p>Loading feed...</p>}>
+        <PostFeed />
+      </Suspense>
+      <Suspense fallback={<p>Loading weather...</p>}>
+        <Weather />
+      </Suspense>
+    </section>
+  )
+}
+```
+
+```jsx filename="app/dashboard/page.js" switcher
+import { Suspense } from 'react'
+import { PostFeed, Weather } from './Components'
+
+export default function Posts() {
+  return (
+    <section>
+      <Suspense fallback={<p>Loading feed...</p>}>
+        <PostFeed />
+      </Suspense>
+      <Suspense fallback={<p>Loading weather...</p>}>
+        <Weather />
+      </Suspense>
+    </section>
+  )
+}
+```
+
+By using Suspense, you get the benefits of:
+
+1. **Streaming Server Rendering** - Progressively rendering HTML from the server to the client.
+2. **Selective Hydration** - React prioritizes what components to make interactive first based on user interaction.
+
+For more Suspense examples and use cases, please see the [React Documentation](https://react.dev/reference/react/Suspense).
+
+## Version History
+
+| Version   | Changes               |
+| --------- | --------------------- |
+| `v13.0.0` | `loading` introduced. |
+
+# Server and Client Components
+@doc-version: 16.0.1
+
+
+By default, layouts and pages are [Server Components](https://react.dev/reference/rsc/server-components), which lets you fetch data and render parts of your UI on the server, optionally cache the result, and stream it to the client. When you need interactivity or browser APIs, you can use [Client Components](https://react.dev/reference/rsc/use-client) to layer in functionality.
+
+This page explains how Server and Client Components work in Next.js and when to use them, with examples of how to compose them together in your application.
+
+## When to use Server and Client Components?
+
+The client and server environments have different capabilities. Server and Client components allow you to run logic in each environment depending on your use case.
+
+Use **Client Components** when you need:
+
+* [State](https://react.dev/learn/managing-state) and [event handlers](https://react.dev/learn/responding-to-events). E.g. `onClick`, `onChange`.
+* [Lifecycle logic](https://react.dev/learn/lifecycle-of-reactive-effects). E.g. `useEffect`.
+* Browser-only APIs. E.g. `localStorage`, `window`, `Navigator.geolocation`, etc.
+* [Custom hooks](https://react.dev/learn/reusing-logic-with-custom-hooks).
+
+Use **Server Components** when you need:
+
+* Fetch data from databases or APIs close to the source.
+* Use API keys, tokens, and other secrets without exposing them to the client.
+* Reduce the amount of JavaScript sent to the browser.
+* Improve the [First Contentful Paint (FCP)](https://web.dev/fcp/), and stream content progressively to the client.
+
+For example, the `<Page>` component is a Server Component that fetches data about a post, and passes it as props to the `<LikeButton>` which handles client-side interactivity.
+
+```tsx filename="app/[id]/page.tsx" highlight={1,12} switcher
+import LikeButton from '@/app/ui/like-button'
+import { getPost } from '@/lib/data'
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  const { id } = await params
+  const post = await getPost(id)
+
+  return (
+    <div>
+      <main>
+        <h1>{post.title}</h1>
+        {/* ... */}
+        <LikeButton likes={post.likes} />
+      </main>
+    </div>
+  )
+}
+```
+
+```jsx filename="app/[id]/page.js" highlight={1,12} switcher
+import LikeButton from '@/app/ui/like-button'
+import { getPost } from '@/lib/data'
+
+export default async function Page({ params }) {
+  const post = await getPost(params.id)
+
+  return (
+    <div>
+      <main>
+        <h1>{post.title}</h1>
+        {/* ... */}
+        <LikeButton likes={post.likes} />
+      </main>
+    </div>
+  )
+}
+```
+
+```tsx filename="app/ui/like-button.tsx" highlight={1} switcher
+'use client'
+
+import { useState } from 'react'
+
+export default function LikeButton({ likes }: { likes: number }) {
+  // ...
+}
+```
+
+```jsx filename="app/ui/like-button.js" highlight={1} switcher
+'use client'
+
+import { useState } from 'react'
+
+export default function LikeButton({ likes }) {
+  // ...
+}
+```
+
+## How do Server and Client Components work in Next.js?
+
+### On the server
+
+On the server, Next.js uses React's APIs to orchestrate rendering. The rendering work is split into chunks, by individual route segments ([layouts and pages](/docs/app/getting-started/layouts-and-pages.md)):
+
+* **Server Components** are rendered into a special data format called the React Server Component Payload (RSC Payload).
+* **Client Components** and the RSC Payload are used to [pre-render](/docs/app/guides/caching.md#rendering-strategies) HTML.
+
+> **What is the React Server Component Payload (RSC)?**
+>
+> The RSC Payload is a compact binary representation of the rendered React Server Components tree. It's used by React on the client to update the browser's DOM. The RSC Payload contains:
+>
+> * The rendered result of Server Components
+> * Placeholders for where Client Components should be rendered and references to their JavaScript files
+> * Any props passed from a Server Component to a Client Component
+
+### On the client (first load)
+
+Then, on the client:
+
+1. **HTML** is used to immediately show a fast non-interactive preview of the route to the user.
+2. **RSC Payload** is used to reconcile the Client and Server Component trees.
+3. **JavaScript** is used to hydrate Client Components and make the application interactive.
+
+> **What is hydration?**
+>
+> Hydration is React's process for attaching [event handlers](https://react.dev/learn/responding-to-events) to the DOM, to make the static HTML interactive.
+
+### Subsequent Navigations
+
+On subsequent navigations:
+
+* The **RSC Payload** is prefetched and cached for instant navigation.
+* **Client Components** are rendered entirely on the client, without the server-rendered HTML.
+
+## Examples
+
+### Using Client Components
+
+You can create a Client Component by adding the [`"use client"`](https://react.dev/reference/react/use-client) directive at the top of the file, above your imports.
+
+```tsx filename="app/ui/counter.tsx" highlight={1} switcher
+'use client'
+
+import { useState } from 'react'
+
+export default function Counter() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <p>{count} likes</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  )
+}
+```
+
+```jsx filename="app/ui/counter.js" highlight={1} switcher
+'use client'
+
+import { useState } from 'react'
+
+export default function Counter() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <p>{count} likes</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  )
+}
+```
+
+`"use client"` is used to declare a **boundary** between the Server and Client module graphs (trees).
+
+Once a file is marked with `"use client"`, **all its imports and child components are considered part of the client bundle**. This means you don't need to add the directive to every component that is intended for the client.
+
+### Reducing JS bundle size
+
+To reduce the size of your client JavaScript bundles, add `'use client'` to specific interactive components instead of marking large parts of your UI as Client Components.
+
+For example, the `<Layout>` component contains mostly static elements like a logo and navigation links, but includes an interactive search bar. `<Search />` is interactive and needs to be a Client Component, however, the rest of the layout can remain a Server Component.
+
+```tsx filename="app/layout.tsx" highlight={12} switcher
+// Client Component
+import Search from './search'
+// Server Component
+import Logo from './logo'
+
+// Layout is a Server Component by default
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <nav>
+        <Logo />
+        <Search />
+      </nav>
+      <main>{children}</main>
+    </>
+  )
+}
+```
+
+```jsx filename="app/layout.js" highlight={12} switcher
+// Client Component
+import Search from './search'
+// Server Component
+import Logo from './logo'
+
+// Layout is a Server Component by default
+export default function Layout({ children }) {
+  return (
+    <>
+      <nav>
+        <Logo />
+        <Search />
+      </nav>
+      <main>{children}</main>
+    </>
+  )
+}
+```
+
+```tsx filename="app/ui/search.tsx" highlight={1} switcher
+'use client'
+
+export default function Search() {
+  // ...
+}
+```
+
+```jsx filename="app/ui/search.js" highlight={1} switcher
+'use client'
+
+export default function Search() {
+  // ...
+}
+```
+
+### Passing data from Server to Client Components
+
+You can pass data from Server Components to Client Components using props.
+
+```tsx filename="app/[id]/page.tsx" highlight={1,7} switcher
+import LikeButton from '@/app/ui/like-button'
+import { getPost } from '@/lib/data'
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  const { id } = await params
+  const post = await getPost(id)
+
+  return <LikeButton likes={post.likes} />
+}
+```
+
+```jsx filename="app/[id]/page.js" highlight={1,7} switcher
+import LikeButton from '@/app/ui/like-button'
+import { getPost } from '@/lib/data'
+
+export default async function Page({ params }) {
+  const post = await getPost(params.id)
+
+  return <LikeButton likes={post.likes} />
+}
+```
+
+```tsx filename="app/ui/like-button.tsx" highlight={1} switcher
+'use client'
+
+export default function LikeButton({ likes }: { likes: number }) {
+  // ...
+}
+```
+
+```jsx filename="app/ui/like-button.js" highlight={1} switcher
+'use client'
+
+export default function LikeButton({ likes }) {
+  // ...
+}
+```
+
+Alternatively, you can stream data from a Server Component to a Client Component with the [`use` Hook](https://react.dev/reference/react/use). See an [example](/docs/app/getting-started/fetching-data.md#streaming-data-with-the-use-hook).
+
+> **Good to know**: Props passed to Client Components need to be [serializable](https://react.dev/reference/react/use-server#serializable-parameters-and-return-values) by React.
+
+### Interleaving Server and Client Components
+
+You can pass Server Components as a prop to a Client Component. This allows you to visually nest server-rendered UI within Client components.
+
+A common pattern is to use `children` to create a *slot* in a `<ClientComponent>`. For example, a `<Cart>` component that fetches data on the server, inside a `<Modal>` component that uses client state to toggle visibility.
+
+```tsx filename="app/ui/modal.tsx" switcher
+'use client'
+
+export default function Modal({ children }: { children: React.ReactNode }) {
+  return <div>{children}</div>
+}
+```
+
+```jsx filename="app/ui/modal.js" switcher
+'use client'
+
+export default function Modal({ children }) {
+  return <div>{children}</div>
+}
+```
+
+Then, in a parent Server Component (e.g.`<Page>`), you can pass a `<Cart>` as the child of the `<Modal>`:
+
+```tsx filename="app/page.tsx"  highlight={7} switcher
+import Modal from './ui/modal'
+import Cart from './ui/cart'
+
+export default function Page() {
+  return (
+    <Modal>
+      <Cart />
+    </Modal>
+  )
+}
+```
+
+```jsx filename="app/page.js" highlight={7} switcher
+import Modal from './ui/modal'
+import Cart from './ui/cart'
+
+export default function Page() {
+  return (
+    <Modal>
+      <Cart />
+    </Modal>
+  )
+}
+```
+
+In this pattern, all Server Components will be rendered on the server ahead of time, including those as props. The resulting RSC payload will contain references of where Client Components should be rendered within the component tree.
+
+### Context providers
+
+[React context](https://react.dev/learn/passing-data-deeply-with-context) is commonly used to share global state like the current theme. However, React context is not supported in Server Components.
+
+To use context, create a Client Component that accepts `children`:
+
+```tsx filename="app/theme-provider.tsx" switcher
+'use client'
+
+import { createContext } from 'react'
+
+export const ThemeContext = createContext({})
+
+export default function ThemeProvider({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return <ThemeContext.Provider value="dark">{children}</ThemeContext.Provider>
+}
+```
+
+```jsx filename="app/theme-provider.js" switcher
+'use client'
+
+import { createContext } from 'react'
+
+export const ThemeContext = createContext({})
+
+export default function ThemeProvider({ children }) {
+  return <ThemeContext.Provider value="dark">{children}</ThemeContext.Provider>
+}
+```
+
+Then, import it into a Server Component (e.g. `layout`):
+
+```tsx filename="app/layout.tsx" switcher
+import ThemeProvider from './theme-provider'
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html>
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import ThemeProvider from './theme-provider'
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+Your Server Component will now be able to directly render your provider, and all other Client Components throughout your app will be able to consume this context.
+
+> **Good to know**: You should render providers as deep as possible in the tree – notice how `ThemeProvider` only wraps `{children}` instead of the entire `<html>` document. This makes it easier for Next.js to optimize the static parts of your Server Components.
+
+### Third-party components
+
+When using a third-party component that relies on client-only features, you can wrap it in a Client Component to ensure it works as expected.
+
+For example, the `<Carousel />` can be imported from the `acme-carousel` package. This component uses `useState`, but it doesn't yet have the `"use client"` directive.
+
+If you use `<Carousel />` within a Client Component, it will work as expected:
+
+```tsx filename="app/gallery.tsx" switcher
+'use client'
+
+import { useState } from 'react'
+import { Carousel } from 'acme-carousel'
+
+export default function Gallery() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <div>
+      <button onClick={() => setIsOpen(true)}>View pictures</button>
+      {/* Works, since Carousel is used within a Client Component */}
+      {isOpen && <Carousel />}
+    </div>
+  )
+}
+```
+
+```jsx filename="app/gallery.js" switcher
+'use client'
+
+import { useState } from 'react'
+import { Carousel } from 'acme-carousel'
+
+export default function Gallery() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <div>
+      <button onClick={() => setIsOpen(true)}>View pictures</button>
+      {/*  Works, since Carousel is used within a Client Component */}
+      {isOpen && <Carousel />}
+    </div>
+  )
+}
+```
+
+However, if you try to use it directly within a Server Component, you'll see an error. This is because Next.js doesn't know `<Carousel />` is using client-only features.
+
+To fix this, you can wrap third-party components that rely on client-only features in your own Client Components:
+
+```tsx filename="app/carousel.tsx" switcher
+'use client'
+
+import { Carousel } from 'acme-carousel'
+
+export default Carousel
+```
+
+```jsx filename="app/carousel.js" switcher
+'use client'
+
+import { Carousel } from 'acme-carousel'
+
+export default Carousel
+```
+
+Now, you can use `<Carousel />` directly within a Server Component:
+
+```tsx filename="app/page.tsx" switcher
+import Carousel from './carousel'
+
+export default function Page() {
+  return (
+    <div>
+      <p>View pictures</p>
+      {/*  Works, since Carousel is a Client Component */}
+      <Carousel />
+    </div>
+  )
+}
+```
+
+```jsx filename="app/page.js" switcher
+import Carousel from './carousel'
+
+export default function Page() {
+  return (
+    <div>
+      <p>View pictures</p>
+      {/*  Works, since Carousel is a Client Component */}
+      <Carousel />
+    </div>
+  )
+}
+```
+
+> **Advice for Library Authors**
+>
+> If you’re building a component library, add the `"use client"` directive to entry points that rely on client-only features. This lets your users import components into Server Components without needing to create wrappers.
+>
+> It's worth noting some bundlers might strip out `"use client"` directives. You can find an example of how to configure esbuild to include the `"use client"` directive in the [React Wrap Balancer](https://github.com/shuding/react-wrap-balancer/blob/main/tsup.config.ts#L10-L13) and [Vercel Analytics](https://github.com/vercel/analytics/blob/main/packages/web/tsup.config.js#L26-L30) repositories.
+
+### Preventing environment poisoning
+
+JavaScript modules can be shared between both Server and Client Components modules. This means it's possible to accidentally import server-only code into the client. For example, consider the following function:
+
+```ts filename="lib/data.ts" switcher
+export async function getData() {
+  const res = await fetch('https://external-service.com/data', {
+    headers: {
+      authorization: process.env.API_KEY,
+    },
+  })
+
+  return res.json()
+}
+```
+
+```js filename="lib/data.js" switcher
+export async function getData() {
+  const res = await fetch('https://external-service.com/data', {
+    headers: {
+      authorization: process.env.API_KEY,
+    },
+  })
+
+  return res.json()
+}
+```
+
+This function contains an `API_KEY` that should never be exposed to the client.
+
+In Next.js, only environment variables prefixed with `NEXT_PUBLIC_` are included in the client bundle. If variables are not prefixed, Next.js replaces them with an empty string.
+
+As a result, even though `getData()` can be imported and executed on the client, it won't work as expected.
+
+To prevent accidental usage in Client Components, you can use the [`server-only` package](https://www.npmjs.com/package/server-only).
+
+Then, import the package into a file that contains server-only code:
+
+```js filename="lib/data.js"
+import 'server-only'
+
+export async function getData() {
+  const res = await fetch('https://external-service.com/data', {
+    headers: {
+      authorization: process.env.API_KEY,
+    },
+  })
+
+  return res.json()
+}
+```
+
+Now, if you try to import the module into a Client Component, there will be a build-time error.
+
+The corresponding [`client-only` package](https://www.npmjs.com/package/client-only) can be used to mark modules that contain client-only logic like code that accesses the `window` object.
+
+In Next.js, installing `server-only` or `client-only` is **optional**. However, if your linting rules flag extraneous dependencies, you may install them to avoid issues.
+
+```bash package="npm"
+npm install server-only
+```
+
+```bash package="yarn"
+yarn add server-only
+```
+
+```bash package="pnpm"
+pnpm add server-only
+```
+
+```bash package="bun"
+bun add server-only
+```
+
+Next.js handles `server-only` and `client-only` imports internally to provide clearer error messages when a module is used in the wrong environment. The contents of these packages from NPM are not used by Next.js.
+
+Next.js also provides its own type declarations for `server-only` and `client-only`, for TypeScript configurations where [`noUncheckedSideEffectImports`](https://www.typescriptlang.org/tsconfig/#noUncheckedSideEffectImports) is active.
+## Next Steps
+
+Learn more about the APIs mentioned in this page.
+
+- [use client](/docs/app/api-reference/directives/use-client.md)
+  - Learn how to use the use client directive to render a component on the client.

@@ -1,0 +1,3 @@
+{"timestamp": "2025-11-05T13:57:26Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T13:57:28Z", "step": "enrich_images", "status": "error", "message": "Failed to extract image from http://localhost:8888/error: 500 Server Error: Internal Server Error for url: http://localhost:8888/error"}
+{"timestamp": "2025-11-05T13:57:28Z", "step": "enrich_images", "status": "end", "message": ""}

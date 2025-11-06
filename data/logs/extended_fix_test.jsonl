@@ -1,0 +1,14 @@
+{"timestamp": "2025-11-05T16:25:08Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T16:25:10Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T16:25:10Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T16:25:20Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.ibm.com/think/topics/machine-learning: 154 chars"}
+{"timestamp": "2025-11-05T16:25:20Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://en.wikipedia.org/wiki/Machine_learning: 160 chars"}
+{"timestamp": "2025-11-05T16:25:20Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://mitsloan.mit.edu/ideas-made-to-matter/mach: 136 chars"}
+{"timestamp": "2025-11-05T16:25:20Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://developers.google.com/machine-learning/int: 159 chars"}
+{"timestamp": "2025-11-05T16:25:20Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.coursera.org/articles/what-is-machine-: 136 chars"}
+{"timestamp": "2025-11-05T16:25:20Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T16:25:20Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T16:25:20Z", "step": "enrich_images", "status": "info", "message": "No overview image found in SERP response"}
+{"timestamp": "2025-11-05T16:25:20Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T16:25:20Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T16:25:20Z", "step": "format_output", "status": "end", "message": ""}

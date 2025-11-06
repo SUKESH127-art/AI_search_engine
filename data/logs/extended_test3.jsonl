@@ -1,0 +1,9 @@
+{"timestamp": "2025-11-05T15:59:38Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:59:40Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:59:40Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:59:49Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:59:49Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:59:53Z", "step": "enrich_images", "status": "error", "message": "Failed to extract image from https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-cloud-computing/: HTTPSConnectionPool(host='azure.microsoft.com', port=443): Read timed out. (read timeout=4)"}
+{"timestamp": "2025-11-05T15:59:53Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:59:53Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:59:53Z", "step": "format_output", "status": "end", "message": ""}

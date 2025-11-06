@@ -1,0 +1,32 @@
+{"timestamp": "2025-11-05T14:50:51Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:50:53Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:50:53Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:51:01Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:51:01Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:51:04Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:51:04Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:51:04Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:51:04Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:51:04Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:56:13Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:56:15Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:56:15Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:56:22Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:56:22Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:56:25Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:56:25Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:56:25Z", "step": "enrich_images", "status": "error", "message": "No citations to enrich."}
+{"timestamp": "2025-11-05T14:56:25Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T14:56:25Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T14:56:25Z", "step": "format_output", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:00:02Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:00:04Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:00:04Z", "step": "prioritize_sources", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:00:14Z", "step": "prioritize_sources", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:00:14Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:00:16Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:00:16Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:00:16Z", "step": "enrich_images", "status": "error", "message": "No citations to enrich."}
+{"timestamp": "2025-11-05T15:00:16Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-05T15:00:16Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-05T15:00:16Z", "step": "format_output", "status": "end", "message": ""}

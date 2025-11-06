@@ -1,0 +1,26 @@
+{"timestamp": "2025-11-06T03:03:03Z", "step": "search", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T03:03:06Z", "step": "search", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T03:03:06Z", "step": "synthesize", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T03:03:15Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.kiddnation.com/whos-the-smartest-8th-g: 137 chars"}
+{"timestamp": "2025-11-06T03:03:15Z", "step": "synthesize", "status": "debug", "message": "No URL match for citation: http://www.youtube.com/watch?v=rpnlzD4qKTM"}
+{"timestamp": "2025-11-06T03:03:15Z", "step": "synthesize", "status": "debug", "message": "Found extended_snippet for https://www.9news.com/article/news/local/next/smar: 123 chars"}
+{"timestamp": "2025-11-06T03:03:15Z", "step": "synthesize", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T03:03:15Z", "step": "enrich_images", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T03:03:15Z", "step": "enrich_images", "status": "info", "message": "No overview image found, searching for one..."}
+{"timestamp": "2025-11-06T03:03:15Z", "step": "enrich_images", "status": "debug", "message": "Overview image search query: who's the smartest 8th grader?"}
+{"timestamp": "2025-11-06T03:03:21Z", "step": "enrich_images", "status": "warning", "message": "Could not find overview image"}
+{"timestamp": "2025-11-06T03:03:21Z", "step": "enrich_images", "status": "info", "message": "Enriching 3 citations with images..."}
+{"timestamp": "2025-11-06T03:03:21Z", "step": "enrich_images", "status": "info", "message": "Fetching images for 3 citations in parallel..."}
+{"timestamp": "2025-11-06T03:03:21Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Who's The Smartest 8th Grader? who's the smartest"}
+{"timestamp": "2025-11-06T03:03:21Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Smartest Kid in Colorado who's the smartest"}
+{"timestamp": "2025-11-06T03:03:21Z", "step": "enrich_images", "status": "debug", "message": "Image search query: Who's The Smartest 8th Grader? who's the smartest"}
+{"timestamp": "2025-11-06T03:03:24Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: kiddnation.com"}
+{"timestamp": "2025-11-06T03:03:25Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: youtube.com"}
+{"timestamp": "2025-11-06T03:03:26Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 1: Who's The Smartest 8th Grader?"}
+{"timestamp": "2025-11-06T03:03:27Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 2: Who's The Smartest 8th Grader?"}
+{"timestamp": "2025-11-06T03:03:27Z", "step": "enrich_images", "status": "debug", "message": "Trying fallback search with domain: 9news.com"}
+{"timestamp": "2025-11-06T03:03:30Z", "step": "enrich_images", "status": "debug", "message": "No image found for citation 3: Smartest Kid in Colorado"}
+{"timestamp": "2025-11-06T03:03:30Z", "step": "enrich_images", "status": "info", "message": "Enriched 0/3 citations with images"}
+{"timestamp": "2025-11-06T03:03:30Z", "step": "enrich_images", "status": "end", "message": ""}
+{"timestamp": "2025-11-06T03:03:30Z", "step": "format_output", "status": "start", "message": ""}
+{"timestamp": "2025-11-06T03:03:30Z", "step": "format_output", "status": "end", "message": ""}
